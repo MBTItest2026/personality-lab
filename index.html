@@ -344,67 +344,151 @@
             background: #fcf6f2;
         }
 
-        /* ---------- INVITATION (Cute) ---------- */
-        .invite-container {
-            text-align: center;
+        /* ============================================================ */
+        /* NEW: MULTI-STEP INVITATION STYLES */
+        /* ============================================================ */
+
+        .invite-wrapper {
+            position: relative;
+            min-height: 380px;
+            overflow: hidden;
             padding: 10px 0;
         }
 
-        .cat-emoji {
-            font-size: 76px;
-            display: inline-block;
-            animation: floatCat 2.8s ease-in-out infinite;
+        .invite-step {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px 4px;
+            opacity: 0;
+            transform: scale(0.95) translateY(20px);
+            transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+            pointer-events: none;
+            text-align: center;
         }
 
-        @keyframes floatCat {
-            0%,
-            100% {
-                transform: translateY(0px) rotate(-2deg);
-            }
-            50% {
-                transform: translateY(-14px) rotate(2deg);
-            }
+        .invite-step.active {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            pointer-events: auto;
+            position: relative;
         }
 
-        .invite-title {
-            font-size: 28px;
+        .invite-step.exit {
+            opacity: 0;
+            transform: scale(0.95) translateY(-20px);
+            pointer-events: none;
+        }
+
+        .invite-icon {
+            font-size: 56px;
+            display: block;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .invite-step-title {
+            font-size: 26px;
             font-weight: 700;
             color: #1a1a1a;
-            margin: 8px 0 4px 0;
+            margin-bottom: 6px;
+            line-height: 1.3;
         }
 
-        .invite-sub {
+        .invite-step-title .accent {
+            color: #d46a5a;
+        }
+
+        .invite-step-sub {
             font-size: 17px;
             color: #4a4a4a;
-            margin: 8px 0 20px 0;
             line-height: 1.7;
+            max-width: 480px;
+            margin: 0 auto 6px auto;
         }
 
-        .invite-card {
-            background: #fcf7f3;
-            border-radius: 20px;
-            padding: 28px 24px;
-            border: 2px dashed #e5d3c8;
-            margin: 10px 0 28px 0;
-        }
-
-        .invite-card p {
-            font-size: 17px;
-            line-height: 1.8;
-            color: #2d2d2d;
-        }
-
-        .invite-card .highlight {
+        .invite-step-sub .highlight {
             color: #d46a5a;
             font-weight: 600;
         }
 
-        /* ---------- YES / NO BUTTONS ---------- */
+        .invite-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 24px;
+            max-width: 400px;
+            margin: 16px auto 4px auto;
+            text-align: left;
+        }
+
+        .invite-detail-grid .label {
+            font-size: 13px;
+            color: #8a7a6a;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        .invite-detail-grid .value {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .invite-detail-grid .value .soft {
+            font-weight: 400;
+            color: #6a5a4a;
+        }
+
+        .invite-divider {
+            width: 60px;
+            height: 2px;
+            background: #e5d3c8;
+            margin: 14px auto;
+            border-radius: 4px;
+        }
+
+        .invite-tag {
+            display: inline-block;
+            background: #f5e4da;
+            color: #7a4a3a;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 4px 18px;
+            border-radius: 40px;
+            letter-spacing: 0.3px;
+            margin-top: 6px;
+        }
+
+        /* progress dots for steps */
+        .step-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .step-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ddd9d3;
+            transition: background 0.4s ease;
+        }
+
+        .step-dot.active {
+            background: #d4827a;
+            width: 24px;
+            border-radius: 6px;
+        }
+
+        /* ---------- YES / NO BUTTONS (Final Step) ---------- */
         .choice-area {
             display: flex;
             justify-content: center;
             gap: 24px;
-            margin-top: 8px;
+            margin-top: 16px;
             flex-wrap: wrap;
             position: relative;
             min-height: 80px;
@@ -478,6 +562,46 @@
             color: #8a6a5a;
         }
 
+        /* ---------- FINAL VIEW ---------- */
+        .final-container {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .final-emoji {
+            font-size: 78px;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .final-title {
+            font-size: 34px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        .final-sub {
+            font-size: 18px;
+            color: #4a4a4a;
+            margin-top: 12px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .final-sub .accent {
+            color: #d46a5a;
+            font-weight: 600;
+        }
+
+        .final-footer {
+            font-size: 14px;
+            color: #9a8a7a;
+            margin-top: 28px;
+            border-top: 1px solid #ece6e0;
+            padding-top: 24px;
+        }
+
         /* ---------- RESPONSIVE ---------- */
         @media (max-width: 600px) {
             .container {
@@ -494,8 +618,13 @@
             .result-type {
                 font-size: 34px;
             }
-            .invite-title {
+            .invite-step-title {
                 font-size: 22px;
+            }
+            .invite-detail-grid {
+                grid-template-columns: 1fr;
+                gap: 4px 0;
+                text-align: center;
             }
             .btn-yes,
             .btn-no {
@@ -510,6 +639,9 @@
             }
             .btn-no.dodging {
                 position: relative;
+            }
+            .invite-icon {
+                font-size: 42px;
             }
         }
     </style>
@@ -586,37 +718,89 @@
         </div>
 
         <!-- ============================================================ -->
-        <!-- INVITATION (Cute Reveal) -->
+        <!-- NEW: MULTI-STEP INVITATION -->
         <!-- ============================================================ -->
         <div id="invitationView" class="hidden">
-            <div class="invite-container fade-in">
-                <span class="cat-emoji">🐱</span>
-                <div class="invite-title">Meow... I found something!</div>
-                <p class="invite-sub">
-                    This test can understand many things about you...
-                    <br /><span style="font-weight:500;">But it cannot measure one important thing.</span>
-                </p>
+            <div class="invite-wrapper" id="inviteWrapper">
 
-                <div class="invite-card">
-                    <p>
-                        🎂 <span style="font-size:19px; font-weight:600;">Birthday Mission</span><br /><br />
-                        Would you like to celebrate your birthday with me?<br /><br />
-                        <span style="font-size:14px; color:#8a7a6a;">📍 Location: [Hidden for now] · 📅 Date: [Secret]</span><br />
-                        <span style="font-size:14px; color:#8a7a6a;">🎯 Mission: Make you smile for one entire day ❤️</span>
+                <!-- STEP 1: Intro -->
+                <div class="invite-step active" data-step="0">
+                    <span class="invite-icon">🌙</span>
+                    <div class="invite-step-title">Something I've been<br />wanting to tell you...</div>
+                    <div class="invite-divider"></div>
+                    <p class="invite-step-sub" style="font-style:italic; color:#6a5a4a;">
+                        "This test analysed your personality...<br />but it couldn't analyse my feelings."
+                    </p>
+                    <div style="margin-top:12px; font-size:14px; color:#9a8a7a;">
+                        <span style="display:inline-block; animation:pulseDot 1.8s ease-in-out infinite;">·</span>
+                        <span style="display:inline-block; animation:pulseDot 1.8s ease-in-out infinite 0.3s;">·</span>
+                        <span style="display:inline-block; animation:pulseDot 1.8s ease-in-out infinite 0.6s;">·</span>
+                    </div>
+                </div>
+
+                <!-- STEP 2: The Ask + Date -->
+                <div class="invite-step" data-step="1">
+                    <span class="invite-icon">💌</span>
+                    <div class="invite-step-title">Will you let me take you<br />on a <span class="accent">birthday date</span>?</div>
+                    <div class="invite-divider"></div>
+                    <div class="invite-detail-grid">
+                        <span class="label">📅 Date</span>
+                        <span class="value">6 August 2026</span>
+                        <span class="label">⏰ Time</span>
+                        <span class="value">10:00 AM – 9:00 PM</span>
+                    </div>
+                    <p class="invite-step-sub" style="margin-top:12px; font-size:15px; color:#6a5a4a;">
+                        A whole day. Just for you.
                     </p>
                 </div>
 
-                <div class="choice-area" id="choiceArea">
-                    <button class="btn-yes" id="yesBtn">💗 YES, I'd love to!</button>
-                    <button class="btn-no" id="noBtn">No 🙃</button>
+                <!-- STEP 3: Theme + Details -->
+                <div class="invite-step" data-step="2">
+                    <span class="invite-icon">🤍</span>
+                    <div class="invite-step-title">Come dressed in <span class="accent">White</span></div>
+                    <div class="invite-divider"></div>
+                    <p class="invite-step-sub">
+                        The theme is <span class="highlight">White</span> —<br />
+                        timeless, elegant, and you.
+                    </p>
+                    <div class="invite-tag">📸 Photography service included · Free of charge</div>
+                    <p class="invite-step-sub" style="margin-top:14px; font-size:15px; color:#6a5a4a;">
+                        Every moment will be captured.
+                    </p>
                 </div>
 
-                <div id="noMessage" class="hidden" style="margin-top: 14px; font-size: 15px; color: #c06f67; font-weight:500;">
-                    Hmm... are you sure? 😼
+                <!-- STEP 4: Final Question + Buttons -->
+                <div class="invite-step" data-step="3">
+                    <span class="invite-icon">🎂</span>
+                    <div class="invite-step-title">So... <span class="accent">will you?</span></div>
+                    <div class="invite-divider"></div>
+                    <p class="invite-step-sub">
+                        One day. One surprise. One memory we'll never forget.
+                    </p>
+                    <p class="invite-step-sub" style="font-size:15px; color:#8a7a6a; margin-top:2px;">
+                        <span style="font-style:italic;">(The venues are a surprise — trust me.)</span>
+                    </p>
+
+                    <div class="choice-area" id="choiceArea">
+                        <button class="btn-yes" id="yesBtn">💗 YES, I'd love to!</button>
+                        <button class="btn-no" id="noBtn">No 🙃</button>
+                    </div>
+
+                    <div id="noMessage" class="hidden" style="margin-top: 14px; font-size: 15px; color: #c06f67; font-weight:500;">
+                        Hmm... are you sure? 😼
+                    </div>
+                </div>
+
+                <!-- Progress Dots -->
+                <div class="step-dots" id="stepDots">
+                    <span class="step-dot active" data-dot="0"></span>
+                    <span class="step-dot" data-dot="1"></span>
+                    <span class="step-dot" data-dot="2"></span>
+                    <span class="step-dot" data-dot="3"></span>
                 </div>
 
                 <!-- Music trigger (appears after reveal) -->
-                <div style="margin-top: 20px;">
+                <div style="text-align:center; margin-top: 14px;">
                     <button class="music-btn" id="musicBtn">🔇 Tap to play background music</button>
                     <audio id="bgMusic" loop preload="auto">
                         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
@@ -630,14 +814,14 @@
         <!-- FINAL -->
         <!-- ============================================================ -->
         <div id="finalView" class="hidden">
-            <div class="invite-container fade-in" style="padding: 20px 0;">
-                <span style="font-size:78px; display:block; margin-bottom:6px;">🎉</span>
-                <div style="font-size:34px; font-weight:700; color:#1a1a1a;">See you soon! ❤️</div>
-                <p style="font-size:18px; color:#4a4a4a; margin-top:12px; max-width:400px; margin-left:auto; margin-right:auto;">
-                    I can't wait to celebrate <span style="font-weight:600; color:#d46a5a;">you</span>.
+            <div class="final-container fade-in">
+                <span class="final-emoji">🎉</span>
+                <div class="final-title">See you soon! ❤️</div>
+                <p class="final-sub">
+                    I can't wait to celebrate <span class="accent">you</span>.
                 </p>
-                <p style="font-size:14px; color:#9a8a7a; margin-top:28px; border-top:1px solid #ece6e0; padding-top:24px;">
-                    ✨ The date & time will be revealed in a special message ✨
+                <p class="final-footer">
+                    ✨ The exact locations will be revealed in a special message ✨
                 </p>
             </div>
         </div>
@@ -645,26 +829,22 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- JAVASCRIPT -->
+    <!-- JAVASCRIPT (Only the invitation part was changed) -->
     <!-- ============================================================ -->
     <script>
         // =================================================================
-        // 1. QUESTION BANK (14 Questions)
-        //    Q1–Q10  = Scored (MBTI pairs)
-        //    Q11–Q14 = Unscored (Personalization)
+        // 1. QUESTION BANK (14 Questions) — UNCHANGED
         // =================================================================
         const questions = [{
-            // Q1: Energy (E/I)
             id: 1,
             scored: true,
             text: 'At a social gathering, do you naturally find yourself…',
             options: [
                 { label: 'Moving between groups, talking to many people, feeling energized by the crowd.',
-                trait: 'E' },
+                    trait: 'E' },
                 { label: 'Finding one or two people for a deep conversation in a quieter spot.', trait: 'I' }
             ]
         }, {
-            // Q2: Energy (E/I)
             id: 2,
             scored: true,
             text: 'After a long and demanding week, what helps you recharge most?',
@@ -673,7 +853,6 @@
                 { label: 'Spending time alone or with one close person in a calm environment.', trait: 'I' }
             ]
         }, {
-            // Q3: Information (S/N)
             id: 3,
             scored: true,
             text: 'When reading a book or report, do you primarily…',
@@ -682,17 +861,15 @@
                 { label: 'Read between the lines, pick up themes, and imagine broader connections.', trait: 'N' }
             ]
         }, {
-            // Q4: Information (S/N)
             id: 4,
             scored: true,
             text: 'Are you more naturally focused on…',
             options: [
                 { label: 'The present moment and tangible realities right in front of you.', trait: 'S' },
                 { label: 'Future possibilities and the "big picture" of where things are heading.',
-                trait: 'N' }
+                    trait: 'N' }
             ]
         }, {
-            // Q5: Information (S/N)
             id: 5,
             scored: true,
             text: 'When learning a new concept, do you prefer…',
@@ -702,7 +879,6 @@
                     trait: 'N' }
             ]
         }, {
-            // Q6: Decision (T/F)
             id: 6,
             scored: true,
             text: 'When a friend shares a messy personal problem, your first instinct is to…',
@@ -711,7 +887,6 @@
                 { label: 'Validate their feelings first and help them navigate their emotions.', trait: 'F' }
             ]
         }, {
-            // Q7: Decision (T/F)
             id: 7,
             scored: true,
             text: 'Under high stress, are you more likely to…',
@@ -720,7 +895,6 @@
                 { label: 'Withdraw emotionally, feel overwhelmed, and seek reassurance.', trait: 'F' }
             ]
         }, {
-            // Q8: Decision (T/F)
             id: 8,
             scored: true,
             text: 'When making a major life decision, your inner compass asks…',
@@ -730,7 +904,6 @@
                     trait: 'F' }
             ]
         }, {
-            // Q9: Lifestyle (J/P)
             id: 9,
             scored: true,
             text: 'Regarding your schedule, do you prefer to…',
@@ -739,18 +912,16 @@
                 { label: 'Stay flexible, go with the flow, and adapt as things come up.', trait: 'P' }
             ]
         }, {
-            // Q10: Lifestyle (J/P)
             id: 10,
             scored: true,
             text: 'On a completely free Sunday, would you rather…',
             options: [
                 { label: 'Accomplish something productive or tackle a project you\'ve planned.',
-                trait: 'J' },
+                    trait: 'J' },
                 { label: 'Do absolutely nothing planned, letting the day unfold spontaneously.',
-                trait: 'P' }
+                    trait: 'P' }
             ]
         }, {
-            // Q11: UNSCORED - Appreciation Style
             id: 11,
             scored: false,
             text: 'Which compliment would stay in your mind longer?',
@@ -759,7 +930,6 @@
                 { label: '"You make people feel comfortable and truly cared for."', trait: 'warm' }
             ]
         }, {
-            // Q12: UNSCORED - Memory Style
             id: 12,
             scored: false,
             text: 'When remembering a special moment, what stays stronger?',
@@ -770,7 +940,6 @@
                     trait: 'feeling' }
             ]
         }, {
-            // Q13: UNSCORED - Relationship Style
             id: 13,
             scored: false,
             text: 'What makes a relationship feel most meaningful to you?',
@@ -779,7 +948,6 @@
                 { label: 'Understanding each other deeply, even without words.', trait: 'deep' }
             ]
         }, {
-            // Q14: UNSCORED - Comfort Style
             id: 14,
             scored: false,
             text: 'After a difficult day, what helps you recover best?',
@@ -790,7 +958,7 @@
         }];
 
         // =================================================================
-        // 2. PERSONALITY DATA (MBTI + Descriptions)
+        // 2. PERSONALITY DATA — UNCHANGED
         // =================================================================
         const personalityMap = {
             'ENFP': {
@@ -876,15 +1044,17 @@
         };
 
         // =================================================================
-        // 3. STATE
+        // 3. STATE — UNCHANGED
         // =================================================================
         let currentIdx = 0;
-        const answers = []; // stores index (0 or 1) for each question
+        const answers = [];
         let selectedIdx = null;
         let noClickCount = 0;
+        let inviteStep = 0;
+        let inviteTimer = null;
 
         // =================================================================
-        // 4. DOM REFS
+        // 4. DOM REFS — UNCHANGED
         // =================================================================
         const landing = document.getElementById('landingView');
         const questionView = document.getElementById('questionView');
@@ -921,11 +1091,11 @@
         const choiceArea = document.getElementById('choiceArea');
 
         // =================================================================
-        // 5. HELPER FUNCTIONS
+        // 5. HELPER FUNCTIONS — UNCHANGED
         // =================================================================
         function showView(id) {
             [landing, questionView, loadingView, resultView, revealLoadingView, invitationView, finalView]
-            .forEach(el => el.classList.add('hidden'));
+                .forEach(el => el.classList.add('hidden'));
             document.getElementById(id).classList.remove('hidden');
         }
 
@@ -935,7 +1105,6 @@
             const progress = ((index) / questions.length) * 100;
             progressBar.style.width = `${progress}%`;
 
-            // Section label
             if (index < 10) {
                 qNumber.textContent = `CORE DIMENSIONS (${index + 1}/10)`;
             } else {
@@ -954,7 +1123,6 @@
                 optionsContainer.appendChild(btn);
             });
 
-            // restore previous selection
             if (answers[index] !== undefined) {
                 const idx = answers[index];
                 selectedIdx = idx;
@@ -981,12 +1149,8 @@
             nextBtn.disabled = false;
         }
 
-        // =================================================================
-        // 6. SCORING ENGINE
-        // =================================================================
         function calculateMBTI() {
             const counts = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
-            // Only score first 10 questions
             for (let i = 0; i < 10; i++) {
                 const ansIdx = answers[i];
                 if (ansIdx === undefined) continue;
@@ -1010,7 +1174,6 @@
             return type;
         }
 
-        // Generate personalized message from unscored questions (Q11-Q14)
         function getPersonalizedMessage() {
             const traits = [];
             for (let i = 10; i < 14; i++) {
@@ -1038,23 +1201,73 @@
         }
 
         // =================================================================
-        // 7. EVENT LISTENERS
+        // 6. INVITATION STEP CONTROLLER (NEW)
+        // =================================================================
+        function goToInviteStep(step) {
+            const steps = document.querySelectorAll('.invite-step');
+            const dots = document.querySelectorAll('.step-dot');
+
+            // Remove active from all
+            steps.forEach(s => {
+                s.classList.remove('active', 'exit');
+                // Reset transforms
+                s.style.opacity = '0';
+                s.style.transform = 'scale(0.95) translateY(20px)';
+                s.style.pointerEvents = 'none';
+            });
+
+            // Activate the target step
+            if (steps[step]) {
+                steps[step].classList.add('active');
+                steps[step].style.opacity = '1';
+                steps[step].style.transform = 'scale(1) translateY(0)';
+                steps[step].style.pointerEvents = 'auto';
+            }
+
+            // Update dots
+            dots.forEach((d, i) => {
+                d.classList.toggle('active', i === step);
+            });
+
+            inviteStep = step;
+        }
+
+        function nextInviteStep() {
+            const totalSteps = 4;
+            if (inviteStep < totalSteps - 1) {
+                goToInviteStep(inviteStep + 1);
+                resetInviteTimer();
+            }
+        }
+
+        function resetInviteTimer() {
+            if (inviteTimer) {
+                clearTimeout(inviteTimer);
+                inviteTimer = null;
+            }
+            // Auto-advance after 3.5 seconds, but not on the last step
+            if (inviteStep < 3) {
+                inviteTimer = setTimeout(() => {
+                    nextInviteStep();
+                }, 3500);
+            }
+        }
+
+        // =================================================================
+        // 7. EVENT LISTENERS — Mostly UNCHANGED except reveal logic
         // =================================================================
 
-        // Start
         startBtn.addEventListener('click', () => {
             showView('questionView');
             renderQuestion(0);
         });
 
-        // Next
         nextBtn.addEventListener('click', () => {
             if (selectedIdx === null) return;
             if (currentIdx < questions.length - 1) {
                 currentIdx++;
                 renderQuestion(currentIdx);
             } else {
-                // All done → go to loading
                 showView('loadingView');
                 let step = 0;
                 const msgs = ['Mapping cognitive functions...', 'Analysing response patterns...',
@@ -1071,7 +1284,6 @@
                     } else {
                         clearInterval(interval);
                         setTimeout(() => {
-                            // Show result
                             const type = calculateMBTI();
                             const data = personalityMap[type] || personalityMap['ENFP'];
                             resultType.textContent = type;
@@ -1085,12 +1297,10 @@
             }
         });
 
-        // Reveal button (TRAPDOOR)
+        // REVEAL BUTTON — Now shows the multi-step invitation
         revealBtn.addEventListener('click', () => {
-            // Switch to cute theme
             document.body.classList.add('cute-theme');
 
-            // Show second loading
             showView('revealLoadingView');
             let progress = 0;
             const steps = [
@@ -1111,19 +1321,37 @@
                 if (progress >= 100) {
                     clearInterval(interval);
                     setTimeout(() => {
-                        // Show invitation
+                        // Show invitation with multi-step
                         showView('invitationView');
-                        // Inject personalized message into the card
+                        // Inject personalized message into the invite card (step 4)
                         const customMsg = getPersonalizedMessage();
-                        const card = document.querySelector('.invite-card p');
-                        // Append it gracefully
-                        const extra = document.createElement('p');
-                        extra.style.marginTop = '16px';
-                        extra.style.fontSize = '15px';
-                        extra.style.color = '#5a4a3a';
-                        extra.style.fontStyle = 'italic';
-                        extra.textContent = `"${customMsg}"`;
-                        card.appendChild(extra);
+                        // We'll add it as a subtle note in step 4
+                        const step4 = document.querySelector('.invite-step[data-step="3"] .invite-step-sub:last-child');
+                        if (step4) {
+                            const note = document.createElement('span');
+                            note.style.display = 'block';
+                            note.style.marginTop = '8px';
+                            note.style.fontSize = '14px';
+                            note.style.color = '#8a7a6a';
+                            note.style.fontStyle = 'italic';
+                            note.textContent = `"${customMsg}"`;
+                            step4.parentNode.insertBefore(note, step4.nextSibling);
+                        }
+                        // Start the invitation sequence
+                        goToInviteStep(0);
+                        resetInviteTimer();
+
+                        // Allow click/tap on the container to advance
+                        const wrapper = document.getElementById('inviteWrapper');
+                        wrapper.addEventListener('click', function(e) {
+                            // Don't advance if clicking a button
+                            if (e.target.closest('.btn-yes') || e.target.closest('.btn-no') || e.target
+                                .closest('.music-btn')) return;
+                            if (inviteStep < 3) {
+                                nextInviteStep();
+                            }
+                        });
+
                     }, 500);
                 }
             }, 300);
@@ -1132,24 +1360,21 @@
         // ---------- YES BUTTON ----------
         yesBtn.addEventListener('click', () => {
             showView('finalView');
-            // Play music if not already playing
             if (bgAudio.paused) {
                 bgAudio.play().catch(() => {});
                 musicBtn.textContent = '🔊 Music playing';
             }
         });
 
-        // ---------- NO BUTTON (Dodging + Tease) ----------
+        // ---------- NO BUTTON (Dodging + Tease) — UNCHANGED ----------
         noBtn.addEventListener('click', function(e) {
             noClickCount++;
             const area = choiceArea;
             const rect = area.getBoundingClientRect();
 
             if (noClickCount === 1) {
-                // First click: show message and move button slightly
                 noMessage.classList.remove('hidden');
                 this.textContent = 'No 🙃';
-                // Dodge to a random position within the area
                 const maxX = rect.width - this.offsetWidth - 20;
                 const maxY = rect.height - this.offsetHeight - 20;
                 const x = Math.max(0, Math.min(maxX, Math.random() * maxX));
@@ -1160,7 +1385,6 @@
                 this.classList.add('dodging');
                 noMessage.textContent = 'Nice try! But I\'m not giving up 😼';
             } else if (noClickCount === 2) {
-                // Second click: transform into YES
                 this.textContent = '💗 Actually yes!';
                 this.style.position = 'relative';
                 this.style.left = 'auto';
@@ -1171,7 +1395,6 @@
                 this.style.fontWeight = '600';
                 this.classList.remove('dodging');
                 noMessage.textContent = 'That\'s what I thought! 😸';
-                // After a moment, auto-proceed
                 setTimeout(() => {
                     showView('finalView');
                     if (bgAudio.paused) {
@@ -1180,7 +1403,6 @@
                     }
                 }, 1200);
             } else {
-                // Fallback: just go
                 showView('finalView');
             }
         });
@@ -1196,7 +1418,7 @@
             }
         });
 
-        // Keyboard support (Enter to continue)
+        // Keyboard support
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' && !nextBtn.disabled && !questionView.classList.contains('hidden')) {
                 nextBtn.click();
