@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex" />
-    <title>Personality Assessment v3</title>
+    <title>Personality Assessment</title>
 
     <style>
         /* ---------- RESET & GLOBAL ---------- */
@@ -214,20 +214,6 @@
             box-shadow: none !important;
         }
 
-        .btn-secondary {
-            background: transparent;
-            color: #1a1a1a;
-            border: 2px solid #d5d0c9;
-            margin-left: 12px;
-        }
-
-        .btn-secondary:hover {
-            background: #f5f3f0;
-            border-color: #1a1a1a;
-            transform: translateY(-2px);
-            box-shadow: none;
-        }
-
         /* ---------- HIDDEN ---------- */
         .hidden {
             display: none !important;
@@ -284,17 +270,33 @@
             }
         }
 
+        .loader-icon {
+            width: 44px;
+            height: 44px;
+            margin: 0 auto 14px auto;
+            display: block;
+        }
+
         .loader-text {
             font-size: 16px;
             color: #5a5a5a;
             letter-spacing: 0.3px;
             font-weight: 400;
+            text-align: center;
         }
 
         .loader-sub {
             font-size: 13px;
             color: #999;
             margin-top: 4px;
+            text-align: center;
+        }
+
+        .loader-heading {
+            font-weight: 500;
+            font-size: 22px;
+            color: #1a1a1a;
+            text-align: center;
         }
 
         /* ---------- RESULT PAGE (Formal) ---------- */
@@ -345,7 +347,7 @@
         }
 
         /* ============================================================ */
-        /* NEW: MULTI-STEP INVITATION STYLES */
+        /* ENHANCED MULTI-STEP INVITATION STYLES */
         /* ============================================================ */
 
         .invite-wrapper {
@@ -375,17 +377,12 @@
             position: relative;
         }
 
-        .invite-step.exit {
-            opacity: 0;
-            transform: scale(0.95) translateY(-20px);
-            pointer-events: none;
-        }
-
         .invite-icon {
-            font-size: 56px;
+            width: 46px;
+            height: 46px;
+            margin: 0 auto 14px auto;
             display: block;
-            margin-bottom: 8px;
-            line-height: 1.2;
+            color: #d4827a;
         }
 
         .invite-step-title {
@@ -398,6 +395,20 @@
 
         .invite-step-title .accent {
             color: #d46a5a;
+        }
+
+        /* Glowing text effect for the reveal */
+        .glow-text {
+            animation: textGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes textGlow {
+            0% {
+                text-shadow: 0 0 0px #d4827a, 0 0 0px #d4827a;
+            }
+            100% {
+                text-shadow: 0 0 10px #d4827a, 0 0 20px #f5e4da;
+            }
         }
 
         .invite-step-sub {
@@ -436,11 +447,6 @@
             color: #1a1a1a;
         }
 
-        .invite-detail-grid .value .soft {
-            font-weight: 400;
-            color: #6a5a4a;
-        }
-
         .invite-divider {
             width: 60px;
             height: 2px;
@@ -461,7 +467,71 @@
             margin-top: 6px;
         }
 
-        /* progress dots for steps */
+        .invite-continue-hint {
+            font-size: 12px;
+            color: #b5a89c;
+            letter-spacing: 0.3px;
+            margin-top: 18px;
+        }
+
+        #personalNote {
+            font-size: 14px;
+            color: #8a7a6a;
+            font-style: italic;
+            margin-top: 10px;
+            display: block;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ---------- GIF CONTAINER ---------- */
+        .gif-container {
+            max-width: 180px;
+            margin: 10px auto 20px auto;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #fdf3ef, #fce8e0);
+            padding: 10px;
+            box-shadow: 0 8px 30px rgba(210, 130, 130, 0.15);
+            border: 1px solid #f5e4da;
+            transition: transform 0.3s ease;
+        }
+
+        .gif-container:hover {
+            transform: scale(1.02);
+        }
+
+        .gif-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+            background: #ffffff;
+        }
+
+        /* ---------- YOUTUBE EMBED ---------- */
+        .music-embed-container {
+            max-width: 100%;
+            margin: 16px auto 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #efedea;
+            display: none;
+        }
+
+        .music-embed-container.active {
+            display: block;
+        }
+
+        .music-embed-container iframe {
+            width: 100%;
+            height: 200px;
+            display: block;
+            border: none;
+        }
+
+        /* ---------- PROGRESS DOTS ---------- */
         .step-dots {
             display: flex;
             justify-content: center;
@@ -474,7 +544,7 @@
             height: 8px;
             border-radius: 50%;
             background: #ddd9d3;
-            transition: background 0.4s ease;
+            transition: background 0.4s ease, width 0.4s ease;
         }
 
         .step-dot.active {
@@ -488,7 +558,7 @@
             display: flex;
             justify-content: center;
             gap: 24px;
-            margin-top: 16px;
+            margin-top: 20px;
             flex-wrap: wrap;
             position: relative;
             min-height: 80px;
@@ -539,8 +609,8 @@
             transition: all 0.12s ease;
         }
 
-        /* ---------- MUSIC BUTTON ---------- */
-        .music-btn {
+        /* ---------- MUSIC TOGGLE BUTTON ---------- */
+        .music-toggle-btn {
             background: transparent;
             border: 1px solid #d5cdc5;
             border-radius: 40px;
@@ -553,13 +623,35 @@
             margin-top: 16px;
         }
 
-        .music-btn:hover {
+        .music-toggle-btn:hover {
             background: #f5f0eb;
         }
 
-        body.cute-theme .music-btn {
+        body.cute-theme .music-toggle-btn {
             border-color: #e5d3c8;
             color: #8a6a5a;
+        }
+
+        /* ---------- PARTICLE EFFECT (Hearts) ---------- */
+        .particle-heart {
+            position: fixed;
+            pointer-events: none;
+            color: #d4827a;
+            font-size: 20px;
+            animation: floatHeart 4.5s ease-in-out forwards;
+            z-index: 9999;
+            opacity: 0;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                opacity: 0.9;
+                transform: translateY(0) scale(0.5) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-250px) scale(1.8) rotate(45deg);
+            }
         }
 
         /* ---------- FINAL VIEW ---------- */
@@ -568,10 +660,12 @@
             padding: 20px 0;
         }
 
-        .final-emoji {
-            font-size: 78px;
+        .final-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 14px auto;
             display: block;
-            margin-bottom: 6px;
+            color: #d4827a;
         }
 
         .final-title {
@@ -640,8 +734,18 @@
             .btn-no.dodging {
                 position: relative;
             }
-            .invite-icon {
-                font-size: 42px;
+            .music-embed-container iframe {
+                height: 150px;
+            }
+            .gif-container {
+                max-width: 140px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
@@ -654,11 +758,11 @@
         <!-- LANDING -->
         <!-- ============================================================ -->
         <div id="landingView">
-            <div class="badge">✨ Personality Assessment</div>
+            <div class="badge">Personality Assessment</div>
             <h1>Discover Your Cognitive Profile</h1>
-            <p class="subtitle">Based on 14 behavioral dimensions · 3–4 minutes</p>
+            <p class="subtitle">Based on 14 behavioral dimensions &middot; about 3 minutes</p>
             <div style="margin-top: 38px;">
-                <button class="btn-primary" id="startBtn">Begin Assessment →</button>
+                <button class="btn-primary" id="startBtn">Begin Assessment</button>
             </div>
         </div>
 
@@ -674,26 +778,30 @@
             <div class="q-text" id="qText">Loading...</div>
             <div class="options" id="optionsContainer"></div>
             <div style="margin-top: 24px;">
-                <button class="btn-primary" id="nextBtn" disabled>Next →</button>
+                <button class="btn-primary" id="nextBtn" disabled>Next</button>
             </div>
         </div>
 
         <!-- ============================================================ -->
         <!-- LOADING 1 (Fake Analysis) -->
         <!-- ============================================================ -->
-        <div id="loadingView" class="hidden" style="text-align:center; padding: 30px 0;">
-            <div style="font-size: 52px; margin-bottom: 10px;">🧠</div>
-            <h2 style="font-weight:500; font-size:22px; color:#1a1a1a;">Analysing your responses...</h2>
+        <div id="loadingView" class="hidden" style="padding: 30px 0;">
+            <svg class="loader-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="24" cy="24" r="20" stroke="#c9c2b8" stroke-width="2"/>
+                <path d="M24 4 A20 20 0 0 1 44 24" stroke="#2d2d2d" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="24" cy="24" r="4" fill="#2d2d2d"/>
+            </svg>
+            <h2 class="loader-heading">Analysing your responses</h2>
             <div class="loader-dots"><span></span><span></span><span></span></div>
             <p class="loader-text" id="loadStatus">Mapping cognitive functions</p>
-            <p class="loader-sub" id="loadSub">Processing neural pathways</p>
+            <p class="loader-sub" id="loadSub">Processing response patterns</p>
         </div>
 
         <!-- ============================================================ -->
         <!-- RESULT (Formal) -->
         <!-- ============================================================ -->
         <div id="resultView" class="hidden">
-            <div class="badge">✅ Profile Complete</div>
+            <div class="badge">Profile Complete</div>
             <div class="result-type" id="resultType">ENFP</div>
             <div class="result-label" id="resultLabel">The Enthusiastic Explorer</div>
             <div class="trait-list" id="traitList">
@@ -702,15 +810,18 @@
             <div class="result-card" id="resultDesc">
                 You are a deeply curious individual who values meaningful connections and authentic experiences.
             </div>
-            <button class="btn-primary" id="revealBtn">📖 Read Full Analysis →</button>
+            <button class="btn-primary" id="revealBtn">Read Full Analysis</button>
         </div>
 
         <!-- ============================================================ -->
         <!-- LOADING 2 (Reveal suspense) -->
         <!-- ============================================================ -->
-        <div id="revealLoadingView" class="hidden" style="text-align:center; padding: 30px 0;">
-            <div style="font-size: 40px; margin-bottom: 16px;">🔍</div>
-            <h2 style="font-weight:500; font-size:20px; color:#1a1a1a;">Generating additional insight...</h2>
+        <div id="revealLoadingView" class="hidden" style="padding: 30px 0;">
+            <svg class="loader-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="21" cy="21" r="13" stroke="#d4827a" stroke-width="2.5"/>
+                <line x1="30.5" y1="30.5" x2="41" y2="41" stroke="#d4827a" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+            <h2 class="loader-heading">Generating additional insight</h2>
             <div style="width:100%; max-width:300px; margin: 24px auto; height:6px; background:#ece9e5; border-radius:6px; overflow:hidden;">
                 <div id="revealProgress" style="height:100%; width:0%; background:#d4827a; border-radius:6px; transition: width 0.3s ease;"></div>
             </div>
@@ -718,77 +829,104 @@
         </div>
 
         <!-- ============================================================ -->
-        <!-- NEW: MULTI-STEP INVITATION -->
+        <!-- ENHANCED MULTI-STEP INVITATION -->
         <!-- ============================================================ -->
         <div id="invitationView" class="hidden">
             <div class="invite-wrapper" id="inviteWrapper">
 
-                <!-- STEP 1: Intro -->
+                <!-- STEP 1: Intro + GIF -->
                 <div class="invite-step active" data-step="0">
-                    <span class="invite-icon">🌙</span>
-                    <div class="invite-step-title">Something I've been<br />wanting to tell you...</div>
+                    <svg class="invite-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M32 6C22 6 14 14 14 24C14 34 22 42 32 42C24.5 39 19 32 19 24C19 16 24.5 9 32 6Z" fill="#d4827a"/>
+                    </svg>
+                    <div class="invite-step-title">Something I have<br />been wanting to tell you</div>
                     <div class="invite-divider"></div>
-                    <p class="invite-step-sub" style="font-style:italic; color:#6a5a4a;">
-                        "This test analysed your personality...<br />but it couldn't analyse my feelings."
-                    </p>
-                    <div style="margin-top:12px; font-size:14px; color:#9a8a7a;">
-                        <span style="display:inline-block; animation:pulseDot 1.8s ease-in-out infinite;">·</span>
-                        <span style="display:inline-block; animation:pulseDot 1.8s ease-in-out infinite 0.3s;">·</span>
-                        <span style="display:inline-block; animation:pulseDot 1.8s ease-in-out infinite 0.6s;">·</span>
+
+                    <!-- Cute GIF Container -->
+                    <div class="gif-container">
+                        <img src="https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUycjB6cGNlM2dqY3lwZzc0OWgyaDg4NjhlNTJsZzU1ZG81MTJyd3dnaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/wSxNZ8sksBiV2NVOfq/200w.gif" alt="Cute cat" />
                     </div>
+
+                    <p class="invite-step-sub" style="font-style:italic; color:#6a5a4a;">
+                        This test analysed your personality.<br />It could not analyse my feelings.
+                    </p>
+                    <p class="invite-continue-hint">tap anywhere to continue</p>
                 </div>
 
                 <!-- STEP 2: The Ask + Date -->
                 <div class="invite-step" data-step="1">
-                    <span class="invite-icon">💌</span>
+                    <svg class="invite-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="8" y="12" width="32" height="26" rx="3" stroke="#d4827a" stroke-width="2.5"/>
+                        <path d="M8 15 L24 28 L40 15" stroke="#d4827a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                     <div class="invite-step-title">Will you let me take you<br />on a <span class="accent">birthday date</span>?</div>
                     <div class="invite-divider"></div>
                     <div class="invite-detail-grid">
-                        <span class="label">📅 Date</span>
+                        <span class="label">Date</span>
                         <span class="value">6 August 2026</span>
-                        <span class="label">⏰ Time</span>
-                        <span class="value">10:00 AM – 9:00 PM</span>
+                        <span class="label">Time</span>
+                        <span class="value">10:00 AM &ndash; 9:00 PM</span>
                     </div>
                     <p class="invite-step-sub" style="margin-top:12px; font-size:15px; color:#6a5a4a;">
                         A whole day. Just for you.
                     </p>
+                    <p class="invite-continue-hint">tap anywhere to continue</p>
                 </div>
 
                 <!-- STEP 3: Theme + Details -->
                 <div class="invite-step" data-step="2">
-                    <span class="invite-icon">🤍</span>
-                    <div class="invite-step-title">Come dressed in <span class="accent">White</span></div>
+                    <svg class="invite-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="10" width="28" height="28" rx="14" stroke="#d4827a" stroke-width="2.5"/>
+                    </svg>
+                    <div class="invite-step-title">Come dressed in <span class="accent">white</span></div>
                     <div class="invite-divider"></div>
                     <p class="invite-step-sub">
-                        The theme is <span class="highlight">White</span> —<br />
-                        timeless, elegant, and you.
+                        The theme is <span class="highlight">white</span> &mdash;<br />
+                        timeless, simple, and you.
                     </p>
-                    <div class="invite-tag">📸 Photography service included · Free of charge</div>
+                    <div class="invite-tag">Photography included, no charge</div>
                     <p class="invite-step-sub" style="margin-top:14px; font-size:15px; color:#6a5a4a;">
                         Every moment will be captured.
                     </p>
+                    <p class="invite-continue-hint">tap anywhere to continue</p>
                 </div>
 
-                <!-- STEP 4: Final Question + Buttons -->
+                <!-- STEP 4: Final Question + Buttons + Music -->
                 <div class="invite-step" data-step="3">
-                    <span class="invite-icon">🎂</span>
-                    <div class="invite-step-title">So... <span class="accent">will you?</span></div>
+                    <svg class="invite-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M24 40 C24 40 8 30 8 18 C8 12 12.5 8 18 8 C21 8 23.5 9.5 24 12 C24.5 9.5 27 8 30 8 C35.5 8 40 12 40 18 C40 30 24 40 24 40Z" stroke="#d4827a" stroke-width="2.5" stroke-linejoin="round"/>
+                    </svg>
+                    <div class="invite-step-title glow-text">So &mdash; <span class="accent">will you?</span></div>
                     <div class="invite-divider"></div>
                     <p class="invite-step-sub">
-                        One day. One surprise. One memory we'll never forget.
+                        One day. One surprise. One memory we will not forget.
                     </p>
                     <p class="invite-step-sub" style="font-size:15px; color:#8a7a6a; margin-top:2px;">
-                        <span style="font-style:italic;">(The venues are a surprise — trust me.)</span>
+                        <span style="font-style:italic;">(The places are a surprise &mdash; trust me.)</span>
                     </p>
+                    <p id="personalNote"></p>
 
                     <div class="choice-area" id="choiceArea">
-                        <button class="btn-yes" id="yesBtn">💗 YES, I'd love to!</button>
-                        <button class="btn-no" id="noBtn">No 🙃</button>
+                        <button class="btn-yes" id="yesBtn">Yes, I would love to</button>
+                        <button class="btn-no" id="noBtn">No</button>
                     </div>
 
                     <div id="noMessage" class="hidden" style="margin-top: 14px; font-size: 15px; color: #c06f67; font-weight:500;">
-                        Hmm... are you sure? 😼
+                        Are you sure about that?
                     </div>
+
+                    <!-- YouTube Music Embed -->
+                    <div class="music-embed-container" id="musicEmbedContainer">
+                        <!-- 
+                            IMPORTANT: 
+                            Replace 'Y60sCd2g73s' with the actual video ID for 
+                            "Neng Yu Jian, Jiu Hen Bucuo Le - 能遇见,就很不错了" by Firdhaus.
+                            Example: if the URL is https://www.youtube.com/watch?v=ABC123, then the ID is ABC123
+                        -->
+                        <iframe id="youtubePlayer" src="https://www.youtube.com/embed/Y60sCd2g73s?enablejsapi=1&autoplay=0&loop=1&playlist=Y60sCd2g73s" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div>
+
+                    <button class="music-toggle-btn" id="musicBtn">Play background music</button>
                 </div>
 
                 <!-- Progress Dots -->
@@ -799,14 +937,6 @@
                     <span class="step-dot" data-dot="3"></span>
                 </div>
 
-                <!-- Music trigger (appears after reveal) -->
-                <div style="text-align:center; margin-top: 14px;">
-                    <button class="music-btn" id="musicBtn">🔇 Tap to play background music</button>
-                    <audio id="bgMusic" loop preload="auto">
-                        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-                        Your browser does not support the audio element.
-                    </audio>
-                </div>
             </div>
         </div>
 
@@ -815,13 +945,15 @@
         <!-- ============================================================ -->
         <div id="finalView" class="hidden">
             <div class="final-container fade-in">
-                <span class="final-emoji">🎉</span>
-                <div class="final-title">See you soon! ❤️</div>
+                <svg class="final-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M24 40 C24 40 8 30 8 18 C8 12 12.5 8 18 8 C21 8 23.5 9.5 24 12 C24.5 9.5 27 8 30 8 C35.5 8 40 12 40 18 C40 30 24 40 24 40Z" fill="#d4827a"/>
+                </svg>
+                <div class="final-title">See you soon</div>
                 <p class="final-sub">
-                    I can't wait to celebrate <span class="accent">you</span>.
+                    I cannot wait to celebrate <span class="accent">you</span>.
                 </p>
                 <p class="final-footer">
-                    ✨ The exact locations will be revealed in a special message ✨
+                    The exact locations will be revealed in a special message
                 </p>
             </div>
         </div>
@@ -829,19 +961,21 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- JAVASCRIPT (Only the invitation part was changed) -->
+    <!-- JAVASCRIPT -->
     <!-- ============================================================ -->
+    <!-- Load YouTube IFrame Player API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+
     <script>
         // =================================================================
-        // 1. QUESTION BANK (14 Questions) — UNCHANGED
+        // 1. QUESTION BANK (14 Questions)
         // =================================================================
         const questions = [{
             id: 1,
             scored: true,
-            text: 'At a social gathering, do you naturally find yourself…',
+            text: 'At a social gathering, do you naturally find yourself...',
             options: [
-                { label: 'Moving between groups, talking to many people, feeling energized by the crowd.',
-                    trait: 'E' },
+                { label: 'Moving between groups, talking to many people, feeling energized by the crowd.', trait: 'E' },
                 { label: 'Finding one or two people for a deep conversation in a quieter spot.', trait: 'I' }
             ]
         }, {
@@ -855,7 +989,7 @@
         }, {
             id: 3,
             scored: true,
-            text: 'When reading a book or report, do you primarily…',
+            text: 'When reading a book or report, do you primarily...',
             options: [
                 { label: 'Focus on the exact words, data, and step-by-step details.', trait: 'S' },
                 { label: 'Read between the lines, pick up themes, and imagine broader connections.', trait: 'N' }
@@ -863,25 +997,23 @@
         }, {
             id: 4,
             scored: true,
-            text: 'Are you more naturally focused on…',
+            text: 'Are you more naturally focused on...',
             options: [
                 { label: 'The present moment and tangible realities right in front of you.', trait: 'S' },
-                { label: 'Future possibilities and the "big picture" of where things are heading.',
-                    trait: 'N' }
+                { label: 'Future possibilities and the big picture of where things are heading.', trait: 'N' }
             ]
         }, {
             id: 5,
             scored: true,
-            text: 'When learning a new concept, do you prefer…',
+            text: 'When learning a new concept, do you prefer...',
             options: [
                 { label: 'Step-by-step instructions and clear, practical examples.', trait: 'S' },
-                { label: 'Understanding the underlying theory and how it connects to other ideas.',
-                    trait: 'N' }
+                { label: 'Understanding the underlying theory and how it connects to other ideas.', trait: 'N' }
             ]
         }, {
             id: 6,
             scored: true,
-            text: 'When a friend shares a messy personal problem, your first instinct is to…',
+            text: 'When a friend shares a messy personal problem, your first instinct is to...',
             options: [
                 { label: 'Analyse the root cause and offer a logical, step-by-step solution.', trait: 'T' },
                 { label: 'Validate their feelings first and help them navigate their emotions.', trait: 'F' }
@@ -889,24 +1021,23 @@
         }, {
             id: 7,
             scored: true,
-            text: 'Under high stress, are you more likely to…',
+            text: 'Under high stress, are you more likely to...',
             options: [
-                { label: 'Become critical, nitpicky, and obsessed with minor flaws.', trait: 'T' },
+                { label: 'Become critical, nitpicky, and focused on minor flaws.', trait: 'T' },
                 { label: 'Withdraw emotionally, feel overwhelmed, and seek reassurance.', trait: 'F' }
             ]
         }, {
             id: 8,
             scored: true,
-            text: 'When making a major life decision, your inner compass asks…',
+            text: 'When making a major life decision, your inner compass asks...',
             options: [
-                { label: '"Is this logical, fair, and does it make objective sense?"', trait: 'T' },
-                { label: '"Does this feel right, align with my values, and impact others positively?"',
-                    trait: 'F' }
+                { label: 'Is this logical, fair, and does it make objective sense?', trait: 'T' },
+                { label: 'Does this feel right, and how will it affect the people I care about?', trait: 'F' }
             ]
         }, {
             id: 9,
             scored: true,
-            text: 'Regarding your schedule, do you prefer to…',
+            text: 'Regarding your schedule, do you prefer to...',
             options: [
                 { label: 'Plan ahead, make lists, and have a clear structure for your day.', trait: 'J' },
                 { label: 'Stay flexible, go with the flow, and adapt as things come up.', trait: 'P' }
@@ -914,12 +1045,10 @@
         }, {
             id: 10,
             scored: true,
-            text: 'On a completely free Sunday, would you rather…',
+            text: 'On a completely free Sunday, would you rather...',
             options: [
-                { label: 'Accomplish something productive or tackle a project you\'ve planned.',
-                    trait: 'J' },
-                { label: 'Do absolutely nothing planned, letting the day unfold spontaneously.',
-                    trait: 'P' }
+                { label: 'Accomplish something productive or tackle a project you have planned.', trait: 'J' },
+                { label: 'Do absolutely nothing planned, letting the day unfold on its own.', trait: 'P' }
             ]
         }, {
             id: 11,
@@ -934,10 +1063,8 @@
             scored: false,
             text: 'When remembering a special moment, what stays stronger?',
             options: [
-                { label: 'The vivid details — what happened, who said what, the sequence of events.',
-                    trait: 'details' },
-                { label: 'The overall feeling — the warmth, the joy, the emotional atmosphere.',
-                    trait: 'feeling' }
+                { label: 'The vivid details, what happened, who said what, the order of events.', trait: 'details' },
+                { label: 'The overall feeling, the warmth, the joy, the atmosphere.', trait: 'feeling' }
             ]
         }, {
             id: 13,
@@ -958,93 +1085,29 @@
         }];
 
         // =================================================================
-        // 2. PERSONALITY DATA — UNCHANGED
+        // 2. PERSONALITY DATA
         // =================================================================
         const personalityMap = {
-            'ENFP': {
-                label: 'The Enthusiastic Explorer',
-                traits: ['Curious', 'Empathetic', 'Spontaneous', 'Imaginative'],
-                desc: 'You are warm, creative, and deeply curious. You see endless possibilities and are driven by your values and a desire for meaningful connection.'
-            },
-            'ENFJ': {
-                label: 'The Compassionate Mentor',
-                traits: ['Charismatic', 'Empathetic', 'Organised', 'Inspiring'],
-                desc: 'You have a gift for understanding people and bringing out their best. You are driven by purpose and a deep desire to help others grow.'
-            },
-            'ENTP': {
-                label: 'The Visionary Thinker',
-                traits: ['Innovative', 'Quick-witted', 'Debater', 'Curious'],
-                desc: 'You are a bold, imaginative thinker who loves exploring ideas and challenging norms. You thrive on intellectual stimulation.'
-            },
-            'ENTJ': {
-                label: 'The Strategic Commander',
-                traits: ['Decisive', 'Confident', 'Goal-oriented', 'Analytical'],
-                desc: 'You are a natural leader who sees the big picture and takes charge. You are driven by ambition and turning visions into reality.'
-            },
-            'INFP': {
-                label: 'The Idealistic Dreamer',
-                traits: ['Introspective', 'Empathetic', 'Creative', 'Authentic'],
-                desc: 'You are reflective and compassionate, guided by a strong inner moral compass and a desire to live authentically.'
-            },
-            'INFJ': {
-                label: 'The Thoughtful Guide',
-                traits: ['Insightful', 'Empathetic', 'Organised', 'Visionary'],
-                desc: 'You are intuitive and rare, with deep human understanding. You are driven by purpose and making a positive impact.'
-            },
-            'INTP': {
-                label: 'The Analytical Architect',
-                traits: ['Logical', 'Curious', 'Innovative', 'Independent'],
-                desc: 'You are a deep thinker who loves complex ideas and systems. You are driven by knowledge and understanding.'
-            },
-            'INTJ': {
-                label: 'The Strategic Mastermind',
-                traits: ['Independent', 'Analytical', 'Visionary', 'Decisive'],
-                desc: 'You are a forward-thinking strategist who sees systems. You are driven by competence and long-term goals.'
-            },
-            'ESFP': {
-                label: 'The Spirited Performer',
-                traits: ['Energetic', 'Warm', 'Spontaneous', 'Observant'],
-                desc: 'You are vibrant and live in the moment, bringing joy to others. You are driven by new experiences and connection.'
-            },
-            'ESFJ': {
-                label: 'The Nurturing Supporter',
-                traits: ['Caring', 'Organised', 'Social', 'Loyal'],
-                desc: 'You are warm and generous, finding fulfillment in helping others. You are driven by duty and harmony.'
-            },
-            'ESTP': {
-                label: 'The Dynamic Adventurer',
-                traits: ['Energetic', 'Observant', 'Bold', 'Spontaneous'],
-                desc: 'You are action-oriented and thrive on excitement. You are driven by exploration and making the most of every moment.'
-            },
-            'ESTJ': {
-                label: 'The Decisive Executor',
-                traits: ['Organised', 'Practical', 'Decisive', 'Responsible'],
-                desc: 'You are pragmatic and get things done. You are driven by duty, order, and efficiency.'
-            },
-            'ISFP': {
-                label: 'The Gentle Artist',
-                traits: ['Sensitive', 'Creative', 'Observant', 'Authentic'],
-                desc: 'You are quiet and introspective with deep appreciation for beauty. You are driven by values and harmony.'
-            },
-            'ISFJ': {
-                label: 'The Devoted Guardian',
-                traits: ['Caring', 'Observant', 'Organised', 'Loyal'],
-                desc: 'You are warm and conscientious, taking great care of what matters. You are driven by duty and protection.'
-            },
-            'ISTP': {
-                label: 'The Practical Problem-Solver',
-                traits: ['Observant', 'Analytical', 'Calm', 'Spontaneous'],
-                desc: 'You are calm and resourceful, excelling at practical problems. You are driven by understanding and exploration.'
-            },
-            'ISTJ': {
-                label: 'The Dependable Realist',
-                traits: ['Organised', 'Practical', 'Reliable', 'Observant'],
-                desc: 'You are responsible and detail-oriented, valuing structure and reliability. You are driven by duty and commitments.'
-            }
+            'ENFP': { label: 'The Enthusiastic Explorer', traits: ['Curious', 'Empathetic', 'Spontaneous', 'Imaginative'], desc: 'You are warm, creative, and deeply curious. You see endless possibilities and are driven by your values and a desire for meaningful connection.' },
+            'ENFJ': { label: 'The Compassionate Mentor', traits: ['Charismatic', 'Empathetic', 'Organised', 'Inspiring'], desc: 'You have a gift for understanding people and bringing out their best. You are driven by purpose and a deep desire to help others grow.' },
+            'ENTP': { label: 'The Visionary Thinker', traits: ['Innovative', 'Quick-witted', 'Curious', 'Bold'], desc: 'You are a bold, imaginative thinker who loves exploring ideas and challenging norms. You thrive on intellectual stimulation.' },
+            'ENTJ': { label: 'The Strategic Commander', traits: ['Decisive', 'Confident', 'Goal-oriented', 'Analytical'], desc: 'You are a natural leader who sees the big picture and takes charge. You are driven by ambition and turning visions into reality.' },
+            'INFP': { label: 'The Idealistic Dreamer', traits: ['Introspective', 'Empathetic', 'Creative', 'Authentic'], desc: 'You are reflective and compassionate, guided by a strong inner moral compass and a desire to live authentically.' },
+            'INFJ': { label: 'The Thoughtful Guide', traits: ['Insightful', 'Empathetic', 'Organised', 'Visionary'], desc: 'You are intuitive and rare, with deep human understanding. You are driven by purpose and making a positive impact.' },
+            'INTP': { label: 'The Analytical Architect', traits: ['Logical', 'Curious', 'Innovative', 'Independent'], desc: 'You are a deep thinker who loves complex ideas and systems. You are driven by knowledge and understanding.' },
+            'INTJ': { label: 'The Strategic Mastermind', traits: ['Independent', 'Analytical', 'Visionary', 'Decisive'], desc: 'You are a forward-thinking strategist who sees systems clearly. You are driven by competence and long-term goals.' },
+            'ESFP': { label: 'The Spirited Performer', traits: ['Energetic', 'Warm', 'Spontaneous', 'Observant'], desc: 'You are vibrant and live in the moment, bringing joy to others. You are driven by new experiences and connection.' },
+            'ESFJ': { label: 'The Nurturing Supporter', traits: ['Caring', 'Organised', 'Social', 'Loyal'], desc: 'You are warm and generous, finding fulfillment in helping others. You are driven by duty and harmony.' },
+            'ESTP': { label: 'The Dynamic Adventurer', traits: ['Energetic', 'Observant', 'Bold', 'Spontaneous'], desc: 'You are action-oriented and thrive on excitement. You are driven by exploration and making the most of every moment.' },
+            'ESTJ': { label: 'The Decisive Executor', traits: ['Organised', 'Practical', 'Decisive', 'Responsible'], desc: 'You are pragmatic and get things done. You are driven by duty, order, and efficiency.' },
+            'ISFP': { label: 'The Gentle Artist', traits: ['Sensitive', 'Creative', 'Observant', 'Authentic'], desc: 'You are quiet and introspective with a deep appreciation for beauty. You are driven by values and harmony.' },
+            'ISFJ': { label: 'The Devoted Guardian', traits: ['Caring', 'Observant', 'Organised', 'Loyal'], desc: 'You are warm and conscientious, taking great care of what matters. You are driven by duty and protection.' },
+            'ISTP': { label: 'The Practical Problem-Solver', traits: ['Observant', 'Analytical', 'Calm', 'Spontaneous'], desc: 'You are calm and resourceful, excelling at practical problems. You are driven by understanding and exploration.' },
+            'ISTJ': { label: 'The Dependable Realist', traits: ['Organised', 'Practical', 'Reliable', 'Observant'], desc: 'You are responsible and detail-oriented, valuing structure and reliability. You are driven by duty and commitment.' }
         };
 
         // =================================================================
-        // 3. STATE — UNCHANGED
+        // 3. STATE
         // =================================================================
         let currentIdx = 0;
         const answers = [];
@@ -1052,9 +1115,14 @@
         let noClickCount = 0;
         let inviteStep = 0;
         let inviteTimer = null;
+        const INVITE_STEP_DELAY = 4800;
+
+        // YouTube Player state
+        let ytPlayer = null;
+        let ytReady = false;
 
         // =================================================================
-        // 4. DOM REFS — UNCHANGED
+        // 4. DOM REFS
         // =================================================================
         const landing = document.getElementById('landingView');
         const questionView = document.getElementById('questionView');
@@ -1070,7 +1138,7 @@
         const yesBtn = document.getElementById('yesBtn');
         const noBtn = document.getElementById('noBtn');
         const musicBtn = document.getElementById('musicBtn');
-        const bgAudio = document.getElementById('bgMusic');
+        const musicEmbedContainer = document.getElementById('musicEmbedContainer');
 
         const qBadge = document.getElementById('qBadge');
         const progressBar = document.getElementById('progressBar');
@@ -1089,9 +1157,10 @@
         const revealLoadText = document.getElementById('revealLoadText');
         const noMessage = document.getElementById('noMessage');
         const choiceArea = document.getElementById('choiceArea');
+        const personalNote = document.getElementById('personalNote');
 
         // =================================================================
-        // 5. HELPER FUNCTIONS — UNCHANGED
+        // 5. HELPER FUNCTIONS
         // =================================================================
         function showView(id) {
             [landing, questionView, loadingView, resultView, revealLoadingView, invitationView, finalView]
@@ -1136,7 +1205,7 @@
                 nextBtn.disabled = true;
             }
 
-            nextBtn.textContent = (index === questions.length - 1) ? '📊 See Results' : 'Next →';
+            nextBtn.textContent = (index === questions.length - 1) ? 'See Results' : 'Next';
         }
 
         function selectOption(index) {
@@ -1195,28 +1264,69 @@
             if (traits.includes('together')) msg += 'You heal best in the presence of trusted people. ';
             else msg += 'You recharge best with quiet solitude and reflection. ';
 
-            msg +=
-                'That is why I know this birthday surprise is exactly the right thing for you — because I see all these beautiful layers in you.';
+            msg += 'That is why I know this birthday surprise is exactly right for you, because I see all these layers in you.';
             return msg;
         }
 
         // =================================================================
-        // 6. INVITATION STEP CONTROLLER (NEW)
+        // 6. PARTICLE EFFECT (Hearts)
+        // =================================================================
+        function createHearts(count = 15) {
+            const symbols = ['♥', '♡', '❤'];
+            for (let i = 0; i < count; i++) {
+                const el = document.createElement('div');
+                el.className = 'particle-heart';
+                el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                el.style.left = Math.random() * 100 + 'vw';
+                el.style.top = Math.random() * 100 + 'vh';
+                el.style.fontSize = (Math.random() * 16 + 14) + 'px';
+                el.style.animationDuration = (Math.random() * 3 + 2.5) + 's';
+                el.style.animationDelay = (Math.random() * 2) + 's';
+                document.body.appendChild(el);
+                setTimeout(() => {
+                    el.remove();
+                }, 5000);
+            }
+        }
+
+        // =================================================================
+        // 7. YOUTUBE PLAYER API
+        // =================================================================
+        function onYouTubeIframeAPIReady() {
+            const iframe = document.getElementById('youtubePlayer');
+            if (iframe) {
+                ytPlayer = new YT.Player('youtubePlayer', {
+                    events: {
+                        'onReady': onPlayerReady,
+                        'onStateChange': onPlayerStateChange
+                    }
+                });
+            }
+        }
+
+        function onPlayerReady(event) {
+            ytReady = true;
+            console.log('YouTube Player ready');
+        }
+
+        function onPlayerStateChange(event) {
+            // Optional: handle state changes
+        }
+
+        // =================================================================
+        // 8. INVITATION STEP CONTROLLER
         // =================================================================
         function goToInviteStep(step) {
             const steps = document.querySelectorAll('.invite-step');
             const dots = document.querySelectorAll('.step-dot');
 
-            // Remove active from all
             steps.forEach(s => {
-                s.classList.remove('active', 'exit');
-                // Reset transforms
+                s.classList.remove('active');
                 s.style.opacity = '0';
                 s.style.transform = 'scale(0.95) translateY(20px)';
                 s.style.pointerEvents = 'none';
             });
 
-            // Activate the target step
             if (steps[step]) {
                 steps[step].classList.add('active');
                 steps[step].style.opacity = '1';
@@ -1224,7 +1334,6 @@
                 steps[step].style.pointerEvents = 'auto';
             }
 
-            // Update dots
             dots.forEach((d, i) => {
                 d.classList.toggle('active', i === step);
             });
@@ -1245,16 +1354,15 @@
                 clearTimeout(inviteTimer);
                 inviteTimer = null;
             }
-            // Auto-advance after 3.5 seconds, but not on the last step
             if (inviteStep < 3) {
                 inviteTimer = setTimeout(() => {
                     nextInviteStep();
-                }, 3500);
+                }, INVITE_STEP_DELAY);
             }
         }
 
         // =================================================================
-        // 7. EVENT LISTENERS — Mostly UNCHANGED except reveal logic
+        // 9. EVENT LISTENERS
         // =================================================================
 
         startBtn.addEventListener('click', () => {
@@ -1270,12 +1378,8 @@
             } else {
                 showView('loadingView');
                 let step = 0;
-                const msgs = ['Mapping cognitive functions...', 'Analysing response patterns...',
-                    'Cross-referencing personality dimensions...', 'Finalising your unique profile...'
-                ];
-                const subs = ['Processing neural pathways', 'Evaluating behavioral indicators',
-                    'Preparing compatibility metrics', 'Almost there...'
-                ];
+                const msgs = ['Mapping cognitive functions', 'Analysing response patterns', 'Cross-referencing personality dimensions', 'Finalising your profile'];
+                const subs = ['Processing response patterns', 'Evaluating behavioral indicators', 'Preparing your summary', 'Almost there'];
                 const interval = setInterval(() => {
                     if (step < msgs.length) {
                         loadStatus.textContent = msgs[step];
@@ -1297,18 +1401,13 @@
             }
         });
 
-        // REVEAL BUTTON — Now shows the multi-step invitation
+        // REVEAL BUTTON - shows the multi-step invitation
         revealBtn.addEventListener('click', () => {
             document.body.classList.add('cute-theme');
 
             showView('revealLoadingView');
             let progress = 0;
-            const steps = [
-                'Connecting emotional patterns...',
-                'Decoding hidden signals...',
-                'Uncovering the real mission...',
-                'Almost ready...'
-            ];
+            const steps = ['Connecting emotional patterns', 'Reading between the lines', 'Uncovering the real result', 'Almost ready'];
             let stepIdx = 0;
             const interval = setInterval(() => {
                 progress += Math.floor(Math.random() * 12) + 4;
@@ -1321,36 +1420,29 @@
                 if (progress >= 100) {
                     clearInterval(interval);
                     setTimeout(() => {
-                        // Show invitation with multi-step
                         showView('invitationView');
-                        // Inject personalized message into the invite card (step 4)
-                        const customMsg = getPersonalizedMessage();
-                        // We'll add it as a subtle note in step 4
-                        const step4 = document.querySelector('.invite-step[data-step="3"] .invite-step-sub:last-child');
-                        if (step4) {
-                            const note = document.createElement('span');
-                            note.style.display = 'block';
-                            note.style.marginTop = '8px';
-                            note.style.fontSize = '14px';
-                            note.style.color = '#8a7a6a';
-                            note.style.fontStyle = 'italic';
-                            note.textContent = `"${customMsg}"`;
-                            step4.parentNode.insertBefore(note, step4.nextSibling);
-                        }
-                        // Start the invitation sequence
+
+                        // Trigger heart particles
+                        createHearts(25);
+
+                        personalNote.textContent = getPersonalizedMessage();
+
                         goToInviteStep(0);
                         resetInviteTimer();
 
-                        // Allow click/tap on the container to advance
                         const wrapper = document.getElementById('inviteWrapper');
                         wrapper.addEventListener('click', function(e) {
-                            // Don't advance if clicking a button
                             if (e.target.closest('.btn-yes') || e.target.closest('.btn-no') || e.target
-                                .closest('.music-btn')) return;
+                                .closest('.music-toggle-btn')) return;
                             if (inviteStep < 3) {
                                 nextInviteStep();
                             }
                         });
+
+                        // Ensure YouTube player is ready when invitation is shown
+                        if (ytPlayer && ytReady) {
+                            // Player is ready
+                        }
 
                     }, 500);
                 }
@@ -1360,13 +1452,10 @@
         // ---------- YES BUTTON ----------
         yesBtn.addEventListener('click', () => {
             showView('finalView');
-            if (bgAudio.paused) {
-                bgAudio.play().catch(() => {});
-                musicBtn.textContent = '🔊 Music playing';
-            }
+            // Optionally stop music or keep playing
         });
 
-        // ---------- NO BUTTON (Dodging + Tease) — UNCHANGED ----------
+        // ---------- NO BUTTON (Dodging + Tease) ----------
         noBtn.addEventListener('click', function(e) {
             noClickCount++;
             const area = choiceArea;
@@ -1374,7 +1463,7 @@
 
             if (noClickCount === 1) {
                 noMessage.classList.remove('hidden');
-                this.textContent = 'No 🙃';
+                this.textContent = 'No';
                 const maxX = rect.width - this.offsetWidth - 20;
                 const maxY = rect.height - this.offsetHeight - 20;
                 const x = Math.max(0, Math.min(maxX, Math.random() * maxX));
@@ -1383,9 +1472,9 @@
                 this.style.left = x + 'px';
                 this.style.top = y + 'px';
                 this.classList.add('dodging');
-                noMessage.textContent = 'Nice try! But I\'m not giving up 😼';
+                noMessage.textContent = 'Nice try. I am not giving up.';
             } else if (noClickCount === 2) {
-                this.textContent = '💗 Actually yes!';
+                this.textContent = 'Actually, yes';
                 this.style.position = 'relative';
                 this.style.left = 'auto';
                 this.style.top = 'auto';
@@ -1394,13 +1483,9 @@
                 this.style.background = '#fdf3ef';
                 this.style.fontWeight = '600';
                 this.classList.remove('dodging');
-                noMessage.textContent = 'That\'s what I thought! 😸';
+                noMessage.textContent = 'That is what I thought.';
                 setTimeout(() => {
                     showView('finalView');
-                    if (bgAudio.paused) {
-                        bgAudio.play().catch(() => {});
-                        musicBtn.textContent = '🔊 Music playing';
-                    }
                 }, 1200);
             } else {
                 showView('finalView');
@@ -1409,12 +1494,24 @@
 
         // ---------- MUSIC BUTTON ----------
         musicBtn.addEventListener('click', () => {
-            if (bgAudio.paused) {
-                bgAudio.play().catch(() => {});
-                musicBtn.textContent = '🔊 Music playing';
+            const container = musicEmbedContainer;
+            if (container.classList.contains('active')) {
+                // Pause the video
+                if (ytPlayer && ytReady) {
+                    ytPlayer.pauseVideo();
+                }
+                container.classList.remove('active');
+                musicBtn.textContent = 'Play background music';
             } else {
-                bgAudio.pause();
-                musicBtn.textContent = '🔇 Tap to play background music';
+                // Show and play the video
+                container.classList.add('active');
+                musicBtn.textContent = 'Pause music';
+                if (ytPlayer && ytReady) {
+                    ytPlayer.playVideo();
+                } else {
+                    // If API not ready, reload or wait
+                    console.warn('YouTube Player not ready');
+                }
             }
         });
 
@@ -1426,7 +1523,7 @@
         });
 
         // =================================================================
-        // 8. INIT
+        // 10. INIT
         // =================================================================
         showView('landingView');
     </script>
