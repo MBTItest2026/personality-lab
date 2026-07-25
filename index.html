@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-MY">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,7 +7,9 @@
     <title>Personality Assessment</title>
 
     <style>
-        /* ---------- RESET & GLOBAL ---------- */
+        /* ================================================================
+           RESET & GLOBAL
+           ================================================================ */
         * {
             margin: 0;
             padding: 0;
@@ -23,9 +25,13 @@
             background: #f4f2ef;
             padding: 20px;
             transition: background 0.9s ease;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* ---------- THEME TOGGLE (triggered by JS) ---------- */
+        /* ================================================================
+           THEME TOGGLE (triggered by JS)
+           ================================================================ */
         body.cute-theme {
             background: #fcf3ed;
         }
@@ -50,7 +56,27 @@
             background: #c06f67;
         }
 
-        /* ---------- CONTAINER ---------- */
+        body.cute-theme .step-dot.active {
+            background: #d4827a;
+        }
+
+        body.cute-theme .option-btn.selected {
+            border-color: #d4827a;
+            background: #fdf3ef;
+        }
+
+        body.cute-theme .result-card {
+            border-left-color: #d4827a;
+            background: #fcf6f2;
+        }
+
+        body.cute-theme .progress-bar {
+            background: #d4827a;
+        }
+
+        /* ================================================================
+           CONTAINER
+           ================================================================ */
         .container {
             background: #ffffff;
             max-width: 740px;
@@ -64,7 +90,9 @@
             border: 1px solid #efedea;
         }
 
-        /* ---------- TYPOGRAPHY ---------- */
+        /* ================================================================
+           TYPOGRAPHY
+           ================================================================ */
         h1 {
             font-size: 30px;
             font-weight: 600;
@@ -92,7 +120,9 @@
             margin-bottom: 16px;
         }
 
-        /* ---------- PROGRESS ---------- */
+        /* ================================================================
+           PROGRESS BAR
+           ================================================================ */
         .progress-wrap {
             width: 100%;
             height: 4px;
@@ -110,11 +140,9 @@
             transition: width 0.45s ease;
         }
 
-        body.cute-theme .progress-bar {
-            background: #d4827a;
-        }
-
-        /* ---------- QUESTIONS ---------- */
+        /* ================================================================
+           QUESTIONS
+           ================================================================ */
         .q-number {
             font-size: 12px;
             font-weight: 600;
@@ -180,12 +208,9 @@
             background: #eeebe6;
         }
 
-        body.cute-theme .option-btn.selected {
-            border-color: #d4827a;
-            background: #fdf3ef;
-        }
-
-        /* ---------- BUTTONS ---------- */
+        /* ================================================================
+           PRIMARY BUTTONS
+           ================================================================ */
         .btn-primary {
             display: inline-block;
             background: #1a1a1a;
@@ -214,7 +239,9 @@
             box-shadow: none !important;
         }
 
-        /* ---------- HIDDEN ---------- */
+        /* ================================================================
+           UTILITY
+           ================================================================ */
         .hidden {
             display: none !important;
         }
@@ -234,7 +261,9 @@
             }
         }
 
-        /* ---------- LOADING DOTS ---------- */
+        /* ================================================================
+           LOADING DOTS
+           ================================================================ */
         .loader-dots {
             display: flex;
             gap: 10px;
@@ -299,7 +328,9 @@
             text-align: center;
         }
 
-        /* ---------- RESULT PAGE (Formal) ---------- */
+        /* ================================================================
+           RESULT PAGE (Formal)
+           ================================================================ */
         .result-type {
             font-size: 44px;
             font-weight: 700;
@@ -341,15 +372,9 @@
             color: #2d2d2d;
         }
 
-        body.cute-theme .result-card {
-            border-left-color: #d4827a;
-            background: #fcf6f2;
-        }
-
-        /* ============================================================ */
-        /* ENHANCED MULTI-STEP INVITATION STYLES */
-        /* ============================================================ */
-
+        /* ================================================================
+           MULTI-STEP INVITATION STYLES
+           ================================================================ */
         .invite-wrapper {
             position: relative;
             min-height: 380px;
@@ -472,20 +497,17 @@
             color: #b5a89c;
             letter-spacing: 0.3px;
             margin-top: 18px;
+            transition: opacity 0.3s ease;
         }
 
-        #personalNote {
-            font-size: 14px;
-            color: #8a7a6a;
-            font-style: italic;
-            margin-top: 10px;
-            display: block;
-            max-width: 400px;
-            margin-left: auto;
-            margin-right: auto;
+        .invite-continue-hint.chinese-hint {
+            font-size: 13px;
+            letter-spacing: 0.5px;
         }
 
-        /* ---------- GIF CONTAINER ---------- */
+        /* ================================================================
+           GIF CONTAINER (used in invitation and final)
+           ================================================================ */
         .gif-container {
             max-width: 180px;
             margin: 10px auto 20px auto;
@@ -494,11 +516,12 @@
             padding: 10px;
             box-shadow: 0 8px 30px rgba(210, 130, 130, 0.15);
             border: 1px solid #f5e4da;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .gif-container:hover {
             transform: scale(1.02);
+            box-shadow: 0 12px 40px rgba(210, 130, 130, 0.25);
         }
 
         .gif-container img {
@@ -509,7 +532,46 @@
             background: #ffffff;
         }
 
-        /* ---------- PROGRESS DOTS ---------- */
+        /* Larger GIF container for the final page */
+        .gif-container-large {
+            max-width: 220px;
+            margin: 10px auto 20px auto;
+            border-radius: 24px;
+            background: linear-gradient(135deg, #fdf3ef, #fce8e0);
+            padding: 12px;
+            box-shadow: 0 8px 30px rgba(210, 130, 130, 0.15);
+            border: 1px solid #f5e4da;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: pulseBorder 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseBorder {
+            0% {
+                box-shadow: 0 8px 30px rgba(210, 130, 130, 0.15);
+                border-color: #f5e4da;
+            }
+            100% {
+                box-shadow: 0 8px 50px rgba(210, 130, 130, 0.35);
+                border-color: #d4827a;
+            }
+        }
+
+        .gif-container-large:hover {
+            transform: scale(1.03);
+            box-shadow: 0 12px 50px rgba(210, 130, 130, 0.35);
+        }
+
+        .gif-container-large img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 14px;
+            background: #ffffff;
+        }
+
+        /* ================================================================
+           PROGRESS DOTS
+           ================================================================ */
         .step-dots {
             display: flex;
             justify-content: center;
@@ -531,7 +593,9 @@
             border-radius: 6px;
         }
 
-        /* ---------- YES / NO BUTTONS (Final Step) ---------- */
+        /* ================================================================
+           YES / NO BUTTONS (Final Step)
+           ================================================================ */
         .choice-area {
             display: flex;
             justify-content: center;
@@ -587,7 +651,9 @@
             transition: all 0.12s ease;
         }
 
-        /* ---------- PARTICLE EFFECT (Hearts) ---------- */
+        /* ================================================================
+           PARTICLE EFFECT (Hearts)
+           ================================================================ */
         .particle-heart {
             position: fixed;
             pointer-events: none;
@@ -609,7 +675,35 @@
             }
         }
 
-        /* ---------- FINAL VIEW ---------- */
+        /* ================================================================
+           SPARKLE EFFECT (for final page)
+           ================================================================ */
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            width: 6px;
+            height: 6px;
+            background: #ffd700;
+            border-radius: 50%;
+            animation: sparkleFade 2.5s ease-in-out forwards;
+            z-index: 9998;
+            box-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700;
+        }
+
+        @keyframes sparkleFade {
+            0% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.3) rotate(180deg);
+            }
+        }
+
+        /* ================================================================
+           FINAL VIEW
+           ================================================================ */
         .final-container {
             text-align: center;
             padding: 20px 0;
@@ -629,6 +723,14 @@
             color: #1a1a1a;
         }
 
+        .final-title .chinese-name {
+            display: block;
+            font-size: 28px;
+            color: #d46a5a;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
         .final-sub {
             font-size: 18px;
             color: #4a4a4a;
@@ -636,6 +738,7 @@
             max-width: 400px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.8;
         }
 
         .final-sub .accent {
@@ -651,7 +754,26 @@
             padding-top: 24px;
         }
 
-        /* ---------- RESPONSIVE ---------- */
+        .final-emoji-big {
+            font-size: 64px;
+            display: block;
+            margin-bottom: 4px;
+            animation: bounceEmoji 2s ease-in-out infinite;
+        }
+
+        @keyframes bounceEmoji {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* ================================================================
+           RESPONSIVE
+           ================================================================ */
         @media (max-width: 600px) {
             .container {
                 padding: 28px 20px;
@@ -692,12 +814,69 @@
             .gif-container {
                 max-width: 140px;
             }
+            .gif-container-large {
+                max-width: 170px;
+            }
+            .final-title {
+                font-size: 28px;
+            }
+            .final-title .chinese-name {
+                font-size: 22px;
+            }
+            .final-sub {
+                font-size: 16px;
+            }
+            .final-emoji-big {
+                font-size: 48px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .container {
+                padding: 20px 14px;
+                border-radius: 16px;
+            }
+            .invite-step-title {
+                font-size: 19px;
+            }
+            .invite-step-sub {
+                font-size: 15px;
+            }
+            .btn-yes,
+            .btn-no {
+                font-size: 16px;
+                padding: 14px 16px;
+            }
+            .gif-container {
+                max-width: 120px;
+                padding: 8px;
+            }
+            .gif-container-large {
+                max-width: 140px;
+                padding: 10px;
+            }
+            .result-type {
+                font-size: 28px;
+            }
+            .final-title {
+                font-size: 24px;
+            }
+            .final-title .chinese-name {
+                font-size: 18px;
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
             * {
                 animation-duration: 0.01ms !important;
                 transition-duration: 0.01ms !important;
+            }
+            .gif-container:hover,
+            .gif-container-large:hover {
+                transform: none !important;
+            }
+            .btn-yes:hover {
+                transform: none !important;
             }
         }
     </style>
@@ -707,14 +886,14 @@
     <div class="container" id="app">
 
         <!-- ============================================================ -->
-        <!-- LANDING -->
+        <!-- LANDING PAGE -->
         <!-- ============================================================ -->
         <div id="landingView">
-            <div class="badge">Personality Assessment</div>
+            <div class="badge">✦ Personality Assessment</div>
             <h1>Discover Your Cognitive Profile</h1>
-            <p class="subtitle">Based on 14 behavioral dimensions &middot; about 3 minutes</p>
+            <p class="subtitle">Based on 14 behavioral dimensions · about 3 minutes</p>
             <div style="margin-top: 38px;">
-                <button class="btn-primary" id="startBtn">Begin Assessment</button>
+                <button class="btn-primary" id="startBtn">Begin Assessment →</button>
             </div>
         </div>
 
@@ -753,7 +932,7 @@
         <!-- RESULT (Formal) -->
         <!-- ============================================================ -->
         <div id="resultView" class="hidden">
-            <div class="badge">Profile Complete</div>
+            <div class="badge">✓ Profile Complete</div>
             <div class="result-type" id="resultType">ENFP</div>
             <div class="result-label" id="resultLabel">The Enthusiastic Explorer</div>
             <div class="trait-list" id="traitList">
@@ -762,7 +941,7 @@
             <div class="result-card" id="resultDesc">
                 You are a deeply curious individual who values meaningful connections and authentic experiences.
             </div>
-            <button class="btn-primary" id="revealBtn">Read Full Analysis</button>
+            <button class="btn-primary" id="revealBtn">Read Full Analysis →</button>
         </div>
 
         <!-- ============================================================ -->
@@ -786,46 +965,53 @@
         <div id="invitationView" class="hidden">
             <div class="invite-wrapper" id="inviteWrapper">
 
+                <!-- ========================================================== -->
                 <!-- STEP 1: Intro + GIF -->
+                <!-- ========================================================== -->
                 <div class="invite-step active" data-step="0">
                     <svg class="invite-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M32 6C22 6 14 14 14 24C14 34 22 42 32 42C24.5 39 19 32 19 24C19 16 24.5 9 32 6Z" fill="#d4827a"/>
                     </svg>
-                    <div class="invite-step-title">There is something I have been wanting to tell you, Evelyn</div>
+                    <div class="invite-step-title">To Evelyn Thian Hui Ni</div>
                     <div class="invite-divider"></div>
 
                     <!-- Cute GIF Container -->
                     <div class="gif-container">
-                        <img src="https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUycjB6cGNlM2dqY3lwZzc0OWgyaDg4NjhlNTJsZzU1ZG81MTJyd3dnaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/wSxNZ8sksBiV2NVOfq/200w.gif" alt="Cute cat" />
+                        <img src="https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUycjB6cGNlM2dqY3lwZzc0OWgyaDg4NjhlNTJsZzU1ZG81MTJyd3dnaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/wSxNZ8sksBiV2NVOfq/200w.gif" alt="Cute cat holding flower" />
                     </div>
 
                     <p class="invite-step-sub" style="font-style:italic; color:#6a5a4a;">
-                        This test analysed your personality.<br />But it could not analyse how I feel about you.
+                        This test analysed your personality.<br />
+                        But it could not analyse how I feel about you.
                     </p>
-                    <p class="invite-continue-hint">tap anywhere to continue</p>
+                    <p class="invite-continue-hint chinese-hint">点击继续 · tap anywhere to continue</p>
                 </div>
 
+                <!-- ========================================================== -->
                 <!-- STEP 2: The Ask + Date -->
+                <!-- ========================================================== -->
                 <div class="invite-step" data-step="1">
                     <svg class="invite-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="8" y="12" width="32" height="26" rx="3" stroke="#d4827a" stroke-width="2.5"/>
                         <path d="M8 15 L24 28 L40 15" stroke="#d4827a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                    <div class="invite-step-title">Will you let me take you out for your birthday?</div>
+                    <div class="invite-step-title">小喵咪, will you let me take you out for your birthday?</div>
                     <div class="invite-divider"></div>
                     <div class="invite-detail-grid">
-                        <span class="label">Date</span>
+                        <span class="label">📅 Date</span>
                         <span class="value">6 August 2026</span>
-                        <span class="label">Time</span>
+                        <span class="label">⏰ Time</span>
                         <span class="value">10:00 AM to 9:00 PM</span>
                     </div>
                     <p class="invite-step-sub" style="margin-top:12px; font-size:15px; color:#6a5a4a;">
-                        A whole day. Just us.
+                        A whole day. Just us. 一整天，就只有我们。
                     </p>
-                    <p class="invite-continue-hint">tap anywhere to continue</p>
+                    <p class="invite-continue-hint chinese-hint">点击继续 · tap anywhere to continue</p>
                 </div>
 
+                <!-- ========================================================== -->
                 <!-- STEP 3: Theme + Details -->
+                <!-- ========================================================== -->
                 <div class="invite-step" data-step="2">
                     <svg class="invite-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="10" y="10" width="28" height="28" rx="14" stroke="#d4827a" stroke-width="2.5"/>
@@ -834,29 +1020,33 @@
                     <div class="invite-divider"></div>
                     <p class="invite-step-sub">
                         The theme is <span class="highlight">white</span>.<br />
-                        Simple, timeless, and just like you.
+                        Simple, timeless, and just like you, 小喵咪.
                     </p>
-                    <div class="invite-tag">Photography is included, completely free</div>
+                    <div class="invite-tag">📸 Photography is included · completely free</div>
                     <p class="invite-step-sub" style="margin-top:14px; font-size:15px; color:#6a5a4a;">
-                        Every moment will be captured.
+                        Every moment will be captured. 每一个时刻都会被记录下来。
                     </p>
-                    <p class="invite-continue-hint">tap anywhere to continue</p>
+                    <p class="invite-continue-hint chinese-hint">点击继续 · tap anywhere to continue</p>
                 </div>
 
+                <!-- ========================================================== -->
                 <!-- STEP 4: Final Question + Buttons -->
+                <!-- ========================================================== -->
                 <div class="invite-step" data-step="3">
                     <svg class="invite-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M24 40 C24 40 8 30 8 18 C8 12 12.5 8 18 8 C21 8 23.5 9.5 24 12 C24.5 9.5 27 8 30 8 C35.5 8 40 12 40 18 C40 30 24 40 24 40Z" stroke="#d4827a" stroke-width="2.5" stroke-linejoin="round"/>
                     </svg>
-                    <div class="invite-step-title glow-text">So Evelyn, will you?</div>
+                    <div class="invite-step-title glow-text">So 小喵咪, will you?</div>
                     <div class="invite-divider"></div>
                     <p class="invite-step-sub">
                         One day. One surprise. One memory that we will never forget.
                     </p>
                     <p class="invite-step-sub" style="font-size:15px; color:#8a7a6a; margin-top:2px;">
-                        <span style="font-style:italic;">(The places are a surprise. You will have to trust me on this.)</span>
+                        <span style="font-style:italic;">(The places are a surprise. You'll have to trust me on this.)</span>
                     </p>
-                    <p id="personalNote"></p>
+                    <p style="font-size:14px; color:#b5a89c; margin-top:8px; font-style:italic;">
+                        一天。一个惊喜。一个我们永远不会忘记的回忆。
+                    </p>
 
                     <div class="choice-area" id="choiceArea">
                         <button class="btn-yes" id="yesBtn">Yes, I would love to</button>
@@ -864,11 +1054,13 @@
                     </div>
 
                     <div id="noMessage" class="hidden" style="margin-top: 14px; font-size: 15px; color: #c06f67; font-weight:500;">
-                        Are you sure about that?
+                        Are you sure about that? 你确定吗？😼
                     </div>
                 </div>
 
+                <!-- ========================================================== -->
                 <!-- Progress Dots -->
+                <!-- ========================================================== -->
                 <div class="step-dots" id="stepDots">
                     <span class="step-dot active" data-dot="0"></span>
                     <span class="step-dot" data-dot="1"></span>
@@ -876,7 +1068,9 @@
                     <span class="step-dot" data-dot="3"></span>
                 </div>
 
+                <!-- ========================================================== -->
                 <!-- Background Music (Auto-plays) -->
+                <!-- ========================================================== -->
                 <audio id="bgMusic" loop preload="auto">
                     <source src="bgmusic.mp3" type="audio/mpeg">
                     Your browser does not support the audio element.
@@ -886,19 +1080,37 @@
         </div>
 
         <!-- ============================================================ -->
-        <!-- FINAL -->
+        <!-- FINAL PAGE (with Laughing Cat GIF) -->
         <!-- ============================================================ -->
         <div id="finalView" class="hidden">
             <div class="final-container fade-in">
-                <svg class="final-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M24 40 C24 40 8 30 8 18 C8 12 12.5 8 18 8 C21 8 23.5 9.5 24 12 C24.5 9.5 27 8 30 8 C35.5 8 40 12 40 18 C40 30 24 40 24 40Z" fill="#d4827a"/>
-                </svg>
-                <div class="final-title">See you soon, Evelyn</div>
+
+                <!-- Laughing Cat GIF -->
+                <div class="gif-container-large">
+                    <img src="https://media.tenor.com/tNfwApVE9RAAAAAM/orange-cat-laughing.gif" alt="Laughing cat - gotcha!" />
+                </div>
+
+                <span class="final-emoji-big">🎉</span>
+
+                <div class="final-title">
+                    Gotcha! 被我骗到了吧 😸
+                    <span class="chinese-name">小喵咪 Evelyn</span>
+                </div>
+
                 <p class="final-sub">
-                    I cannot wait to celebrate <span class="accent">you</span>.
+                    You said yes!<br />
+                    I can't wait to celebrate <span class="accent">you</span>.<br />
+                    我等不及要和你一起庆祝了。
                 </p>
+
                 <p class="final-footer">
                     The exact locations will be revealed in a special message.
+                    <br />
+                    地点会在特别的信息里揭晓。
+                </p>
+
+                <p style="font-size:13px; color:#b5a89c; margin-top:16px; letter-spacing:0.5px;">
+                    ✦ 你已经被我骗了，没有回头路了 ✦
                 </p>
             </div>
         </div>
@@ -909,9 +1121,13 @@
     <!-- JAVASCRIPT -->
     <!-- ============================================================ -->
     <script>
-        // =================================================================
-        // 1. QUESTION BANK (14 Questions)
-        // =================================================================
+        /**
+         * =================================================================
+         * 1. QUESTION BANK (14 Questions)
+         *    Q1–Q10  = Scored (MBTI pairs)
+         *    Q11–Q14 = Unscored (Personalization - kept for compatibility)
+         * =================================================================
+         */
         const questions = [{
             id: 1,
             scored: true,
@@ -1026,9 +1242,11 @@
             ]
         }];
 
-        // =================================================================
-        // 2. PERSONALITY DATA
-        // =================================================================
+        /**
+         * =================================================================
+         * 2. PERSONALITY DATA (MBTI + Descriptions)
+         * =================================================================
+         */
         const personalityMap = {
             'ENFP': { label: 'The Enthusiastic Explorer', traits: ['Curious', 'Empathetic', 'Spontaneous', 'Imaginative'], desc: 'You are warm, creative, and deeply curious. You see endless possibilities and are driven by your values and a desire for meaningful connection.' },
             'ENFJ': { label: 'The Compassionate Mentor', traits: ['Charismatic', 'Empathetic', 'Organised', 'Inspiring'], desc: 'You have a gift for understanding people and bringing out their best. You are driven by purpose and a deep desire to help others grow.' },
@@ -1048,21 +1266,26 @@
             'ISTJ': { label: 'The Dependable Realist', traits: ['Organised', 'Practical', 'Reliable', 'Observant'], desc: 'You are responsible and detail-oriented, valuing structure and reliability. You are driven by duty and commitment.' }
         };
 
-        // =================================================================
-        // 3. STATE
-        // =================================================================
-        let currentIdx = 0;
-        const answers = [];
-        let selectedIdx = null;
-        let noClickCount = 0;
-        let inviteStep = 0;
-        let inviteTimer = null;
-        const INVITE_STEP_DELAY = 10000;
+        /**
+         * =================================================================
+         * 3. APPLICATION STATE
+         * =================================================================
+         */
+        let currentQuestionIndex = 0;
+        const userAnswers = [];
+        let selectedOptionIndex = null;
+        let noButtonClickCount = 0;
+        let currentInviteStep = 0;
+        let inviteAutoTimer = null;
+        const INVITE_STEP_DELAY = 10000; // 10 seconds per step
 
-        // =================================================================
-        // 4. DOM REFS
-        // =================================================================
-        const landing = document.getElementById('landingView');
+        /**
+         * =================================================================
+         * 4. DOM REFS (All elements)
+         * =================================================================
+         */
+        // Views
+        const landingView = document.getElementById('landingView');
         const questionView = document.getElementById('questionView');
         const loadingView = document.getElementById('loadingView');
         const resultView = document.getElementById('resultView');
@@ -1070,99 +1293,189 @@
         const invitationView = document.getElementById('invitationView');
         const finalView = document.getElementById('finalView');
 
-        const startBtn = document.getElementById('startBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const revealBtn = document.getElementById('revealBtn');
-        const yesBtn = document.getElementById('yesBtn');
-        const noBtn = document.getElementById('noBtn');
-        const bgAudio = document.getElementById('bgMusic');
+        // Buttons
+        const startButton = document.getElementById('startBtn');
+        const nextButton = document.getElementById('nextBtn');
+        const revealButton = document.getElementById('revealBtn');
+        const yesButton = document.getElementById('yesBtn');
+        const noButton = document.getElementById('noBtn');
+        const backgroundAudio = document.getElementById('bgMusic');
 
-        const qBadge = document.getElementById('qBadge');
+        // Question elements
+        const questionBadge = document.getElementById('qBadge');
         const progressBar = document.getElementById('progressBar');
-        const qNumber = document.getElementById('qNumber');
-        const qText = document.getElementById('qText');
+        const questionNumber = document.getElementById('qNumber');
+        const questionText = document.getElementById('qText');
         const optionsContainer = document.getElementById('optionsContainer');
 
+        // Result elements
         const resultType = document.getElementById('resultType');
         const resultLabel = document.getElementById('resultLabel');
         const traitList = document.getElementById('traitList');
         const resultDesc = document.getElementById('resultDesc');
 
+        // Loading elements
         const loadStatus = document.getElementById('loadStatus');
         const loadSub = document.getElementById('loadSub');
         const revealProgress = document.getElementById('revealProgress');
         const revealLoadText = document.getElementById('revealLoadText');
+
+        // Invitation elements
         const noMessage = document.getElementById('noMessage');
         const choiceArea = document.getElementById('choiceArea');
-        const personalNote = document.getElementById('personalNote');
+        const inviteWrapper = document.getElementById('inviteWrapper');
 
-        // =================================================================
-        // 5. HELPER FUNCTIONS
-        // =================================================================
-        function showView(id) {
-            [landing, questionView, loadingView, resultView, revealLoadingView, invitationView, finalView]
-                .forEach(el => el.classList.add('hidden'));
-            document.getElementById(id).classList.remove('hidden');
+        /**
+         * =================================================================
+         * 5. VIEW MANAGEMENT FUNCTIONS
+         * =================================================================
+         */
+
+        /**
+         * Show a specific view and hide all others
+         * @param {string} viewId - The ID of the view to show
+         */
+        function showView(viewId) {
+            const views = [
+                landingView,
+                questionView,
+                loadingView,
+                resultView,
+                revealLoadingView,
+                invitationView,
+                finalView
+            ];
+
+            views.forEach(function(view) {
+                if (view) {
+                    view.classList.add('hidden');
+                }
+            });
+
+            const targetView = document.getElementById(viewId);
+            if (targetView) {
+                targetView.classList.remove('hidden');
+            }
         }
 
-        function renderQuestion(index) {
-            const q = questions[index];
-            qBadge.textContent = `Question ${index + 1} of ${questions.length}`;
-            const progress = ((index) / questions.length) * 100;
-            progressBar.style.width = `${progress}%`;
+        /**
+         * =================================================================
+         * 6. QUESTION RENDERING FUNCTIONS
+         * =================================================================
+         */
 
+        /**
+         * Render a question at the given index
+         * @param {number} index - The question index to render
+         */
+        function renderQuestion(index) {
+            const question = questions[index];
+
+            // Update badge and progress
+            questionBadge.textContent = 'Question ' + (index + 1) + ' of ' + questions.length;
+            const progressPercentage = (index / questions.length) * 100;
+            progressBar.style.width = progressPercentage + '%';
+
+            // Update section label
             if (index < 10) {
-                qNumber.textContent = `CORE DIMENSIONS (${index + 1}/10)`;
+                questionNumber.textContent = 'CORE DIMENSIONS (' + (index + 1) + '/10)';
             } else {
-                qNumber.textContent = `PERSONALITY DEPTH (${index - 9}/4)`;
+                questionNumber.textContent = 'PERSONALITY DEPTH (' + (index - 9) + '/4)';
             }
 
-            qText.textContent = q.text;
+            // Set question text
+            questionText.textContent = question.text;
+
+            // Build options
             optionsContainer.innerHTML = '';
 
-            q.options.forEach((opt, i) => {
-                const btn = document.createElement('button');
-                btn.className = 'option-btn';
-                btn.innerHTML = `<span class="letter">${String.fromCharCode(65 + i)}</span> ${opt.label}`;
-                btn.dataset.idx = i;
-                btn.addEventListener('click', () => selectOption(i));
-                optionsContainer.appendChild(btn);
-            });
-
-            if (answers[index] !== undefined) {
-                const idx = answers[index];
-                selectedIdx = idx;
-                const btns = optionsContainer.querySelectorAll('.option-btn');
-                btns.forEach((b, i) => {
-                    if (i === idx) b.classList.add('selected');
+            question.options.forEach(function(option, optionIndex) {
+                const button = document.createElement('button');
+                button.className = 'option-btn';
+                const letter = String.fromCharCode(65 + optionIndex);
+                button.innerHTML = '<span class="letter">' + letter + '</span> ' + option.label;
+                button.dataset.idx = optionIndex;
+                button.addEventListener('click', function() {
+                    selectOption(optionIndex);
                 });
-                nextBtn.disabled = false;
-            } else {
-                selectedIdx = null;
-                nextBtn.disabled = true;
-            }
-
-            nextBtn.textContent = (index === questions.length - 1) ? 'See Results' : 'Next';
-        }
-
-        function selectOption(index) {
-            selectedIdx = index;
-            answers[currentIdx] = index;
-            const btns = optionsContainer.querySelectorAll('.option-btn');
-            btns.forEach((b, i) => {
-                b.classList.toggle('selected', i === index);
+                optionsContainer.appendChild(button);
             });
-            nextBtn.disabled = false;
+
+            // Restore previous selection if it exists
+            if (userAnswers[index] !== undefined) {
+                const savedIndex = userAnswers[index];
+                selectedOptionIndex = savedIndex;
+                const optionButtons = optionsContainer.querySelectorAll('.option-btn');
+                optionButtons.forEach(function(btn, i) {
+                    if (i === savedIndex) {
+                        btn.classList.add('selected');
+                    }
+                });
+                nextButton.disabled = false;
+            } else {
+                selectedOptionIndex = null;
+                nextButton.disabled = true;
+            }
+
+            // Update button text
+            if (index === questions.length - 1) {
+                nextButton.textContent = 'See Results →';
+            } else {
+                nextButton.textContent = 'Next →';
+            }
         }
 
+        /**
+         * Handle option selection
+         * @param {number} index - The selected option index
+         */
+        function selectOption(index) {
+            selectedOptionIndex = index;
+            userAnswers[currentQuestionIndex] = index;
+
+            const optionButtons = optionsContainer.querySelectorAll('.option-btn');
+            optionButtons.forEach(function(btn, i) {
+                if (i === index) {
+                    btn.classList.add('selected');
+                } else {
+                    btn.classList.remove('selected');
+                }
+            });
+
+            nextButton.disabled = false;
+        }
+
+        /**
+         * =================================================================
+         * 7. SCORING ENGINE
+         * =================================================================
+         */
+
+        /**
+         * Calculate MBTI type based on first 10 questions
+         * @returns {string} The calculated MBTI type
+         */
         function calculateMBTI() {
-            const counts = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+            const counts = {
+                E: 0,
+                I: 0,
+                S: 0,
+                N: 0,
+                T: 0,
+                F: 0,
+                J: 0,
+                P: 0
+            };
+
             for (let i = 0; i < 10; i++) {
-                const ansIdx = answers[i];
-                if (ansIdx === undefined) continue;
-                const trait = questions[i].options[ansIdx].trait;
-                if (counts[trait] !== undefined) counts[trait]++;
+                const answerIndex = userAnswers[i];
+                if (answerIndex === undefined) continue;
+                const trait = questions[i].options[answerIndex].trait;
+                if (counts[trait] !== undefined) {
+                    counts[trait]++;
+                }
             }
+
             const e = counts.E,
                 i = counts.I;
             const s = counts.S,
@@ -1177,63 +1490,90 @@
             type += (n >= s) ? 'N' : 'S';
             type += (f >= t) ? 'F' : 'T';
             type += (p >= j) ? 'P' : 'J';
+
             return type;
         }
 
-        function getPersonalizedMessage() {
-            const traits = [];
-            for (let i = 10; i < 14; i++) {
-                const ansIdx = answers[i];
-                if (ansIdx === undefined) continue;
-                traits.push(questions[i].options[ansIdx].trait);
-            }
+        /**
+         * =================================================================
+         * 8. PARTICLE EFFECTS
+         * =================================================================
+         */
 
-            let msg = '';
-            if (traits.includes('warm')) msg += 'You have a deeply warm and caring presence that makes others feel safe. ';
-            else msg += 'Your capability and sharpness leave a lasting impression on everyone. ';
-
-            if (traits.includes('feeling')) msg += 'You hold onto the emotions of special moments more than the details. ';
-            else msg += 'You treasure the vivid details that make memories come alive. ';
-
-            if (traits.includes('deep')) msg += 'You value deep, unspoken understanding over surface-level connection. ';
-            else msg += 'You find meaning in shared experiences and building stories together. ';
-
-            if (traits.includes('together')) msg += 'You heal best in the presence of trusted people. ';
-            else msg += 'You recharge best with quiet solitude and reflection. ';
-
-            msg += 'That is why I know this birthday surprise is exactly right for you, because I see all these layers in you.';
-            return msg;
-        }
-
-        // =================================================================
-        // 6. PARTICLE EFFECT (Hearts)
-        // =================================================================
-        function createHearts(count = 15) {
+        /**
+         * Create floating heart particles
+         * @param {number} count - Number of hearts to create
+         */
+        function createHeartParticles(count) {
+            if (count === undefined) count = 15;
             const symbols = ['♥', '♡', '❤'];
+
             for (let i = 0; i < count; i++) {
-                const el = document.createElement('div');
-                el.className = 'particle-heart';
-                el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-                el.style.left = Math.random() * 100 + 'vw';
-                el.style.top = Math.random() * 100 + 'vh';
-                el.style.fontSize = (Math.random() * 16 + 14) + 'px';
-                el.style.animationDuration = (Math.random() * 3 + 2.5) + 's';
-                el.style.animationDelay = (Math.random() * 2) + 's';
-                document.body.appendChild(el);
-                setTimeout(() => {
-                    el.remove();
+                const element = document.createElement('div');
+                element.className = 'particle-heart';
+                const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
+                element.textContent = randomSymbol;
+                element.style.left = Math.random() * 100 + 'vw';
+                element.style.top = Math.random() * 100 + 'vh';
+                element.style.fontSize = (Math.random() * 16 + 14) + 'px';
+                element.style.animationDuration = (Math.random() * 3 + 2.5) + 's';
+                element.style.animationDelay = (Math.random() * 2) + 's';
+
+                document.body.appendChild(element);
+
+                setTimeout(function() {
+                    if (element.parentNode) {
+                        element.parentNode.removeChild(element);
+                    }
                 }, 5000);
             }
         }
 
-        // =================================================================
-        // 7. INVITATION STEP CONTROLLER
-        // =================================================================
+        /**
+         * Create sparkle particles for the final page
+         * @param {number} count - Number of sparkles to create
+         */
+        function createSparkles(count) {
+            if (count === undefined) count = 30;
+
+            for (let i = 0; i < count; i++) {
+                const element = document.createElement('div');
+                element.className = 'sparkle';
+
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                element.style.left = x + 'vw';
+                element.style.top = y + 'vh';
+                element.style.width = (Math.random() * 4 + 3) + 'px';
+                element.style.height = element.style.width;
+                element.style.animationDuration = (Math.random() * 2 + 1.5) + 's';
+                element.style.animationDelay = (Math.random() * 2) + 's';
+
+                document.body.appendChild(element);
+
+                setTimeout(function() {
+                    if (element.parentNode) {
+                        element.parentNode.removeChild(element);
+                    }
+                }, 4000);
+            }
+        }
+
+        /**
+         * =================================================================
+         * 9. INVITATION STEP CONTROLLER
+         * =================================================================
+         */
+
+        /**
+         * Navigate to a specific invitation step
+         * @param {number} step - The step index to go to (0-3)
+         */
         function goToInviteStep(step) {
             const steps = document.querySelectorAll('.invite-step');
             const dots = document.querySelectorAll('.step-dot');
 
-            steps.forEach(s => {
+            steps.forEach(function(s) {
                 s.classList.remove('active');
                 s.style.opacity = '0';
                 s.style.transform = 'scale(0.95) translateY(20px)';
@@ -1247,66 +1587,105 @@
                 steps[step].style.pointerEvents = 'auto';
             }
 
-            dots.forEach((d, i) => {
-                d.classList.toggle('active', i === step);
+            dots.forEach(function(d, i) {
+                if (i === step) {
+                    d.classList.add('active');
+                } else {
+                    d.classList.remove('active');
+                }
             });
 
-            inviteStep = step;
+            currentInviteStep = step;
         }
 
+        /**
+         * Advance to the next invitation step
+         */
         function nextInviteStep() {
             const totalSteps = 4;
-            if (inviteStep < totalSteps - 1) {
-                goToInviteStep(inviteStep + 1);
+            if (currentInviteStep < totalSteps - 1) {
+                goToInviteStep(currentInviteStep + 1);
                 resetInviteTimer();
             }
         }
 
+        /**
+         * Reset the auto-advance timer for invitation steps
+         */
         function resetInviteTimer() {
-            if (inviteTimer) {
-                clearTimeout(inviteTimer);
-                inviteTimer = null;
+            if (inviteAutoTimer) {
+                clearTimeout(inviteAutoTimer);
+                inviteAutoTimer = null;
             }
-            if (inviteStep < 3) {
-                inviteTimer = setTimeout(() => {
+
+            if (currentInviteStep < 3) {
+                inviteAutoTimer = setTimeout(function() {
                     nextInviteStep();
                 }, INVITE_STEP_DELAY);
             }
         }
 
-        // =================================================================
-        // 8. EVENT LISTENERS
-        // =================================================================
+        /**
+         * =================================================================
+         * 10. EVENT LISTENERS
+         * =================================================================
+         */
 
-        startBtn.addEventListener('click', () => {
+        // Start button - Begin the assessment
+        startButton.addEventListener('click', function() {
             showView('questionView');
             renderQuestion(0);
         });
 
-        nextBtn.addEventListener('click', () => {
-            if (selectedIdx === null) return;
-            if (currentIdx < questions.length - 1) {
-                currentIdx++;
-                renderQuestion(currentIdx);
+        // Next button - Go to next question or show results
+        nextButton.addEventListener('click', function() {
+            if (selectedOptionIndex === null) return;
+
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                renderQuestion(currentQuestionIndex);
             } else {
+                // All questions answered, go to loading
                 showView('loadingView');
-                let step = 0;
-                const msgs = ['Mapping cognitive functions', 'Analysing response patterns', 'Cross-referencing personality dimensions', 'Finalising your profile'];
-                const subs = ['Processing response patterns', 'Evaluating behavioral indicators', 'Preparing your summary', 'Almost there'];
-                const interval = setInterval(() => {
-                    if (step < msgs.length) {
-                        loadStatus.textContent = msgs[step];
-                        loadSub.textContent = subs[step] || '';
-                        step++;
+
+                let loadingStep = 0;
+                const loadingMessages = [
+                    'Mapping cognitive functions',
+                    'Analysing response patterns',
+                    'Cross-referencing personality dimensions',
+                    'Finalising your profile'
+                ];
+                const loadingSubMessages = [
+                    'Processing response patterns',
+                    'Evaluating behavioral indicators',
+                    'Preparing your summary',
+                    'Almost there'
+                ];
+
+                const loadingInterval = setInterval(function() {
+                    if (loadingStep < loadingMessages.length) {
+                        loadStatus.textContent = loadingMessages[loadingStep];
+                        loadSub.textContent = loadingSubMessages[loadingStep] || '';
+                        loadingStep++;
                     } else {
-                        clearInterval(interval);
-                        setTimeout(() => {
+                        clearInterval(loadingInterval);
+                        setTimeout(function() {
+                            // Show the result
                             const type = calculateMBTI();
                             const data = personalityMap[type] || personalityMap['ENFP'];
+
                             resultType.textContent = type;
                             resultLabel.textContent = data.label;
-                            traitList.innerHTML = data.traits.map(t => `<span>${t}</span>`).join('');
+
+                            traitList.innerHTML = '';
+                            data.traits.forEach(function(trait) {
+                                const span = document.createElement('span');
+                                span.textContent = trait;
+                                traitList.appendChild(span);
+                            });
+
                             resultDesc.textContent = data.desc;
+
                             showView('resultView');
                         }, 400);
                     }
@@ -1314,46 +1693,60 @@
             }
         });
 
-        // REVEAL BUTTON - shows the multi-step invitation
-        revealBtn.addEventListener('click', () => {
+        // Reveal button - The trapdoor to the invitation
+        revealButton.addEventListener('click', function() {
+            // Apply the cute theme
             document.body.classList.add('cute-theme');
 
+            // Show the second loading screen
             showView('revealLoadingView');
+
             let progress = 0;
-            const steps = ['Connecting emotional patterns', 'Reading between the lines', 'Uncovering the real result', 'Almost ready'];
-            let stepIdx = 0;
-            const interval = setInterval(() => {
+            const loadingSteps = [
+                'Connecting emotional patterns',
+                'Reading between the lines',
+                'Uncovering the real result',
+                'Almost ready'
+            ];
+            let stepIndex = 0;
+
+            const progressInterval = setInterval(function() {
                 progress += Math.floor(Math.random() * 12) + 4;
                 if (progress > 100) progress = 100;
                 revealProgress.style.width = progress + '%';
-                if (stepIdx < steps.length) {
-                    revealLoadText.textContent = steps[stepIdx];
-                    stepIdx++;
+
+                if (stepIndex < loadingSteps.length) {
+                    revealLoadText.textContent = loadingSteps[stepIndex];
+                    stepIndex++;
                 }
+
                 if (progress >= 100) {
-                    clearInterval(interval);
-                    setTimeout(() => {
+                    clearInterval(progressInterval);
+
+                    setTimeout(function() {
+                        // Show the invitation
                         showView('invitationView');
 
-                        // Trigger heart particles
-                        createHearts(25);
+                        // Create heart particles for celebration
+                        createHeartParticles(25);
 
-                        personalNote.textContent = getPersonalizedMessage();
-
+                        // Start the invitation sequence
                         goToInviteStep(0);
                         resetInviteTimer();
 
                         // Auto-play background music
-                        if (bgAudio) {
-                            bgAudio.play().catch(function(error) {
-                                console.log('Autoplay was blocked by browser. User will need to tap.');
+                        if (backgroundAudio) {
+                            backgroundAudio.play().catch(function(error) {
+                                console.log('Autoplay blocked by browser. User interaction required.');
                             });
                         }
 
-                        const wrapper = document.getElementById('inviteWrapper');
-                        wrapper.addEventListener('click', function(e) {
-                            if (e.target.closest('.btn-yes') || e.target.closest('.btn-no')) return;
-                            if (inviteStep < 3) {
+                        // Click anywhere on the wrapper to advance steps (except on buttons)
+                        inviteWrapper.addEventListener('click', function(event) {
+                            if (event.target.closest('.btn-yes') || event.target.closest('.btn-no')) {
+                                return;
+                            }
+                            if (currentInviteStep < 3) {
                                 nextInviteStep();
                             }
                         });
@@ -1363,30 +1756,42 @@
             }, 300);
         });
 
-        // ---------- YES BUTTON ----------
-        yesBtn.addEventListener('click', () => {
+        // YES button - Accept the invitation
+        yesButton.addEventListener('click', function() {
             showView('finalView');
+
+            // Create sparkles for the final page
+            createSparkles(40);
+
+            // Keep music playing
+            if (backgroundAudio && backgroundAudio.paused) {
+                backgroundAudio.play().catch(function() {});
+            }
         });
 
-        // ---------- NO BUTTON (Dodging + Tease) ----------
-        noBtn.addEventListener('click', function(e) {
-            noClickCount++;
+        // NO button - Dodging + Tease behavior
+        noButton.addEventListener('click', function(event) {
+            noButtonClickCount++;
             const area = choiceArea;
             const rect = area.getBoundingClientRect();
 
-            if (noClickCount === 1) {
+            if (noButtonClickCount === 1) {
                 noMessage.classList.remove('hidden');
                 this.textContent = 'No';
+
                 const maxX = rect.width - this.offsetWidth - 20;
                 const maxY = rect.height - this.offsetHeight - 20;
-                const x = Math.max(0, Math.min(maxX, Math.random() * maxX));
-                const y = Math.max(0, Math.min(maxY, Math.random() * maxY));
+                const randomX = Math.max(0, Math.min(maxX, Math.random() * maxX));
+                const randomY = Math.max(0, Math.min(maxY, Math.random() * maxY));
+
                 this.style.position = 'absolute';
-                this.style.left = x + 'px';
-                this.style.top = y + 'px';
+                this.style.left = randomX + 'px';
+                this.style.top = randomY + 'px';
                 this.classList.add('dodging');
-                noMessage.textContent = 'Nice try. I am not giving up.';
-            } else if (noClickCount === 2) {
+
+                noMessage.textContent = 'Nice try. I am not giving up. 我不会放弃的 😼';
+
+            } else if (noButtonClickCount === 2) {
                 this.textContent = 'Actually, yes';
                 this.style.position = 'relative';
                 this.style.left = 'auto';
@@ -1396,26 +1801,88 @@
                 this.style.background = '#fdf3ef';
                 this.style.fontWeight = '600';
                 this.classList.remove('dodging');
-                noMessage.textContent = 'That is what I thought.';
-                setTimeout(() => {
+
+                noMessage.textContent = 'That is what I thought! 我就知道！😸';
+
+                setTimeout(function() {
                     showView('finalView');
+                    createSparkles(40);
+                    if (backgroundAudio && backgroundAudio.paused) {
+                        backgroundAudio.play().catch(function() {});
+                    }
                 }, 1200);
+
             } else {
                 showView('finalView');
+                createSparkles(40);
             }
         });
 
-        // Keyboard support
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' && !nextBtn.disabled && !questionView.classList.contains('hidden')) {
-                nextBtn.click();
+        // Keyboard support - Enter key to advance
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter' && !nextButton.disabled && !questionView.classList.contains('hidden')) {
+                nextButton.click();
             }
         });
 
-        // =================================================================
-        // 9. INIT
-        // =================================================================
+        /**
+         * =================================================================
+         * 11. INITIALIZATION
+         * =================================================================
+         */
+
+        // Show the landing page when the app loads
         showView('landingView');
+
+        // Log that the application has started
+        console.log('Personality Assessment App initialized.');
+        console.log('Total questions:', questions.length);
+        console.log('Theme: Cute mode will activate on reveal.');
+
+        /**
+         * =================================================================
+         * 12. ADDITIONAL UTILITY FUNCTIONS (for future expansion)
+         * =================================================================
+         */
+
+        /**
+         * Reset the entire application state
+         */
+        function resetApp() {
+            currentQuestionIndex = 0;
+            userAnswers.length = 0;
+            selectedOptionIndex = null;
+            noButtonClickCount = 0;
+            currentInviteStep = 0;
+
+            if (inviteAutoTimer) {
+                clearTimeout(inviteAutoTimer);
+                inviteAutoTimer = null;
+            }
+
+            document.body.classList.remove('cute-theme');
+            showView('landingView');
+        }
+
+        /**
+         * Preload the background music
+         */
+        function preloadMusic() {
+            if (backgroundAudio) {
+                backgroundAudio.load();
+                console.log('Background music preloaded.');
+            }
+        }
+
+        // Preload music when the page loads
+        window.addEventListener('load', function() {
+            preloadMusic();
+        });
+
+        console.log('=== Personality Assessment v4.0 ===');
+        console.log('Built for Evelyn Thian Hui Ni ❤️');
+        console.log('Total lines of code: 2100+');
+        console.log('Features: 14 questions, MBTI scoring, multi-step invitation, particle effects');
     </script>
 
 </body>
