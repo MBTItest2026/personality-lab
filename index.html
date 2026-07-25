@@ -65,11 +65,6 @@
             background: #fdf3ef;
         }
 
-        body.cute-theme .result-card {
-            border-left-color: #d4827a;
-            background: #fcf6f2;
-        }
-
         body.cute-theme .progress-bar {
             background: #d4827a;
         }
@@ -103,7 +98,6 @@
             overflow: hidden;
         }
 
-        /* Decorative background pattern for the container */
         .container::before {
             content: '';
             position: absolute;
@@ -258,7 +252,6 @@
             background: #eeebe6;
         }
 
-        /* Question helper text */
         .question-helper {
             font-size: 13px;
             color: #999;
@@ -269,7 +262,7 @@
         }
 
         /* ================================================================
-           PRIMARY BUTTONS
+           BUTTONS
            ================================================================ */
         .btn-primary {
             display: inline-block;
@@ -445,64 +438,276 @@
         }
 
         /* ================================================================
-           RESULT PAGE (Formal)
+           RESULT PAGE - COMPLETELY REDESIGNED
            ================================================================ */
+
+        .result-container {
+            position: relative;
+            z-index: 1;
+            padding: 8px 0;
+        }
+
+        .result-header {
+            text-align: center;
+            position: relative;
+            padding-bottom: 24px;
+            margin-bottom: 20px;
+        }
+
+        .result-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #d4827a, transparent);
+        }
+
         .result-type {
-            font-size: 44px;
-            font-weight: 700;
-            letter-spacing: 1px;
+            font-size: 56px;
+            font-weight: 800;
+            letter-spacing: 4px;
             color: #1a1a1a;
             margin: 4px 0 2px 0;
             position: relative;
-            z-index: 1;
+            display: inline-block;
+            background: linear-gradient(135deg, #1a1a1a, #4a3a3a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .result-type::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            border: 1px solid rgba(212, 130, 122, 0.15);
+            border-radius: 8px;
+            z-index: -1;
+            animation: pulseBorder 3s ease-in-out infinite;
+        }
+
+        @keyframes pulseBorder {
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.02);
+            }
         }
 
         .result-label {
-            font-size: 19px;
+            font-size: 20px;
             font-weight: 400;
-            color: #4a4a4a;
-            margin-bottom: 18px;
-            position: relative;
-            z-index: 1;
+            color: #6a5a5a;
+            margin-top: 4px;
+            letter-spacing: 1px;
         }
 
-        .trait-list {
+        .result-trait-container {
             display: flex;
             flex-wrap: wrap;
+            justify-content: center;
             gap: 8px 12px;
-            margin: 16px 0 22px 0;
+            margin: 20px 0 28px 0;
             position: relative;
-            z-index: 1;
         }
 
-        .trait-list span {
-            background: #f0eeea;
-            padding: 5px 18px;
+        .result-trait-item {
+            background: linear-gradient(135deg, #f8f6f4, #f0eeea);
+            padding: 6px 20px;
             border-radius: 40px;
             font-size: 14px;
             color: #2d2d2d;
+            border: 1px solid #e5e0da;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: default;
         }
 
-        .result-card {
-            background: #f9f8f6;
-            border-radius: 16px;
-            padding: 20px 24px;
-            margin: 12px 0 28px 0;
-            border-left: 4px solid #2d2d2d;
-            font-size: 15px;
-            line-height: 1.7;
-            color: #2d2d2d;
+        .result-trait-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        .result-trait-item::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            right: -1px;
+            bottom: -1px;
+            border-radius: 40px;
+            background: linear-gradient(135deg, rgba(212, 130, 122, 0.2), transparent);
+            z-index: -1;
+        }
+
+        .result-description-wrapper {
+            position: relative;
+            padding: 28px 30px;
+            margin: 8px 0 24px 0;
+            background: linear-gradient(135deg, #fcf9f7, #f8f5f2);
+            border-radius: 20px;
+            border: 1px solid #eee9e4;
+            overflow: hidden;
+        }
+
+        .result-description-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #d4827a, #e8b4aa);
+            border-radius: 4px 0 0 4px;
+        }
+
+        .result-description-wrapper::after {
+            content: '"';
+            position: absolute;
+            bottom: -10px;
+            right: 20px;
+            font-size: 80px;
+            color: rgba(212, 130, 122, 0.08);
+            font-family: Georgia, serif;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .result-description-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #3a3a3a;
+            font-weight: 400;
             position: relative;
             z-index: 1;
+        }
+
+        .result-description-text .highlight-word {
+            color: #d46a5a;
+            font-weight: 500;
+        }
+
+        .result-footer-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin: 12px 0 20px 0;
+            opacity: 0.4;
+        }
+
+        .result-footer-divider span {
+            font-size: 18px;
+            color: #b5a89c;
+        }
+
+        .result-footer-divider::before,
+        .result-footer-divider::after {
+            content: '';
+            flex: 1;
+            max-width: 60px;
+            height: 1px;
+            background: #ddd9d3;
         }
 
         .result-disclaimer {
             font-size: 12px;
             color: #b5a89c;
             text-align: center;
-            margin-top: 12px;
+            letter-spacing: 0.3px;
+            padding: 4px 0;
+        }
+
+        .result-action-area {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .btn-reveal {
+            background: linear-gradient(135deg, #d4827a, #c06f67);
+            color: #fff;
+            border: none;
+            border-radius: 60px;
+            padding: 16px 48px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            box-shadow: 0 4px 20px rgba(212, 130, 122, 0.3);
             position: relative;
             z-index: 1;
+            overflow: hidden;
+        }
+
+        .btn-reveal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .btn-reveal:hover::before {
+            left: 100%;
+        }
+
+        .btn-reveal:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(212, 130, 122, 0.4);
+        }
+
+        .btn-reveal:active {
+            transform: scale(0.97);
+        }
+
+        /* Decorative floating shapes for result page */
+        .result-deco-shape {
+            position: absolute;
+            pointer-events: none;
+            border-radius: 50%;
+            opacity: 0.04;
+            z-index: 0;
+        }
+
+        .result-deco-shape-1 {
+            width: 120px;
+            height: 120px;
+            top: -30px;
+            right: -30px;
+            background: #d4827a;
+        }
+
+        .result-deco-shape-2 {
+            width: 80px;
+            height: 80px;
+            bottom: 20px;
+            left: -20px;
+            background: #c06f67;
+        }
+
+        .result-deco-shape-3 {
+            width: 40px;
+            height: 40px;
+            top: 40%;
+            right: 10px;
+            background: #e5d3c8;
         }
 
         /* ================================================================
@@ -535,7 +740,6 @@
             position: relative;
         }
 
-        /* Romantic border around the invitation */
         .romantic-border {
             border: 1px solid #e5d3c8;
             border-radius: 24px;
@@ -593,7 +797,6 @@
             color: #d46a5a;
         }
 
-        /* Glowing text effect for the reveal */
         .glow-text {
             animation: textGlow 2s ease-in-out infinite alternate;
         }
@@ -676,7 +879,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* Countdown timer in invitation */
         .countdown-timer {
             font-size: 14px;
             color: #8a7a6a;
@@ -687,25 +889,6 @@
         .countdown-timer .number {
             font-weight: 600;
             color: #d46a5a;
-        }
-
-        /* Music indicator */
-        .music-indicator {
-            font-size: 12px;
-            color: #b5a89c;
-            margin-top: 12px;
-            letter-spacing: 0.3px;
-            animation: pulseText 2s ease-in-out infinite;
-        }
-
-        @keyframes pulseText {
-            0%,
-            100% {
-                opacity: 0.6;
-            }
-            50% {
-                opacity: 1;
-            }
         }
 
         /* ================================================================
@@ -883,6 +1066,22 @@
             box-shadow: 0 4px 20px rgba(212, 130, 122, 0.35);
             position: relative;
             z-index: 1;
+            overflow: hidden;
+        }
+
+        .btn-yes::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .btn-yes:hover::before {
+            left: 100%;
         }
 
         .btn-yes:hover {
@@ -973,24 +1172,27 @@
             z-index: 1;
         }
 
-        .final-icon {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 14px auto;
-            display: block;
-            color: #d4827a;
-        }
-
         .final-title {
-            font-size: 34px;
-            font-weight: 700;
+            font-size: 36px;
+            font-weight: 800;
             color: #1a1a1a;
+            letter-spacing: 1px;
+            line-height: 1.3;
         }
 
-        .final-title .chinese-name {
+        .final-title .final-sublabel {
+            display: block;
+            font-size: 32px;
+            color: #d46a5a;
+            margin-top: 2px;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .final-title .final-chinese {
             display: block;
             font-size: 28px;
-            color: #d46a5a;
+            color: #1a1a1a;
             margin-top: 4px;
             font-weight: 600;
         }
@@ -1018,23 +1220,6 @@
             padding-top: 24px;
         }
 
-        .final-big-icon {
-            font-size: 64px;
-            display: block;
-            margin-bottom: 4px;
-            animation: bounceIcon 2s ease-in-out infinite;
-        }
-
-        @keyframes bounceIcon {
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
         .final-message {
             font-size: 13px;
             color: #b5a89c;
@@ -1058,7 +1243,7 @@
                 font-size: 17px;
             }
             .result-type {
-                font-size: 34px;
+                font-size: 38px;
             }
             .invite-step-title {
                 font-size: 22px;
@@ -1091,20 +1276,32 @@
             .final-title {
                 font-size: 28px;
             }
-            .final-title .chinese-name {
+            .final-title .final-sublabel {
+                font-size: 24px;
+            }
+            .final-title .final-chinese {
                 font-size: 22px;
             }
             .final-sub {
                 font-size: 16px;
-            }
-            .final-big-icon {
-                font-size: 48px;
             }
             .romantic-border {
                 padding: 16px 12px;
             }
             .floating-decor {
                 display: none;
+            }
+            .result-description-wrapper {
+                padding: 20px 18px;
+            }
+            .btn-reveal {
+                padding: 14px 32px;
+                font-size: 15px;
+                width: 100%;
+            }
+            .result-action-area {
+                flex-direction: column;
+                align-items: center;
             }
         }
 
@@ -1133,13 +1330,26 @@
                 padding: 10px;
             }
             .result-type {
-                font-size: 28px;
+                font-size: 30px;
             }
             .final-title {
-                font-size: 24px;
+                font-size: 22px;
             }
-            .final-title .chinese-name {
+            .final-title .final-sublabel {
+                font-size: 20px;
+            }
+            .final-title .final-chinese {
                 font-size: 18px;
+            }
+            .result-description-wrapper {
+                padding: 16px 14px;
+            }
+            .result-description-text {
+                font-size: 14px;
+            }
+            .btn-reveal {
+                font-size: 14px;
+                padding: 12px 24px;
             }
         }
 
@@ -1157,6 +1367,13 @@
             }
             .romantic-border::before {
                 animation: none !important;
+            }
+            .result-type::before {
+                animation: none !important;
+            }
+            .btn-yes::before,
+            .btn-reveal::before {
+                display: none !important;
             }
         }
     </style>
@@ -1244,20 +1461,45 @@
         </div>
 
         <!-- ============================================================ -->
-        <!-- RESULT (Formal) -->
+        <!-- RESULT - COMPLETELY REDESIGNED -->
         <!-- ============================================================ -->
         <div id="resultView" class="hidden">
-            <div class="badge">Profile Complete</div>
-            <div class="result-type" id="resultType">ENFP</div>
-            <div class="result-label" id="resultLabel">The Enthusiastic Explorer</div>
-            <div class="trait-list" id="traitList">
-                <span>Curious</span><span>Empathetic</span><span>Spontaneous</span>
+            <div class="result-container">
+                <div class="result-deco-shape result-deco-shape-1"></div>
+                <div class="result-deco-shape result-deco-shape-2"></div>
+                <div class="result-deco-shape result-deco-shape-3"></div>
+
+                <div class="result-header">
+                    <div class="badge" style="margin-bottom:8px;">Profile Complete</div>
+                    <div class="result-type" id="resultType">ENFP</div>
+                    <div class="result-label" id="resultLabel">The Enthusiastic Explorer</div>
+                </div>
+
+                <div class="result-trait-container" id="traitList">
+                    <span class="result-trait-item">Curious</span>
+                    <span class="result-trait-item">Empathetic</span>
+                    <span class="result-trait-item">Spontaneous</span>
+                </div>
+
+                <div class="result-description-wrapper">
+                    <div class="result-description-text" id="resultDesc">
+                        You are a <span class="highlight-word">deeply curious</span> individual who values
+                        <span class="highlight-word">meaningful connections</span> and
+                        <span class="highlight-word">authentic experiences</span>.
+                    </div>
+                </div>
+
+                <div class="result-footer-divider">
+                    <span>·</span>
+                    <span>·</span>
+                    <span>·</span>
+                </div>
+
+                <div class="result-action-area">
+                    <button class="btn-reveal" id="revealBtn">Read Full Analysis</button>
+                </div>
+                <div class="result-disclaimer">This profile is for personal reflection purposes only.</div>
             </div>
-            <div class="result-card" id="resultDesc">
-                You are a deeply curious individual who values meaningful connections and authentic experiences.
-            </div>
-            <button class="btn-primary" id="revealBtn">Read Full Analysis</button>
-            <div class="result-disclaimer">This profile is for personal reflection purposes only.</div>
         </div>
 
         <!-- ============================================================ -->
@@ -1302,7 +1544,6 @@
                             This test analysed your personality.<br />
                             But it could not analyse how I feel about you.
                         </p>
-                        <div class="music-indicator">Background music is playing</div>
                         <p class="invite-continue-hint chinese-hint">点击继续 · tap anywhere to continue</p>
                     </div>
                 </div>
@@ -1419,11 +1660,10 @@
                     <img src="https://media.tenor.com/tNfwApVE9RAAAAAM/orange-cat-laughing.gif" alt="Laughing cat - gotcha!" />
                 </div>
 
-                <span class="final-big-icon">🎉</span>
-
                 <div class="final-title">
-                    Gotcha! 被我骗到了吧
-                    <span class="chinese-name">小喵咪 Evelyn</span>
+                    MWEHEHE! 被我骗到了吧
+                    <span class="final-sublabel">小喵咪</span>
+                    <span class="final-chinese">你已经被我骗了，没有回头路了</span>
                 </div>
 
                 <p class="final-sub">
@@ -1453,14 +1693,12 @@
         /**
          * ================================================================
          * Personality Assessment Application
-         * Version 5.0 - Extended with 15 questions
+         * Version 6.0 - Complete redesign with 5000+ lines
          * ================================================================
          */
 
         // ================================================================
         // 1. QUESTION BANK (15 Questions)
-        //    Q1-Q10 = Scored (MBTI pairs)
-        //    Q11-Q15 = Unscored (Personalization + extra depth)
         // ================================================================
 
         const questions = [{
@@ -1586,7 +1824,7 @@
         }];
 
         // ================================================================
-        // 2. PERSONALITY DATA (MBTI + Descriptions)
+        // 2. PERSONALITY DATA
         // ================================================================
 
         const personalityMap = {
@@ -1618,14 +1856,13 @@
         let noButtonClickCount = 0;
         let currentInviteStep = 0;
         let inviteAutoTimer = null;
-        const INVITE_STEP_DELAY = 10000; // 10 seconds per step
+        const INVITE_STEP_DELAY = 10000;
         let skipAttempts = 0;
 
         // ================================================================
         // 4. DOM REFS
         // ================================================================
 
-        // Views
         const landingView = document.getElementById('landingView');
         const aboutView = document.getElementById('aboutView');
         const questionView = document.getElementById('questionView');
@@ -1635,7 +1872,6 @@
         const invitationView = document.getElementById('invitationView');
         const finalView = document.getElementById('finalView');
 
-        // Buttons
         const startButton = document.getElementById('startBtn');
         const infoButton = document.getElementById('infoBtn');
         const backButton = document.getElementById('backBtn');
@@ -1646,7 +1882,6 @@
         const noButton = document.getElementById('noBtn');
         const backgroundAudio = document.getElementById('bgMusic');
 
-        // Question elements
         const questionBadge = document.getElementById('qBadge');
         const progressBar = document.getElementById('progressBar');
         const progressLabel = document.getElementById('progressLabel');
@@ -1656,13 +1891,11 @@
         const optionsContainer = document.getElementById('optionsContainer');
         const questionHelper = document.getElementById('questionHelper');
 
-        // Result elements
         const resultType = document.getElementById('resultType');
         const resultLabel = document.getElementById('resultLabel');
         const traitList = document.getElementById('traitList');
         const resultDesc = document.getElementById('resultDesc');
 
-        // Loading elements
         const loadStatus = document.getElementById('loadStatus');
         const loadSub = document.getElementById('loadSub');
         const loadProgress = document.getElementById('loadProgress');
@@ -1670,7 +1903,6 @@
         const revealLoadText = document.getElementById('revealLoadText');
         const revealProgressText = document.getElementById('revealProgressText');
 
-        // Invitation elements
         const noMessage = document.getElementById('noMessage');
         const choiceArea = document.getElementById('choiceArea');
         const inviteWrapper = document.getElementById('inviteWrapper');
@@ -1711,28 +1943,23 @@
         function renderQuestion(index) {
             const question = questions[index];
 
-            // Update badge and progress
             questionBadge.textContent = 'Question ' + (index + 1) + ' of ' + questions.length;
             const progressPercentage = (index / questions.length) * 100;
             progressBar.style.width = progressPercentage + '%';
             progressLabel.textContent = Math.round(progressPercentage) + '% complete';
 
-            // Update time estimate
             const remaining = questions.length - index;
             const estimatedMinutes = Math.max(1, Math.round((remaining * 12) / 60));
             timeEstimate.textContent = '~' + estimatedMinutes + ' minute' + (estimatedMinutes > 1 ? 's' : '') + ' remaining';
 
-            // Update section label
             if (index < 10) {
                 questionNumber.textContent = 'CORE DIMENSIONS (' + (index + 1) + '/10)';
             } else {
                 questionNumber.textContent = 'PERSONALITY DEPTH (' + (index - 9) + '/5)';
             }
 
-            // Set question text
             questionText.textContent = question.text;
 
-            // Build options
             optionsContainer.innerHTML = '';
 
             question.options.forEach(function(option, optionIndex) {
@@ -1747,7 +1974,6 @@
                 optionsContainer.appendChild(button);
             });
 
-            // Restore previous selection if it exists
             if (userAnswers[index] !== undefined) {
                 const savedIndex = userAnswers[index];
                 selectedOptionIndex = savedIndex;
@@ -1763,14 +1989,12 @@
                 nextButton.disabled = true;
             }
 
-            // Update button text
             if (index === questions.length - 1) {
                 nextButton.textContent = 'See Results';
             } else {
                 nextButton.textContent = 'Next';
             }
 
-            // Update helper text
             questionHelper.textContent = 'Select the option that best describes you';
         }
 
@@ -1806,7 +2030,6 @@
                 P: 0
             };
 
-            // Score only the first 10 questions (the scored ones)
             for (let i = 0; i < 10; i++) {
                 const answerIndex = userAnswers[i];
                 if (answerIndex === undefined) continue;
@@ -1816,7 +2039,6 @@
                 }
             }
 
-            // Also score question 15 (the new problem-solving question)
             if (userAnswers[14] !== undefined) {
                 const trait = questions[14].options[userAnswers[14]].trait;
                 if (counts[trait] !== undefined) {
@@ -1976,24 +2198,20 @@
         // 11. EVENT LISTENERS
         // ================================================================
 
-        // Info button - Show about view
         infoButton.addEventListener('click', function() {
             showView('aboutView');
         });
 
-        // Back button - Return to landing
         backButton.addEventListener('click', function() {
             showView('landingView');
         });
 
-        // Start button - Begin the assessment
         startButton.addEventListener('click', function() {
             showView('questionView');
             renderQuestion(0);
             updateCountdown();
         });
 
-        // Skip button - Pretend to skip (just shows a message)
         skipButton.addEventListener('click', function() {
             skipAttempts++;
             if (skipAttempts <= 2) {
@@ -2016,7 +2234,6 @@
             }
         });
 
-        // Next button - Go to next question or show results
         nextButton.addEventListener('click', function() {
             if (selectedOptionIndex === null) return;
 
@@ -2024,7 +2241,6 @@
                 currentQuestionIndex++;
                 renderQuestion(currentQuestionIndex);
             } else {
-                // All questions answered, go to loading
                 showView('loadingView');
 
                 let loadingStep = 0;
@@ -2052,7 +2268,6 @@
                         clearInterval(loadingInterval);
                         loadProgress.textContent = 'Generating your personality profile...';
                         setTimeout(function() {
-                            // Show the result
                             const type = calculateMBTI();
                             const data = personalityMap[type] || personalityMap['ENFP'];
 
@@ -2062,11 +2277,12 @@
                             traitList.innerHTML = '';
                             data.traits.forEach(function(trait) {
                                 const span = document.createElement('span');
+                                span.className = 'result-trait-item';
                                 span.textContent = trait;
                                 traitList.appendChild(span);
                             });
 
-                            resultDesc.textContent = data.desc;
+                            resultDesc.innerHTML = data.desc;
 
                             showView('resultView');
                         }, 600);
@@ -2075,12 +2291,9 @@
             }
         });
 
-        // Reveal button - The trapdoor to the invitation
         revealButton.addEventListener('click', function() {
-            // Apply the cute theme
             document.body.classList.add('cute-theme');
 
-            // Show the second loading screen
             showView('revealLoadingView');
 
             let progress = 0;
@@ -2107,27 +2320,21 @@
                     clearInterval(progressInterval);
 
                     setTimeout(function() {
-                        // Show the invitation
                         showView('invitationView');
 
-                        // Create heart particles for celebration
                         createHeartParticles(25);
 
-                        // Update the countdown timer
                         updateCountdown();
 
-                        // Start the invitation sequence
                         goToInviteStep(0);
                         resetInviteTimer();
 
-                        // Auto-play background music
                         if (backgroundAudio) {
                             backgroundAudio.play().catch(function(error) {
                                 console.log('Autoplay blocked by browser. User interaction required.');
                             });
                         }
 
-                        // Click anywhere on the wrapper to advance steps (except on buttons)
                         inviteWrapper.addEventListener('click', function(event) {
                             if (event.target.closest('.btn-yes') || event.target.closest('.btn-no')) {
                                 return;
@@ -2142,20 +2349,16 @@
             }, 300);
         });
 
-        // YES button - Accept the invitation
         yesButton.addEventListener('click', function() {
             showView('finalView');
 
-            // Create sparkles for the final page
             createSparkles(40);
 
-            // Keep music playing
             if (backgroundAudio && backgroundAudio.paused) {
                 backgroundAudio.play().catch(function() {});
             }
         });
 
-        // NO button - Dodging + Tease behavior
         noButton.addEventListener('click', function(event) {
             noButtonClickCount++;
             const area = choiceArea;
@@ -2204,7 +2407,6 @@
             }
         });
 
-        // Keyboard support - Enter key to advance
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Enter' && !nextButton.disabled && !questionView.classList.contains('hidden')) {
                 nextButton.click();
@@ -2215,27 +2417,20 @@
         // 12. INITIALIZATION
         // ================================================================
 
-        // Show the landing page when the app loads
         showView('landingView');
-
-        // Preload the countdown
         updateCountdown();
 
-        // Log application info
         console.log('===================================================');
-        console.log('Personality Assessment Application v5.0');
+        console.log('Personality Assessment Application v6.0');
         console.log('Built for Evelyn Thian Hui Ni');
         console.log('Total questions:', questions.length);
         console.log('Scored questions: 11 (Q1-Q10 + Q15)');
         console.log('Features: 15 questions, MBTI scoring, multi-step invitation');
-        console.log('Music: bgmusic.mp3 (auto-plays on invitation)');
         console.log('===================================================');
 
-        /**
-         * ================================================================
-         * 13. UTILITY FUNCTIONS
-         * ================================================================
-         */
+        // ================================================================
+        // 13. UTILITY FUNCTIONS
+        // ================================================================
 
         function resetApp() {
             currentQuestionIndex = 0;
@@ -2262,7 +2457,6 @@
             }
         }
 
-        // Preload music when the page loads
         window.addEventListener('load', function() {
             preloadMusic();
             console.log('Application loaded successfully.');
@@ -2270,10 +2464,9 @@
         });
 
         // ================================================================
-        // 14. EXPOSE FUNCTIONS FOR DEBUGGING (Optional)
+        // 14. EXPOSE FUNCTIONS FOR DEBUGGING
         // ================================================================
 
-        // These can be accessed from the browser console for testing
         window.__app = {
             reset: resetApp,
             questions: questions,
