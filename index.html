@@ -509,28 +509,6 @@
             background: #ffffff;
         }
 
-        /* ---------- YOUTUBE EMBED ---------- */
-        .music-embed-container {
-            max-width: 100%;
-            margin: 16px auto 0 auto;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            border: 1px solid #efedea;
-            display: none;
-        }
-
-        .music-embed-container.active {
-            display: block;
-        }
-
-        .music-embed-container iframe {
-            width: 100%;
-            height: 200px;
-            display: block;
-            border: none;
-        }
-
         /* ---------- PROGRESS DOTS ---------- */
         .step-dots {
             display: flex;
@@ -607,29 +585,6 @@
         .btn-no.dodging {
             position: absolute;
             transition: all 0.12s ease;
-        }
-
-        /* ---------- MUSIC TOGGLE BUTTON ---------- */
-        .music-toggle-btn {
-            background: transparent;
-            border: 1px solid #d5cdc5;
-            border-radius: 40px;
-            padding: 8px 18px;
-            font-size: 13px;
-            color: #6b5a4a;
-            cursor: pointer;
-            font-family: inherit;
-            transition: 0.2s;
-            margin-top: 16px;
-        }
-
-        .music-toggle-btn:hover {
-            background: #f5f0eb;
-        }
-
-        body.cute-theme .music-toggle-btn {
-            border-color: #e5d3c8;
-            color: #8a6a5a;
         }
 
         /* ---------- PARTICLE EFFECT (Hearts) ---------- */
@@ -734,9 +689,6 @@
             .btn-no.dodging {
                 position: relative;
             }
-            .music-embed-container iframe {
-                height: 150px;
-            }
             .gif-container {
                 max-width: 140px;
             }
@@ -839,7 +791,7 @@
                     <svg class="invite-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M32 6C22 6 14 14 14 24C14 34 22 42 32 42C24.5 39 19 32 19 24C19 16 24.5 9 32 6Z" fill="#d4827a"/>
                     </svg>
-                    <div class="invite-step-title">Something I have<br />been wanting to tell you</div>
+                    <div class="invite-step-title">There is something I have been wanting to tell you, Evelyn</div>
                     <div class="invite-divider"></div>
 
                     <!-- Cute GIF Container -->
@@ -848,7 +800,7 @@
                     </div>
 
                     <p class="invite-step-sub" style="font-style:italic; color:#6a5a4a;">
-                        This test analysed your personality.<br />It could not analyse my feelings.
+                        This test analysed your personality.<br />But it could not analyse how I feel about you.
                     </p>
                     <p class="invite-continue-hint">tap anywhere to continue</p>
                 </div>
@@ -859,16 +811,16 @@
                         <rect x="8" y="12" width="32" height="26" rx="3" stroke="#d4827a" stroke-width="2.5"/>
                         <path d="M8 15 L24 28 L40 15" stroke="#d4827a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                    <div class="invite-step-title">Will you let me take you<br />on a <span class="accent">birthday date</span>?</div>
+                    <div class="invite-step-title">Will you let me take you out for your birthday?</div>
                     <div class="invite-divider"></div>
                     <div class="invite-detail-grid">
                         <span class="label">Date</span>
                         <span class="value">6 August 2026</span>
                         <span class="label">Time</span>
-                        <span class="value">10:00 AM &ndash; 9:00 PM</span>
+                        <span class="value">10:00 AM to 9:00 PM</span>
                     </div>
                     <p class="invite-step-sub" style="margin-top:12px; font-size:15px; color:#6a5a4a;">
-                        A whole day. Just for you.
+                        A whole day. Just us.
                     </p>
                     <p class="invite-continue-hint">tap anywhere to continue</p>
                 </div>
@@ -878,31 +830,31 @@
                     <svg class="invite-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="10" y="10" width="28" height="28" rx="14" stroke="#d4827a" stroke-width="2.5"/>
                     </svg>
-                    <div class="invite-step-title">Come dressed in <span class="accent">white</span></div>
+                    <div class="invite-step-title">Come dressed in white</div>
                     <div class="invite-divider"></div>
                     <p class="invite-step-sub">
-                        The theme is <span class="highlight">white</span> &mdash;<br />
-                        timeless, simple, and you.
+                        The theme is <span class="highlight">white</span>.<br />
+                        Simple, timeless, and just like you.
                     </p>
-                    <div class="invite-tag">Photography included, no charge</div>
+                    <div class="invite-tag">Photography is included, completely free</div>
                     <p class="invite-step-sub" style="margin-top:14px; font-size:15px; color:#6a5a4a;">
                         Every moment will be captured.
                     </p>
                     <p class="invite-continue-hint">tap anywhere to continue</p>
                 </div>
 
-                <!-- STEP 4: Final Question + Buttons + Music -->
+                <!-- STEP 4: Final Question + Buttons -->
                 <div class="invite-step" data-step="3">
                     <svg class="invite-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M24 40 C24 40 8 30 8 18 C8 12 12.5 8 18 8 C21 8 23.5 9.5 24 12 C24.5 9.5 27 8 30 8 C35.5 8 40 12 40 18 C40 30 24 40 24 40Z" stroke="#d4827a" stroke-width="2.5" stroke-linejoin="round"/>
                     </svg>
-                    <div class="invite-step-title glow-text">So &mdash; <span class="accent">will you?</span></div>
+                    <div class="invite-step-title glow-text">So Evelyn, will you?</div>
                     <div class="invite-divider"></div>
                     <p class="invite-step-sub">
-                        One day. One surprise. One memory we will not forget.
+                        One day. One surprise. One memory that we will never forget.
                     </p>
                     <p class="invite-step-sub" style="font-size:15px; color:#8a7a6a; margin-top:2px;">
-                        <span style="font-style:italic;">(The places are a surprise &mdash; trust me.)</span>
+                        <span style="font-style:italic;">(The places are a surprise. You will have to trust me on this.)</span>
                     </p>
                     <p id="personalNote"></p>
 
@@ -914,19 +866,6 @@
                     <div id="noMessage" class="hidden" style="margin-top: 14px; font-size: 15px; color: #c06f67; font-weight:500;">
                         Are you sure about that?
                     </div>
-
-                    <!-- YouTube Music Embed -->
-                    <div class="music-embed-container" id="musicEmbedContainer">
-                        <!-- 
-                            IMPORTANT: 
-                            Replace 'Y60sCd2g73s' with the actual video ID for 
-                            "Neng Yu Jian, Jiu Hen Bucuo Le - 能遇见,就很不错了" by Firdhaus.
-                            Example: if the URL is https://www.youtube.com/watch?v=ABC123, then the ID is ABC123
-                        -->
-                        <iframe id="youtubePlayer" src="https://www.youtube.com/embed/Y60sCd2g73s?enablejsapi=1&autoplay=0&loop=1&playlist=Y60sCd2g73s" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                    </div>
-
-                    <button class="music-toggle-btn" id="musicBtn">Play background music</button>
                 </div>
 
                 <!-- Progress Dots -->
@@ -936,6 +875,12 @@
                     <span class="step-dot" data-dot="2"></span>
                     <span class="step-dot" data-dot="3"></span>
                 </div>
+
+                <!-- Background Music (Auto-plays) -->
+                <audio id="bgMusic" loop preload="auto">
+                    <source src="bgmusic.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
 
             </div>
         </div>
@@ -948,12 +893,12 @@
                 <svg class="final-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M24 40 C24 40 8 30 8 18 C8 12 12.5 8 18 8 C21 8 23.5 9.5 24 12 C24.5 9.5 27 8 30 8 C35.5 8 40 12 40 18 C40 30 24 40 24 40Z" fill="#d4827a"/>
                 </svg>
-                <div class="final-title">See you soon</div>
+                <div class="final-title">See you soon, Evelyn</div>
                 <p class="final-sub">
                     I cannot wait to celebrate <span class="accent">you</span>.
                 </p>
                 <p class="final-footer">
-                    The exact locations will be revealed in a special message
+                    The exact locations will be revealed in a special message.
                 </p>
             </div>
         </div>
@@ -963,9 +908,6 @@
     <!-- ============================================================ -->
     <!-- JAVASCRIPT -->
     <!-- ============================================================ -->
-    <!-- Load YouTube IFrame Player API -->
-    <script src="https://www.youtube.com/iframe_api"></script>
-
     <script>
         // =================================================================
         // 1. QUESTION BANK (14 Questions)
@@ -1117,10 +1059,6 @@
         let inviteTimer = null;
         const INVITE_STEP_DELAY = 10000;
 
-        // YouTube Player state
-        let ytPlayer = null;
-        let ytReady = false;
-
         // =================================================================
         // 4. DOM REFS
         // =================================================================
@@ -1137,8 +1075,7 @@
         const revealBtn = document.getElementById('revealBtn');
         const yesBtn = document.getElementById('yesBtn');
         const noBtn = document.getElementById('noBtn');
-        const musicBtn = document.getElementById('musicBtn');
-        const musicEmbedContainer = document.getElementById('musicEmbedContainer');
+        const bgAudio = document.getElementById('bgMusic');
 
         const qBadge = document.getElementById('qBadge');
         const progressBar = document.getElementById('progressBar');
@@ -1290,31 +1227,7 @@
         }
 
         // =================================================================
-        // 7. YOUTUBE PLAYER API
-        // =================================================================
-        function onYouTubeIframeAPIReady() {
-            const iframe = document.getElementById('youtubePlayer');
-            if (iframe) {
-                ytPlayer = new YT.Player('youtubePlayer', {
-                    events: {
-                        'onReady': onPlayerReady,
-                        'onStateChange': onPlayerStateChange
-                    }
-                });
-            }
-        }
-
-        function onPlayerReady(event) {
-            ytReady = true;
-            console.log('YouTube Player ready');
-        }
-
-        function onPlayerStateChange(event) {
-            // Optional: handle state changes
-        }
-
-        // =================================================================
-        // 8. INVITATION STEP CONTROLLER
+        // 7. INVITATION STEP CONTROLLER
         // =================================================================
         function goToInviteStep(step) {
             const steps = document.querySelectorAll('.invite-step');
@@ -1362,7 +1275,7 @@
         }
 
         // =================================================================
-        // 9. EVENT LISTENERS
+        // 8. EVENT LISTENERS
         // =================================================================
 
         startBtn.addEventListener('click', () => {
@@ -1430,19 +1343,20 @@
                         goToInviteStep(0);
                         resetInviteTimer();
 
+                        // Auto-play background music
+                        if (bgAudio) {
+                            bgAudio.play().catch(function(error) {
+                                console.log('Autoplay was blocked by browser. User will need to tap.');
+                            });
+                        }
+
                         const wrapper = document.getElementById('inviteWrapper');
                         wrapper.addEventListener('click', function(e) {
-                            if (e.target.closest('.btn-yes') || e.target.closest('.btn-no') || e.target
-                                .closest('.music-toggle-btn')) return;
+                            if (e.target.closest('.btn-yes') || e.target.closest('.btn-no')) return;
                             if (inviteStep < 3) {
                                 nextInviteStep();
                             }
                         });
-
-                        // Ensure YouTube player is ready when invitation is shown
-                        if (ytPlayer && ytReady) {
-                            // Player is ready
-                        }
 
                     }, 500);
                 }
@@ -1452,7 +1366,6 @@
         // ---------- YES BUTTON ----------
         yesBtn.addEventListener('click', () => {
             showView('finalView');
-            // Optionally stop music or keep playing
         });
 
         // ---------- NO BUTTON (Dodging + Tease) ----------
@@ -1492,29 +1405,6 @@
             }
         });
 
-        // ---------- MUSIC BUTTON ----------
-        musicBtn.addEventListener('click', () => {
-            const container = musicEmbedContainer;
-            if (container.classList.contains('active')) {
-                // Pause the video
-                if (ytPlayer && ytReady) {
-                    ytPlayer.pauseVideo();
-                }
-                container.classList.remove('active');
-                musicBtn.textContent = 'Play background music';
-            } else {
-                // Show and play the video
-                container.classList.add('active');
-                musicBtn.textContent = 'Pause music';
-                if (ytPlayer && ytReady) {
-                    ytPlayer.playVideo();
-                } else {
-                    // If API not ready, reload or wait
-                    console.warn('YouTube Player not ready');
-                }
-            }
-        });
-
         // Keyboard support
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' && !nextBtn.disabled && !questionView.classList.contains('hidden')) {
@@ -1523,7 +1413,7 @@
         });
 
         // =================================================================
-        // 10. INIT
+        // 9. INIT
         // =================================================================
         showView('landingView');
     </script>
