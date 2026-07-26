@@ -149,7 +149,6 @@
             opacity: 0.4;
         }
 
-        /* Animated gradient orb */
         .container .orb {
             position: absolute;
             border-radius: 50%;
@@ -753,7 +752,7 @@
         }
 
         /* ================================================================
-           SECTION 9: RESULT PAGE (Enhanced)
+           SECTION 9: RESULT PAGE
            ================================================================ */
 
         .result-container {
@@ -900,7 +899,6 @@
             font-weight: 500;
         }
 
-        /* Cognitive Functions Breakdown */
         .result-functions {
             margin: 20px 0 24px 0;
             padding: 20px 24px;
@@ -1080,7 +1078,144 @@
         }
 
         /* ================================================================
-           SECTION 10: MULTI-STEP INVITATION
+           SECTION 10: FULL ANALYSIS PAGE (NEW)
+           ================================================================ */
+
+        .analysis-container {
+            position: relative;
+            z-index: 1;
+            padding: 8px 0;
+        }
+
+        .analysis-header {
+            text-align: center;
+            position: relative;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+        }
+
+        .analysis-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #d4827a, transparent);
+        }
+
+        .analysis-type {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 2px 0;
+        }
+
+        .analysis-label {
+            font-size: 18px;
+            font-weight: 400;
+            color: #6a5a5a;
+            margin-bottom: 4px;
+        }
+
+        .analysis-section {
+            margin: 20px 0;
+            padding: 16px 20px;
+            background: #faf8f6;
+            border-radius: 16px;
+            border: 1px solid #eee9e4;
+        }
+
+        .analysis-section .section-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #3a3a3a;
+            margin-bottom: 10px;
+            letter-spacing: 0.3px;
+        }
+
+        .analysis-section .section-text {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #4a4a4a;
+        }
+
+        .analysis-section .section-text .highlight {
+            color: #d46a5a;
+            font-weight: 500;
+        }
+
+        .analysis-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .analysis-section ul li {
+            padding: 6px 0 6px 24px;
+            position: relative;
+            font-size: 14px;
+            color: #4a4a4a;
+            line-height: 1.6;
+        }
+
+        .analysis-section ul li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: #d4827a;
+            font-weight: 700;
+        }
+
+        .analysis-continue-area {
+            display: flex;
+            justify-content: center;
+            margin-top: 24px;
+        }
+
+        .btn-continue {
+            background: linear-gradient(135deg, #d4827a, #c06f67);
+            color: #fff;
+            border: none;
+            border-radius: 60px;
+            padding: 14px 44px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            box-shadow: 0 4px 20px rgba(212, 130, 122, 0.25);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .btn-continue::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .btn-continue:hover::before {
+            left: 100%;
+        }
+
+        .btn-continue:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(212, 130, 122, 0.35);
+        }
+
+        .btn-continue:active {
+            transform: scale(0.97);
+        }
+
+        /* ================================================================
+           SECTION 11: MULTI-STEP INVITATION
            ================================================================ */
 
         .invite-wrapper {
@@ -1281,7 +1416,7 @@
         }
 
         /* ================================================================
-           SECTION 11: FLOATING DECORATIVE ELEMENTS
+           SECTION 12: FLOATING DECORATIVE ELEMENTS
            ================================================================ */
 
         .floating-decor {
@@ -1352,7 +1487,7 @@
         }
 
         /* ================================================================
-           SECTION 12: GIF CONTAINER
+           SECTION 13: GIF CONTAINER
            ================================================================ */
 
         .gif-container {
@@ -1420,7 +1555,7 @@
         }
 
         /* ================================================================
-           SECTION 13: STEP DOTS
+           SECTION 14: STEP DOTS
            ================================================================ */
 
         .step-dots {
@@ -1448,7 +1583,7 @@
         }
 
         /* ================================================================
-           SECTION 14: YES / NO BUTTONS
+           SECTION 15: YES / NO BUTTONS
            ================================================================ */
 
         .choice-area {
@@ -1529,7 +1664,7 @@
         }
 
         /* ================================================================
-           SECTION 15: PARTICLE EFFECTS
+           SECTION 16: PARTICLE EFFECTS
            ================================================================ */
 
         .particle-heart {
@@ -1576,7 +1711,6 @@
             }
         }
 
-        /* Confetti particles (new) */
         .confetti-piece {
             position: fixed;
             pointer-events: none;
@@ -1599,7 +1733,7 @@
         }
 
         /* ================================================================
-           SECTION 16: FINAL VIEW
+           SECTION 17: FINAL VIEW
            ================================================================ */
 
         .final-container {
@@ -1664,91 +1798,27 @@
             letter-spacing: 0.5px;
         }
 
-        /* ================================================================
-           SECTION 17: LANDING PAGE EXTRAS (Testimonials, FAQ)
-           ================================================================ */
-
-        .testimonials {
-            margin-top: 32px;
-            padding: 20px 0;
-            border-top: 1px solid #efedea;
-            position: relative;
-            z-index: 1;
-        }
-
-        .testimonials .testimonial-title {
-            font-size: 14px;
-            font-weight: 500;
-            color: #8a8a8a;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-        }
-
-        .testimonial-item {
-            background: #f8f7f5;
-            border-radius: 12px;
-            padding: 14px 18px;
-            margin-bottom: 10px;
-            font-size: 14px;
-            color: #4a4a4a;
-            line-height: 1.6;
-            border-left: 3px solid #d5cdc5;
-            position: relative;
-        }
-
-        .testimonial-item .testimonial-author {
-            font-size: 12px;
-            color: #b5a89c;
-            margin-top: 4px;
-            font-weight: 500;
-        }
-
-        .faq-section {
-            margin-top: 24px;
-            padding: 20px 0;
-            border-top: 1px solid #efedea;
-            position: relative;
-            z-index: 1;
-        }
-
-        .faq-section .faq-title {
-            font-size: 14px;
-            font-weight: 500;
-            color: #8a8a8a;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-        }
-
-        .faq-item {
-            margin-bottom: 12px;
-        }
-
-        .faq-item .faq-question {
-            font-size: 14px;
-            font-weight: 600;
-            color: #2d2d2d;
+        .final-music-toggle {
+            background: transparent;
+            border: 1px solid #d5cdc5;
+            border-radius: 40px;
+            padding: 8px 22px;
+            font-size: 13px;
+            color: #6b5a4a;
             cursor: pointer;
-            padding: 8px 0;
-            border-bottom: 1px solid #f0eeea;
-            transition: color 0.2s;
+            font-family: inherit;
+            transition: 0.2s;
+            margin-top: 16px;
         }
 
-        .faq-item .faq-question:hover {
-            color: #d46a5a;
+        .final-music-toggle:hover {
+            background: #f5f0eb;
+            border-color: #b5a89c;
         }
 
-        .faq-item .faq-answer {
-            font-size: 14px;
-            color: #6a6a6a;
-            padding: 8px 0 4px 0;
-            line-height: 1.6;
-            display: none;
-        }
-
-        .faq-item .faq-answer.open {
-            display: block;
+        body.cute-theme .final-music-toggle {
+            border-color: #e5d3c8;
+            color: #8a6a5a;
         }
 
         /* ================================================================
@@ -1765,6 +1835,9 @@
             }
             .result-type {
                 font-size: 44px;
+            }
+            .analysis-type {
+                font-size: 28px;
             }
         }
 
@@ -1867,6 +1940,17 @@
                 width: 50px;
                 font-size: 12px;
             }
+            .analysis-type {
+                font-size: 26px;
+            }
+            .analysis-section {
+                padding: 14px 16px;
+            }
+            .btn-continue {
+                padding: 12px 32px;
+                font-size: 15px;
+                width: 100%;
+            }
         }
 
         @media (max-width: 400px) {
@@ -1925,15 +2009,18 @@
                 font-size: 10px;
                 padding: 4px 12px;
             }
-            .testimonial-item {
-                font-size: 13px;
-                padding: 12px 14px;
+            .analysis-type {
+                font-size: 22px;
             }
-            .faq-item .faq-question {
-                font-size: 13px;
+            .analysis-label {
+                font-size: 16px;
             }
-            .faq-item .faq-answer {
-                font-size: 13px;
+            .analysis-section .section-text {
+                font-size: 14px;
+            }
+            .btn-continue {
+                font-size: 14px;
+                padding: 12px 24px;
             }
         }
 
@@ -2002,7 +2089,8 @@
             .btn-tertiary,
             .btn-reveal,
             .btn-yes,
-            .btn-no {
+            .btn-no,
+            .btn-continue {
                 display: none !important;
             }
             .hidden {
@@ -2045,15 +2133,20 @@
             .progress-label {
                 display: none !important;
             }
-            .testimonials,
-            .faq-section {
-                display: none !important;
-            }
             .container .orb {
                 display: none !important;
             }
             .result-functions {
                 display: none !important;
+            }
+            .analysis-section {
+                background: none !important;
+                border: 1px solid #ddd !important;
+            }
+            .gif-container,
+            .gif-container-large {
+                box-shadow: none !important;
+                border: 1px solid #ddd !important;
             }
         }
     </style>
@@ -2088,36 +2181,6 @@
             <div style="margin-top: 38px;">
                 <button class="btn-primary" id="startBtn">Begin Assessment</button>
                 <button class="btn-secondary" id="infoBtn">About this test</button>
-            </div>
-
-            <!-- Testimonials -->
-            <div class="testimonials">
-                <div class="testimonial-title">What others say</div>
-                <div class="testimonial-item">
-                    "Surprisingly accurate! I've taken many tests but this one really got me."
-                    <div class="testimonial-author">— Chloé Dubois.</div>
-                </div>
-                <div class="testimonial-item">
-                    "The breakdown of functions was incredibly insightful. I learned a lot about myself."
-                    <div class="testimonial-author">— Min-jun Kim</div>
-                </div>
-            </div>
-
-            <!-- FAQ -->
-            <div class="faq-section">
-                <div class="faq-title">Frequently Asked</div>
-                <div class="faq-item">
-                    <div class="faq-question">How long does this take?</div>
-                    <div class="faq-answer">About 3 to 4 minutes. It's 15 questions, so you can go through it quickly.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Is this scientifically validated?</div>
-                    <div class="faq-answer">This assessment is based on established personality frameworks, but it's intended for personal reflection and entertainment.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Can I retake the test?</div>
-                    <div class="faq-answer">Yes! You can restart at any time using the "Retake Test" button on the results page.</div>
-                </div>
             </div>
         </div>
 
@@ -2204,7 +2267,7 @@
         </div>
 
         <!-- ============================================================ -->
-        <!-- RESULT PAGE (Enhanced) -->
+        <!-- RESULT PAGE -->
         <!-- ============================================================ -->
         <div id="resultView" class="hidden">
             <div class="result-container">
@@ -2232,7 +2295,6 @@
                     </div>
                 </div>
 
-                <!-- Cognitive Functions Breakdown -->
                 <div class="result-functions" id="resultFunctions">
                     <div class="func-title">Cognitive Functions Breakdown</div>
                     <div class="func-bar-group" id="funcBarGroup">
@@ -2251,6 +2313,72 @@
                     <button class="btn-secondary" id="retakeBtn" style="margin-top:0; margin-left:0;">Retake Test</button>
                 </div>
                 <div class="result-disclaimer">This profile is for personal reflection purposes only.</div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- FULL ANALYSIS PAGE (NEW) -->
+        <!-- ============================================================ -->
+        <div id="analysisView" class="hidden">
+            <div class="analysis-container">
+
+                <div class="analysis-header">
+                    <div class="badge" style="margin-bottom:4px;">Full Personality Analysis</div>
+                    <div class="analysis-type" id="analysisType">ENFP</div>
+                    <div class="analysis-label" id="analysisLabel">The Enthusiastic Explorer</div>
+                </div>
+
+                <div class="analysis-section">
+                    <div class="section-title">Cognitive Functions</div>
+                    <div class="section-text" id="analysisCognitive">
+                        Your cognitive function stack is dominated by <span class="highlight">Extraverted Intuition (Ne)</span>,
+                        which means you are naturally drawn to exploring possibilities, patterns, and connections in the
+                        world around you. You thrive on novelty and are energized by brainstorming and imagining future
+                        scenarios.
+                    </div>
+                </div>
+
+                <div class="analysis-section">
+                    <div class="section-title">Strengths</div>
+                    <ul id="analysisStrengths">
+                        <li>You are deeply empathetic and can understand others' emotions easily</li>
+                        <li>Your curiosity drives you to explore ideas and perspectives</li>
+                        <li>You are adaptable and embrace change with enthusiasm</li>
+                        <li>You value authenticity and are drawn to genuine connections</li>
+                    </ul>
+                </div>
+
+                <div class="analysis-section">
+                    <div class="section-title">Growth Areas</div>
+                    <ul id="analysisGrowth">
+                        <li>You may sometimes struggle with follow-through on long-term projects</li>
+                        <li>Your focus on the big picture can make you overlook important details</li>
+                        <li>You might prioritize others' needs over your own</li>
+                    </ul>
+                </div>
+
+                <div class="analysis-section">
+                    <div class="section-title">In Relationships</div>
+                    <div class="section-text" id="analysisRelationships">
+                        You bring warmth, curiosity, and a deep desire for connection to your relationships.
+                        You value partners who appreciate your enthusiasm and can match your depth of feeling.
+                        You seek meaningful conversations and experiences rather than surface-level interactions.
+                    </div>
+                </div>
+
+                <div class="analysis-section">
+                    <div class="section-title">A Note About This Profile</div>
+                    <div class="section-text" style="font-size:14px; color:#6a6a6a;">
+                        This analysis is based on your responses to 15 behavioral questions. While personality frameworks
+                        provide valuable insights, they are not definitive. Your personality is unique and multifaceted —
+                        this is simply one lens to understand yourself better.
+                    </div>
+                </div>
+
+                <div class="analysis-continue-area">
+                    <button class="btn-continue" id="continueBtn">Continue to Next Insight →</button>
+                </div>
+
             </div>
         </div>
 
@@ -2377,7 +2505,7 @@
                     <span class="step-dot" data-dot="3"></span>
                 </div>
 
-                <!-- Background Music (Auto-plays) -->
+                <!-- Background Music -->
                 <audio id="bgMusic" loop preload="auto">
                     <source src="bgmusic.mp3" type="audio/mpeg">
                     Your browser does not support the audio element.
@@ -2418,13 +2546,15 @@
                 <p class="final-message">
                     · 你已经被我骗了，没有回头路了 ·
                 </p>
+
+                <button class="final-music-toggle" id="finalMusicToggle">Play background music</button>
             </div>
         </div>
 
     </div>
 
     <!-- ================================================================
-    JAVASCRIPT - Application Logic (Expanded)
+    JAVASCRIPT
     ================================================================ -->
     <script>
         (function() {
@@ -2437,11 +2567,13 @@
             const CONFIG = {
                 INVITE_STEP_DELAY: 10000,
                 TOTAL_QUESTIONS: 15,
-                TARGET_DATE: '2026-08-07',
+                TARGET_DATE: '2026-08-06',
                 MAX_SKIP_ATTEMPTS: 3,
                 PARTICLE_COUNT: 25,
                 SPARKLE_COUNT: 40,
                 STORAGE_KEY: 'personality_assessment_answers',
+                TARGET_NAME: 'Evelyn Thian Hui Ni',
+                TARGET_NICKNAME: '小喵咪',
             };
 
             // =============================================================
@@ -2574,89 +2706,153 @@
             }];
 
             // =============================================================
-            // 3. PERSONALITY DATA
+            // 3. PERSONALITY DATA (Enhanced with detailed info)
             // =============================================================
 
             const personalityMap = {
                 'ENFP': {
                     label: 'The Enthusiastic Explorer',
                     traits: ['Curious', 'Empathetic', 'Spontaneous', 'Imaginative'],
-                    desc: 'You are warm, creative, and deeply curious. You see endless possibilities and are driven by your values and a desire for meaningful connection.'
+                    desc: 'You are warm, creative, and deeply curious. You see endless possibilities and are driven by your values and a desire for meaningful connection.',
+                    cognitive: 'Your cognitive function stack is dominated by Extraverted Intuition (Ne), which means you are naturally drawn to exploring possibilities, patterns, and connections in the world around you. You thrive on novelty and are energized by brainstorming and imagining future scenarios. Your auxiliary function is Introverted Feeling (Fi), which gives you a strong internal value system and a deep sense of authenticity.',
+                    strengths: ['Deeply empathetic and emotionally aware', 'Naturally curious and open-minded', 'Adaptable and embrace change with enthusiasm', 'Value authenticity and genuine connections'],
+                    growth: ['May struggle with follow-through on long-term projects', 'Can overlook important details when focused on the big picture', 'Might prioritize others\' needs over your own'],
+                    relationships: 'You bring warmth, curiosity, and a deep desire for connection to your relationships. You value partners who appreciate your enthusiasm and can match your depth of feeling. You seek meaningful conversations and experiences rather than surface-level interactions.'
                 },
                 'ENFJ': {
                     label: 'The Compassionate Mentor',
                     traits: ['Charismatic', 'Empathetic', 'Organised', 'Inspiring'],
-                    desc: 'You have a gift for understanding people and bringing out their best. You are driven by purpose and a deep desire to help others grow.'
+                    desc: 'You have a gift for understanding people and bringing out their best. You are driven by purpose and a deep desire to help others grow.',
+                    cognitive: 'Your cognitive function stack is dominated by Extraverted Feeling (Fe), which makes you highly attuned to the emotions and needs of others. You are a natural leader who inspires and motivates people. Your auxiliary function is Introverted Intuition (Ni), which gives you a clear vision for the future and a deep understanding of underlying patterns.',
+                    strengths: ['Excellent at understanding and motivating others', 'Strong organisational and planning skills', 'Deeply empathetic and caring', 'Inspiring and charismatic leader'],
+                    growth: ['May neglect your own needs while helping others', 'Can be overly idealistic about people', 'Might struggle with criticism or conflict'],
+                    relationships: 'You bring warmth, understanding, and a deep commitment to your relationships. You value partners who share your vision and appreciate your efforts to help them grow. You thrive in relationships where there is mutual respect and emotional depth.'
                 },
                 'ENTP': {
                     label: 'The Visionary Thinker',
                     traits: ['Innovative', 'Quick-witted', 'Curious', 'Bold'],
-                    desc: 'You are a bold, imaginative thinker who loves exploring ideas and challenging norms. You thrive on intellectual stimulation.'
+                    desc: 'You are a bold, imaginative thinker who loves exploring ideas and challenging norms. You thrive on intellectual stimulation.',
+                    cognitive: 'Your cognitive function stack is dominated by Extraverted Intuition (Ne), which gives you a natural talent for seeing connections and possibilities that others might miss. You are a natural brainstormer and love to challenge conventional thinking. Your auxiliary function is Introverted Thinking (Ti), which allows you to analyse systems and ideas with precision.',
+                    strengths: ['Highly innovative and creative thinker', 'Quick-witted and adaptable', 'Excellent at seeing connections', 'Enjoy intellectual challenges and debates'],
+                    growth: ['Can be seen as argumentative or dismissive', 'May struggle with follow-through', 'Can become bored with routine or details'],
+                    relationships: 'You bring intellectual stimulation, curiosity, and a sense of adventure to your relationships. You value partners who can keep up with your ideas and challenge you intellectually. You thrive in relationships that are dynamic and ever-evolving.'
                 },
                 'ENTJ': {
                     label: 'The Strategic Commander',
                     traits: ['Decisive', 'Confident', 'Goal-oriented', 'Analytical'],
-                    desc: 'You are a natural leader who sees the big picture and takes charge. You are driven by ambition and turning visions into reality.'
+                    desc: 'You are a natural leader who sees the big picture and takes charge. You are driven by ambition and turning visions into reality.',
+                    cognitive: 'Your cognitive function stack is dominated by Extraverted Thinking (Te), which makes you highly efficient and goal-oriented. You excel at organising systems and people to achieve objectives. Your auxiliary function is Introverted Intuition (Ni), which gives you a clear long-term vision and strategic insight.',
+                    strengths: ['Strong leadership and organisational skills', 'Highly goal-oriented and driven', 'Strategic thinker', 'Decisive and confident'],
+                    growth: ['Can be perceived as overly controlling or impatient', 'May overlook emotional aspects of decisions', 'Can struggle with delegating'],
+                    relationships: 'You bring ambition, drive, and strategic thinking to your relationships. You value partners who are equally ambitious and supportive of your goals. You thrive in relationships where there is mutual respect and shared vision.'
                 },
                 'INFP': {
                     label: 'The Idealistic Dreamer',
                     traits: ['Introspective', 'Empathetic', 'Creative', 'Authentic'],
-                    desc: 'You are reflective and compassionate, guided by a strong inner moral compass and a desire to live authentically.'
+                    desc: 'You are reflective and compassionate, guided by a strong inner moral compass and a desire to live authentically.',
+                    cognitive: 'Your cognitive function stack is dominated by Introverted Feeling (Fi), which gives you a deep and rich inner emotional world. You are guided by your values and a strong sense of authenticity. Your auxiliary function is Extraverted Intuition (Ne), which allows you to explore possibilities and see connections in the world around you.',
+                    strengths: ['Deeply empathetic and compassionate', 'Highly creative and imaginative', 'Strong sense of authenticity', 'Excellent listeners'],
+                    growth: ['May take criticism too personally', 'Can become overly idealistic', 'Might struggle with practical tasks'],
+                    relationships: 'You bring warmth, authenticity, and deep emotional connection to your relationships. You value partners who appreciate your sensitivity and share your values. You seek relationships that are meaningful and emotionally fulfilling.'
                 },
                 'INFJ': {
                     label: 'The Thoughtful Guide',
                     traits: ['Insightful', 'Empathetic', 'Organised', 'Visionary'],
-                    desc: 'You are intuitive and rare, with deep human understanding. You are driven by purpose and making a positive impact.'
+                    desc: 'You are intuitive and rare, with deep human understanding. You are driven by purpose and making a positive impact.',
+                    cognitive: 'Your cognitive function stack is dominated by Introverted Intuition (Ni), which gives you a deep and penetrating insight into patterns and meanings. You have a strong sense of purpose and vision. Your auxiliary function is Extraverted Feeling (Fe), which allows you to connect with others on a deep emotional level.',
+                    strengths: ['Deeply insightful and perceptive', 'Empathetic and compassionate', 'Organised and purposeful', 'Strong sense of vision'],
+                    growth: ['May struggle with setting boundaries', 'Can become overwhelmed by others\' emotions', 'Might be perceived as too serious'],
+                    relationships: 'You bring depth, insight, and a deep sense of commitment to your relationships. You value partners who appreciate your depth and share your vision. You thrive in relationships that are meaningful and purposeful.'
                 },
                 'INTP': {
                     label: 'The Analytical Architect',
                     traits: ['Logical', 'Curious', 'Innovative', 'Independent'],
-                    desc: 'You are a deep thinker who loves complex ideas and systems. You are driven by knowledge and understanding.'
+                    desc: 'You are a deep thinker who loves complex ideas and systems. You are driven by knowledge and understanding.',
+                    cognitive: 'Your cognitive function stack is dominated by Introverted Thinking (Ti), which gives you a deep desire to understand how things work. You are a natural problem-solver and enjoy analysing complex systems. Your auxiliary function is Extraverted Intuition (Ne), which allows you to explore ideas and see connections.',
+                    strengths: ['Highly analytical and logical', 'Naturally curious and innovative', 'Excellent problem-solver', 'Independent and self-reliant'],
+                    growth: ['May struggle with emotional expression', 'Can become overly detached', 'Might overlook practical details'],
+                    relationships: 'You bring intellectual depth, curiosity, and independence to your relationships. You value partners who respect your need for autonomy and can engage in deep conversations. You thrive in relationships that are intellectually stimulating and allow for personal growth.'
                 },
                 'INTJ': {
                     label: 'The Strategic Mastermind',
                     traits: ['Independent', 'Analytical', 'Visionary', 'Decisive'],
-                    desc: 'You are a forward-thinking strategist who sees systems clearly. You are driven by competence and long-term goals.'
+                    desc: 'You are a forward-thinking strategist who sees systems clearly. You are driven by competence and long-term goals.',
+                    cognitive: 'Your cognitive function stack is dominated by Introverted Intuition (Ni), which gives you a clear and strategic vision for the future. You are a natural planner and strategist. Your auxiliary function is Extraverted Thinking (Te), which allows you to organise and execute your vision with precision.',
+                    strengths: ['Highly strategic and visionary', 'Analytical and decisive', 'Independent and self-motivated', 'Excellent at long-term planning'],
+                    growth: ['Can be perceived as aloof or detached', 'May struggle with emotional expression', 'Can be overly critical of others'],
+                    relationships: 'You bring strategic thinking, independence, and deep commitment to your relationships. You value partners who respect your need for autonomy and share your vision. You thrive in relationships that are intellectually stimulating and focused on growth.'
                 },
                 'ESFP': {
                     label: 'The Spirited Performer',
                     traits: ['Energetic', 'Warm', 'Spontaneous', 'Observant'],
-                    desc: 'You are vibrant and live in the moment, bringing joy to others. You are driven by new experiences and connection.'
+                    desc: 'You are vibrant and live in the moment, bringing joy to others. You are driven by new experiences and connection.',
+                    cognitive: 'Your cognitive function stack is dominated by Extraverted Sensing (Se), which makes you highly attuned to your environment and the present moment. You are observant and enjoy sensory experiences. Your auxiliary function is Introverted Feeling (Fi), which gives you a strong value system and a desire for authenticity.',
+                    strengths: ['Warm and energetic presence', 'Highly observant and present', 'Spontaneous and adventurous', 'Bring joy to those around you'],
+                    growth: ['May struggle with long-term planning', 'Can be impulsive', 'Might avoid difficult conversations'],
+                    relationships: 'You bring warmth, energy, and a love of life to your relationships. You value partners who can share your sense of adventure and appreciate your spontaneity. You thrive in relationships that are fun, exciting, and full of shared experiences.'
                 },
                 'ESFJ': {
                     label: 'The Nurturing Supporter',
                     traits: ['Caring', 'Organised', 'Social', 'Loyal'],
-                    desc: 'You are warm and generous, finding fulfillment in helping others. You are driven by duty and harmony.'
+                    desc: 'You are warm and generous, finding fulfillment in helping others. You are driven by duty and harmony.',
+                    cognitive: 'Your cognitive function stack is dominated by Extraverted Feeling (Fe), which makes you highly attuned to the emotions and needs of others. You are a natural caregiver and enjoy creating harmony in your environment. Your auxiliary function is Introverted Sensing (Si), which gives you a strong attention to detail and a desire for stability.',
+                    strengths: ['Warm and caring nature', 'Highly organised and responsible', 'Strong sense of duty and loyalty', 'Excellent at creating harmony'],
+                    growth: ['May neglect your own needs while caring for others', 'Can be overly sensitive to criticism', 'Might struggle with change'],
+                    relationships: 'You bring warmth, loyalty, and a deep sense of commitment to your relationships. You value partners who appreciate your efforts to care for them. You thrive in relationships that are harmonious and stable.'
                 },
                 'ESTP': {
                     label: 'The Dynamic Adventurer',
                     traits: ['Energetic', 'Observant', 'Bold', 'Spontaneous'],
-                    desc: 'You are action-oriented and thrive on excitement. You are driven by exploration and making the most of every moment.'
+                    desc: 'You are action-oriented and thrive on excitement. You are driven by exploration and making the most of every moment.',
+                    cognitive: 'Your cognitive function stack is dominated by Extraverted Sensing (Se), which makes you highly observant and present in the moment. You are action-oriented and enjoy new experiences. Your auxiliary function is Introverted Thinking (Ti), which allows you to analyse and understand complex systems.',
+                    strengths: ['Bold and action-oriented', 'Highly observant and present', 'Spontaneous and adventurous', 'Excellent problem-solver in real-time'],
+                    growth: ['May struggle with long-term planning', 'Can be impulsive', 'Might overlook emotional considerations'],
+                    relationships: 'You bring energy, adventure, and spontaneity to your relationships. You value partners who can keep up with your active lifestyle and share your sense of adventure. You thrive in relationships that are dynamic and exciting.'
                 },
                 'ESTJ': {
                     label: 'The Decisive Executor',
                     traits: ['Organised', 'Practical', 'Decisive', 'Responsible'],
-                    desc: 'You are pragmatic and get things done. You are driven by duty, order, and efficiency.'
+                    desc: 'You are pragmatic and get things done. You are driven by duty, order, and efficiency.',
+                    cognitive: 'Your cognitive function stack is dominated by Extraverted Thinking (Te), which makes you highly efficient and goal-oriented. You excel at organising and executing plans. Your auxiliary function is Introverted Sensing (Si), which gives you a strong attention to detail and a preference for established methods.',
+                    strengths: ['Highly organised and practical', 'Decisive and responsible', 'Strong sense of duty', 'Efficient and goal-oriented'],
+                    growth: ['Can be perceived as rigid or inflexible', 'May overlook emotional considerations', 'Might struggle with ambiguity'],
+                    relationships: 'You bring reliability, practicality, and a strong sense of duty to your relationships. You value partners who are responsible and share your commitment to stability. You thrive in relationships that are structured and dependable.'
                 },
                 'ISFP': {
                     label: 'The Gentle Artist',
                     traits: ['Sensitive', 'Creative', 'Observant', 'Authentic'],
-                    desc: 'You are quiet and introspective with a deep appreciation for beauty. You are driven by values and harmony.'
+                    desc: 'You are quiet and introspective with a deep appreciation for beauty. You are driven by values and harmony.',
+                    cognitive: 'Your cognitive function stack is dominated by Introverted Feeling (Fi), which gives you a deep and rich inner emotional world. You are guided by your values and a strong sense of authenticity. Your auxiliary function is Extraverted Sensing (Se), which allows you to appreciate beauty and sensory experiences in the present moment.',
+                    strengths: ['Deeply sensitive and empathetic', 'Highly creative and artistic', 'Observant and present', 'Strong sense of authenticity'],
+                    growth: ['May struggle with confrontation', 'Can become overly self-critical', 'Might avoid expressing emotions'],
+                    relationships: 'You bring sensitivity, creativity, and deep emotional connection to your relationships. You value partners who appreciate your gentle nature and share your values. You thrive in relationships that are peaceful and emotionally fulfilling.'
                 },
                 'ISFJ': {
                     label: 'The Devoted Guardian',
                     traits: ['Caring', 'Observant', 'Organised', 'Loyal'],
-                    desc: 'You are warm and conscientious, taking great care of what matters. You are driven by duty and protection.'
+                    desc: 'You are warm and conscientious, taking great care of what matters. You are driven by duty and protection.',
+                    cognitive: 'Your cognitive function stack is dominated by Introverted Sensing (Si), which gives you a strong attention to detail and a preference for tradition and stability. You are a careful planner and protector of what matters to you. Your auxiliary function is Extraverted Feeling (Fe), which allows you to connect with others and create harmony.',
+                    strengths: ['Warm and caring nature', 'Highly observant and detail-oriented', 'Organised and responsible', 'Deeply loyal and protective'],
+                    growth: ['May neglect your own needs while caring for others', 'Can be overly cautious', 'Might struggle with change'],
+                    relationships: 'You bring warmth, loyalty, and a deep sense of commitment to your relationships. You value partners who appreciate your care and share your values. You thrive in relationships that are stable and nurturing.'
                 },
                 'ISTP': {
                     label: 'The Practical Problem-Solver',
                     traits: ['Observant', 'Analytical', 'Calm', 'Spontaneous'],
-                    desc: 'You are calm and resourceful, excelling at practical problems. You are driven by understanding and exploration.'
+                    desc: 'You are calm and resourceful, excelling at practical problems. You are driven by understanding and exploration.',
+                    cognitive: 'Your cognitive function stack is dominated by Introverted Thinking (Ti), which gives you a deep desire to understand how things work. You are a natural problem-solver and enjoy exploring practical systems. Your auxiliary function is Extraverted Sensing (Se), which allows you to be observant and present in the moment.',
+                    strengths: ['Highly analytical and practical', 'Calm under pressure', 'Resourceful and adaptable', 'Spontaneous and adventurous'],
+                    growth: ['May struggle with emotional expression', 'Can become detached', 'Might avoid long-term planning'],
+                    relationships: 'You bring calmness, resourcefulness, and a sense of adventure to your relationships. You value partners who respect your need for independence and can engage in practical activities. You thrive in relationships that are balanced and allow for personal freedom.'
                 },
                 'ISTJ': {
                     label: 'The Dependable Realist',
                     traits: ['Organised', 'Practical', 'Reliable', 'Observant'],
-                    desc: 'You are responsible and detail-oriented, valuing structure and reliability. You are driven by duty and commitment.'
+                    desc: 'You are responsible and detail-oriented, valuing structure and reliability. You are driven by duty and commitment.',
+                    cognitive: 'Your cognitive function stack is dominated by Introverted Sensing (Si), which gives you a strong attention to detail and a preference for order and stability. You are a reliable planner and executor. Your auxiliary function is Extraverted Thinking (Te), which allows you to organise and execute tasks efficiently.',
+                    strengths: ['Highly organised and responsible', 'Practical and detail-oriented', 'Reliable and dependable', 'Strong sense of duty'],
+                    growth: ['Can be perceived as rigid or inflexible', 'May struggle with change', 'Might overlook emotional considerations'],
+                    relationships: 'You bring reliability, practicality, and a strong sense of commitment to your relationships. You value partners who share your values of stability and responsibility. You thrive in relationships that are structured and dependable.'
                 }
             };
 
@@ -2674,9 +2870,9 @@
                 skipAttempts: 0,
                 isMusicPlaying: false,
                 isInvitationActive: false,
+                calculatedType: null,
             };
 
-            // Load saved state from localStorage
             function loadState() {
                 try {
                     const saved = localStorage.getItem(CONFIG.STORAGE_KEY);
@@ -2684,14 +2880,11 @@
                         const parsed = JSON.parse(saved);
                         if (Array.isArray(parsed) && parsed.length === CONFIG.TOTAL_QUESTIONS) {
                             state.userAnswers = parsed;
-                            // Find the first unanswered question
                             const firstUnanswered = parsed.findIndex(function(a) {
                                 return a === undefined;
                             });
                             if (firstUnanswered !== -1 && firstUnanswered < CONFIG.TOTAL_QUESTIONS) {
                                 state.currentQuestionIndex = firstUnanswered;
-                            } else if (firstUnanswered === -1 && parsed.length === CONFIG.TOTAL_QUESTIONS) {
-                                // All answered, go to result maybe later
                             }
                         }
                     }
@@ -2715,17 +2908,16 @@
             const DOM = {};
 
             function cacheDomElements() {
-                // Views
                 DOM.landingView = document.getElementById('landingView');
                 DOM.aboutView = document.getElementById('aboutView');
                 DOM.questionView = document.getElementById('questionView');
                 DOM.loadingView = document.getElementById('loadingView');
                 DOM.resultView = document.getElementById('resultView');
+                DOM.analysisView = document.getElementById('analysisView');
                 DOM.revealLoadingView = document.getElementById('revealLoadingView');
                 DOM.invitationView = document.getElementById('invitationView');
                 DOM.finalView = document.getElementById('finalView');
 
-                // Buttons
                 DOM.startBtn = document.getElementById('startBtn');
                 DOM.infoBtn = document.getElementById('infoBtn');
                 DOM.backBtn = document.getElementById('backBtn');
@@ -2733,11 +2925,12 @@
                 DOM.skipBtn = document.getElementById('skipBtn');
                 DOM.revealBtn = document.getElementById('revealBtn');
                 DOM.retakeBtn = document.getElementById('retakeBtn');
+                DOM.continueBtn = document.getElementById('continueBtn');
                 DOM.yesBtn = document.getElementById('yesBtn');
                 DOM.noBtn = document.getElementById('noBtn');
+                DOM.finalMusicToggle = document.getElementById('finalMusicToggle');
                 DOM.bgAudio = document.getElementById('bgMusic');
 
-                // Question elements
                 DOM.qBadge = document.getElementById('qBadge');
                 DOM.progressBar = document.getElementById('progressBar');
                 DOM.progressLabel = document.getElementById('progressLabel');
@@ -2748,14 +2941,19 @@
                 DOM.optionsContainer = document.getElementById('optionsContainer');
                 DOM.questionHelper = document.getElementById('questionHelper');
 
-                // Result elements
                 DOM.resultType = document.getElementById('resultType');
                 DOM.resultLabel = document.getElementById('resultLabel');
                 DOM.traitList = document.getElementById('traitList');
                 DOM.resultDesc = document.getElementById('resultDesc');
                 DOM.funcBarGroup = document.getElementById('funcBarGroup');
 
-                // Loading elements
+                DOM.analysisType = document.getElementById('analysisType');
+                DOM.analysisLabel = document.getElementById('analysisLabel');
+                DOM.analysisCognitive = document.getElementById('analysisCognitive');
+                DOM.analysisStrengths = document.getElementById('analysisStrengths');
+                DOM.analysisGrowth = document.getElementById('analysisGrowth');
+                DOM.analysisRelationships = document.getElementById('analysisRelationships');
+
                 DOM.loadStatus = document.getElementById('loadStatus');
                 DOM.loadSub = document.getElementById('loadSub');
                 DOM.loadProgress = document.getElementById('loadProgress');
@@ -2764,15 +2962,11 @@
                 DOM.revealLoadText = document.getElementById('revealLoadText');
                 DOM.revealProgressText = document.getElementById('revealProgressText');
 
-                // Invitation elements
                 DOM.noMessage = document.getElementById('noMessage');
                 DOM.choiceArea = document.getElementById('choiceArea');
                 DOM.inviteWrapper = document.getElementById('inviteWrapper');
                 DOM.daysCountdown = document.getElementById('daysCountdown');
                 DOM.stepDots = document.getElementById('stepDots');
-
-                // FAQ elements
-                DOM.faqItems = document.querySelectorAll('.faq-item .faq-question');
             }
 
             // =============================================================
@@ -2786,6 +2980,7 @@
                     DOM.questionView,
                     DOM.loadingView,
                     DOM.resultView,
+                    DOM.analysisView,
                     DOM.revealLoadingView,
                     DOM.invitationView,
                     DOM.finalView
@@ -2940,19 +3135,6 @@
             }
 
             function getFunctionPercentages(type) {
-                // Fake percentages based on MBTI type for visual effect
-                const base = {
-                    'E': 65,
-                    'I': 35,
-                    'S': 40,
-                    'N': 60,
-                    'T': 45,
-                    'F': 55,
-                    'J': 50,
-                    'P': 50
-                };
-
-                // Adjust based on actual type
                 const result = {
                     'E': 50,
                     'I': 50,
@@ -2964,7 +3146,6 @@
                     'P': 50
                 };
 
-                // Set based on type letters
                 if (type.indexOf('E') !== -1) result.E = 70;
                 else result.I = 70;
 
@@ -2977,7 +3158,6 @@
                 if (type.indexOf('P') !== -1) result.P = 70;
                 else result.J = 70;
 
-                // Add some randomness to make it look real
                 result.E += Math.floor(Math.random() * 10) - 5;
                 result.I += Math.floor(Math.random() * 10) - 5;
                 result.S += Math.floor(Math.random() * 10) - 5;
@@ -2987,7 +3167,6 @@
                 result.J += Math.floor(Math.random() * 10) - 5;
                 result.P += Math.floor(Math.random() * 10) - 5;
 
-                // Clamp
                 for (let key in result) {
                     result[key] = Math.max(10, Math.min(90, result[key]));
                 }
@@ -3145,11 +3324,12 @@
             }
 
             // =============================================================
-            // 12. RESULT RENDERING
+            // 12. RESULT & ANALYSIS RENDERING
             // =============================================================
 
             function renderResult() {
                 const type = calculateMBTI();
+                state.calculatedType = type;
                 const data = personalityMap[type] || personalityMap['ENFP'];
 
                 DOM.resultType.textContent = type;
@@ -3165,7 +3345,6 @@
 
                 DOM.resultDesc.innerHTML = data.desc;
 
-                // Render function bars
                 const funcs = getFunctionPercentages(type);
                 const pairs = [
                     ['E', 'I'],
@@ -3213,21 +3392,40 @@
                 });
             }
 
+            function renderAnalysis() {
+                const type = state.calculatedType || 'ENFP';
+                const data = personalityMap[type] || personalityMap['ENFP'];
+
+                DOM.analysisType.textContent = type;
+                DOM.analysisLabel.textContent = data.label;
+
+                DOM.analysisCognitive.textContent = data.cognitive || data.desc;
+
+                // Strengths
+                DOM.analysisStrengths.innerHTML = '';
+                (data.strengths || ['Empathetic', 'Curious', 'Adaptable', 'Authentic']).forEach(function(item) {
+                    const li = document.createElement('li');
+                    li.textContent = item;
+                    DOM.analysisStrengths.appendChild(li);
+                });
+
+                // Growth areas
+                DOM.analysisGrowth.innerHTML = '';
+                (data.growth || ['May struggle with follow-through', 'Can overlook details', 'Might prioritize others']).forEach(
+                    function(item) {
+                        const li = document.createElement('li');
+                        li.textContent = item;
+                        DOM.analysisGrowth.appendChild(li);
+                    });
+
+                DOM.analysisRelationships.textContent = data.relationships || 'You bring warmth and depth to your relationships, valuing authentic connections and meaningful experiences.';
+            }
+
             // =============================================================
             // 13. EVENT LISTENERS
             // =============================================================
 
             function setupEventListeners() {
-                // FAQ toggle
-                DOM.faqItems.forEach(function(item) {
-                    item.addEventListener('click', function() {
-                        const answer = this.nextElementSibling;
-                        if (answer) {
-                            answer.classList.toggle('open');
-                        }
-                    });
-                });
-
                 DOM.infoBtn.addEventListener('click', function() {
                     showView('aboutView');
                 });
@@ -3237,17 +3435,14 @@
                 });
 
                 DOM.startBtn.addEventListener('click', function() {
-                    // If there are saved answers, resume
                     loadState();
                     const hasAnswers = state.userAnswers.some(function(a) {
                         return a !== undefined;
                     });
                     if (hasAnswers && state.currentQuestionIndex < CONFIG.TOTAL_QUESTIONS) {
-                        // Resume
                         showView('questionView');
                         renderQuestion(state.currentQuestionIndex);
                     } else {
-                        // Start fresh
                         state.userAnswers = [];
                         state.currentQuestionIndex = 0;
                         showView('questionView');
@@ -3324,6 +3519,11 @@
                 });
 
                 DOM.revealBtn.addEventListener('click', function() {
+                    renderAnalysis();
+                    showView('analysisView');
+                });
+
+                DOM.continueBtn.addEventListener('click', function() {
                     document.body.classList.add('cute-theme');
 
                     showView('revealLoadingView');
@@ -3363,7 +3563,7 @@
                                     DOM.bgAudio.play().catch(function(error) {
                                         console.log(
                                             'Autoplay blocked by browser. User interaction required.'
-                                            );
+                                        );
                                     });
                                     state.isMusicPlaying = true;
                                 }
@@ -3456,6 +3656,22 @@
                     }
                 });
 
+                // Final page music toggle
+                DOM.finalMusicToggle.addEventListener('click', function() {
+                    if (DOM.bgAudio) {
+                        if (DOM.bgAudio.paused) {
+                            DOM.bgAudio.play().catch(function() {});
+                            DOM.finalMusicToggle.textContent = 'Pause music';
+                            state.isMusicPlaying = true;
+                        } else {
+                            DOM.bgAudio.pause();
+                            DOM.finalMusicToggle.textContent = 'Play background music';
+                            state.isMusicPlaying = false;
+                        }
+                    }
+                });
+
+                // Keyboard support
                 document.addEventListener('keydown', function(event) {
                     if (event.key === 'Enter' && !DOM.nextBtn.disabled && !DOM.questionView.classList.contains(
                             'hidden')) {
@@ -3476,11 +3692,10 @@
                 updateCountdown();
 
                 console.log('===================================================');
-                console.log('Personality Assessment Application v8.0 (4000+ lines)');
-                console.log('Built for Evelyn Thian Hui Ni');
+                console.log('Personality Assessment Application v9.0');
+                console.log('Built for ' + CONFIG.TARGET_NAME);
                 console.log('Total questions:', CONFIG.TOTAL_QUESTIONS);
-                console.log('Scored questions: 11 (Q1-Q10 + Q15)');
-                console.log('Features: 15 questions, MBTI scoring, multi-step invitation, confetti, localStorage');
+                console.log('Features: 15 questions, MBTI scoring, Full Analysis, multi-step invitation');
                 console.log('===================================================');
 
                 if (DOM.bgAudio) {
