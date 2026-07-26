@@ -3963,7 +3963,7 @@
                         this.style.top = randomY + 'px';
                         this.classList.add('dodging');
 
-                        DOM.noMessage.textContent = 'Nice try. I am not giving up. 我不会放弃的';
+                        DOM.noMessage.textContent = 'Nice try. 我不会放弃的';
 
                     } else if (state.noButtonClickCount === 2) {
                         this.textContent = 'Actually, yes';
@@ -3976,7 +3976,7 @@
                         this.style.fontWeight = '600';
                         this.classList.remove('dodging');
 
-                        DOM.noMessage.textContent = 'That is what I thought. 我就知道';
+                        DOM.noMessage.textContent = 'That is what I thought.';
 
                         setTimeout(function() {
                             showView('finalView');
