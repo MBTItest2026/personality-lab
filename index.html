@@ -1078,7 +1078,7 @@
         }
 
         /* ================================================================
-           SECTION 10: FULL ANALYSIS PAGE (NEW)
+           SECTION 10: FULL ANALYSIS PAGE
            ================================================================ */
 
         .analysis-container {
@@ -1822,7 +1822,206 @@
         }
 
         /* ================================================================
-           SECTION 18: RESPONSIVE
+           SECTION 18: LANDING PAGE EXTRAS
+           ================================================================ */
+
+        .user-reviews {
+            margin-top: 28px;
+            padding: 16px 0;
+            border-top: 1px solid #efedea;
+            position: relative;
+            z-index: 1;
+        }
+
+        .user-reviews .reviews-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #8a8a8a;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .review-item {
+            background: #f8f7f5;
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #4a4a4a;
+            line-height: 1.6;
+            border-left: 3px solid #d5cdc5;
+            position: relative;
+        }
+
+        .review-item .review-author {
+            font-size: 12px;
+            color: #b5a89c;
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        .review-item .review-stars {
+            color: #d4827a;
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        .faq-section {
+            margin-top: 16px;
+            padding: 16px 0;
+            border-top: 1px solid #efedea;
+            position: relative;
+            z-index: 1;
+        }
+
+        .faq-section .faq-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #8a8a8a;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .faq-item {
+            margin-bottom: 10px;
+        }
+
+        .faq-item .faq-question {
+            font-size: 14px;
+            font-weight: 600;
+            color: #2d2d2d;
+            cursor: pointer;
+            padding: 6px 0;
+            border-bottom: 1px solid #f0eeea;
+            transition: color 0.2s;
+        }
+
+        .faq-item .faq-question:hover {
+            color: #d46a5a;
+        }
+
+        .faq-item .faq-answer {
+            font-size: 14px;
+            color: #6a6a6a;
+            padding: 8px 0 4px 0;
+            line-height: 1.6;
+            display: none;
+        }
+
+        .faq-item .faq-answer.open {
+            display: block;
+        }
+
+        .comment-section {
+            margin-top: 16px;
+            padding: 16px 0;
+            border-top: 1px solid #efedea;
+            position: relative;
+            z-index: 1;
+        }
+
+        .comment-section .comment-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #8a8a8a;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .comment-input-area {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .comment-input-area input {
+            flex: 1;
+            min-width: 180px;
+            padding: 10px 14px;
+            border: 1px solid #ddd9d3;
+            border-radius: 30px;
+            font-size: 14px;
+            font-family: inherit;
+            background: #f8f7f5;
+            transition: border-color 0.2s;
+        }
+
+        .comment-input-area input:focus {
+            outline: none;
+            border-color: #d4827a;
+            background: #ffffff;
+        }
+
+        .comment-input-area .btn-comment {
+            padding: 10px 24px;
+            background: #1a1a1a;
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .comment-input-area .btn-comment:hover {
+            background: #333;
+            transform: translateY(-1px);
+        }
+
+        .comment-list {
+            max-height: 180px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        .comment-list::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .comment-list::-webkit-scrollbar-track {
+            background: #f0eeea;
+            border-radius: 4px;
+        }
+
+        .comment-list::-webkit-scrollbar-thumb {
+            background: #d5cdc5;
+            border-radius: 4px;
+        }
+
+        .comment-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0eeea;
+            font-size: 14px;
+            color: #4a4a4a;
+            line-height: 1.5;
+        }
+
+        .comment-item .comment-author {
+            font-weight: 600;
+            color: #2d2d2d;
+            margin-right: 6px;
+        }
+
+        .comment-item .comment-time {
+            font-size: 11px;
+            color: #b5a89c;
+            margin-left: 6px;
+        }
+
+        .comment-item .comment-text {
+            display: block;
+            margin-top: 2px;
+            padding-left: 4px;
+        }
+
+        /* ================================================================
+           SECTION 19: RESPONSIVE
            ================================================================ */
 
         @media (max-width: 768px) {
@@ -1951,6 +2150,9 @@
                 font-size: 15px;
                 width: 100%;
             }
+            .comment-input-area input {
+                min-width: 120px;
+            }
         }
 
         @media (max-width: 400px) {
@@ -2022,6 +2224,17 @@
                 font-size: 14px;
                 padding: 12px 24px;
             }
+            .comment-input-area {
+                flex-direction: column;
+            }
+            .comment-input-area input {
+                width: 100%;
+                min-width: unset;
+            }
+            .comment-input-area .btn-comment {
+                width: 100%;
+                text-align: center;
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -2070,7 +2283,7 @@
         }
 
         /* ================================================================
-           SECTION 19: PRINT STYLES
+           SECTION 20: PRINT STYLES
            ================================================================ */
 
         @media print {
@@ -2090,7 +2303,8 @@
             .btn-reveal,
             .btn-yes,
             .btn-no,
-            .btn-continue {
+            .btn-continue,
+            .btn-comment {
                 display: none !important;
             }
             .hidden {
@@ -2148,6 +2362,11 @@
                 box-shadow: none !important;
                 border: 1px solid #ddd !important;
             }
+            .user-reviews,
+            .faq-section,
+            .comment-section {
+                display: none !important;
+            }
         }
     </style>
 </head>
@@ -2178,9 +2397,73 @@
             <h1>Discover Your Cognitive Profile</h1>
             <p class="subtitle">Based on 15 behavioral dimensions · approximately 3 to 4 minutes</p>
             <p class="subtitle-small">Developed using established personality frameworks</p>
-            <div style="margin-top: 38px;">
+            <div style="margin-top: 32px;">
                 <button class="btn-primary" id="startBtn">Begin Assessment</button>
                 <button class="btn-secondary" id="infoBtn">About this test</button>
+            </div>
+
+            <!-- User Reviews -->
+            <div class="user-reviews">
+                <div class="reviews-title">What people are saying</div>
+                <div class="review-item">
+                    <div class="review-stars">· · · · ·</div>
+                    "I've taken a few personality tests before, but this one actually made sense. The breakdown was really detailed."
+                    <div class="review-author">— Jasmine, 27</div>
+                </div>
+                <div class="review-item">
+                    <div class="review-stars">· · · · ·</div>
+                    "The cognitive functions part was eye-opening. I finally understand why I think the way I do."
+                    <div class="review-author">— Wei Ming, 31</div>
+                </div>
+                <div class="review-item">
+                    <div class="review-stars">· · · ·</div>
+                    "Short and accurate. Didn't feel like a generic test at all."
+                    <div class="review-author">— Sarah, 24</div>
+                </div>
+            </div>
+
+            <!-- FAQ -->
+            <div class="faq-section">
+                <div class="faq-title">Frequently Asked</div>
+                <div class="faq-item">
+                    <div class="faq-question">How accurate is this test?</div>
+                    <div class="faq-answer">This assessment is based on established personality frameworks and uses a 15-question format designed to capture your cognitive preferences. While no online test is 100% definitive, many users find the results reflective of their personality patterns.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What do the four letters mean?</div>
+                    <div class="faq-answer">The four letters represent your preferences across four dimensions: Energy (E/I), Information Processing (S/N), Decision Making (T/F), and Lifestyle (J/P). Each dimension describes how you naturally tend to think, feel, and interact with the world.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can I retake the test?</div>
+                    <div class="faq-answer">Yes! You can restart at any time using the "Retake Test" button on your results page. Your previous answers will be cleared so you can take it fresh.</div>
+                </div>
+            </div>
+
+            <!-- Comment Section -->
+            <div class="comment-section">
+                <div class="comment-title">Leave a comment</div>
+                <div class="comment-input-area">
+                    <input type="text" id="commentInput" placeholder="Your name..." />
+                    <input type="text" id="commentTextInput" placeholder="Write something..." />
+                    <button class="btn-comment" id="commentBtn">Post</button>
+                </div>
+                <div class="comment-list" id="commentList">
+                    <div class="comment-item">
+                        <span class="comment-author">Alex</span>
+                        <span class="comment-time">2 days ago</span>
+                        <span class="comment-text">Took this test with a friend, we both got ENFP. Scary accurate!</span>
+                    </div>
+                    <div class="comment-item">
+                        <span class="comment-author">Maya</span>
+                        <span class="comment-time">5 days ago</span>
+                        <span class="comment-text">The function breakdown helped me understand my thinking process better.</span>
+                    </div>
+                    <div class="comment-item">
+                        <span class="comment-author">Jun Wei</span>
+                        <span class="comment-time">1 week ago</span>
+                        <span class="comment-text">Interesting test. Got INFJ which was unexpected but makes sense now.</span>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -2317,7 +2600,7 @@
         </div>
 
         <!-- ============================================================ -->
-        <!-- FULL ANALYSIS PAGE (NEW) -->
+        <!-- FULL ANALYSIS PAGE -->
         <!-- ============================================================ -->
         <div id="analysisView" class="hidden">
             <div class="analysis-container">
@@ -2416,10 +2699,9 @@
                             <img src="https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUycjB6cGNlM2dqY3lwZzc0OWgyaDg4NjhlNTJsZzU1ZG81MTJyd3dnaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/wSxNZ8sksBiV2NVOfq/200w.gif" alt="Cute cat holding flower" />
                         </div>
                         <p class="invite-step-sub" style="font-style:italic; color:#6a5a4a;">
-                            This test analysed your personality.<br />
-                            But it could not analyse how I feel about you.
+                            This test analysed your personality, but it could not analyse how I feel about you.
                         </p>
-                        <p class="invite-continue-hint chinese-hint">点击继续 · tap anywhere to continue</p>
+                        <p class="invite-continue-hint">tap anywhere to continue</p>
                     </div>
                 </div>
 
@@ -2439,12 +2721,15 @@
                             <span class="value">10:00 AM to 9:00 PM</span>
                         </div>
                         <p class="invite-step-sub" style="margin-top:12px; font-size:15px; color:#6a5a4a;">
-                            A whole day. Just us. 一整天，就只有我们。
+                            A whole day. Just us.
+                        </p>
+                        <p class="invite-step-sub" style="font-size:14px; color:#8a7a6a; margin-top:2px;">
+                            一整天，就只有我们
                         </p>
                         <div class="countdown-timer">
                             <span class="number" id="daysCountdown">--</span> days until your birthday
                         </div>
-                        <p class="invite-continue-hint chinese-hint">点击继续 · tap anywhere to continue</p>
+                        <p class="invite-continue-hint">tap anywhere to continue</p>
                     </div>
                 </div>
 
@@ -2462,9 +2747,12 @@
                         </p>
                         <div class="invite-tag">Photography is included · completely free</div>
                         <p class="invite-step-sub" style="margin-top:14px; font-size:15px; color:#6a5a4a;">
-                            Every moment will be captured. 每一个时刻都会被记录下来。
+                            Every moment will be captured.
                         </p>
-                        <p class="invite-continue-hint chinese-hint">点击继续 · tap anywhere to continue</p>
+                        <p class="invite-step-sub" style="font-size:14px; color:#8a7a6a; margin-top:2px;">
+                            每一个时刻都会被记录下来
+                        </p>
+                        <p class="invite-continue-hint">tap anywhere to continue</p>
                     </div>
                 </div>
 
@@ -2479,11 +2767,11 @@
                         <p class="invite-step-sub">
                             One day. One surprise. One memory that we will never forget.
                         </p>
-                        <p class="invite-step-sub" style="font-size:15px; color:#8a7a6a; margin-top:2px;">
-                            <span style="font-style:italic;">(The places are a surprise. You will have to trust me on this.)</span>
-                        </p>
-                        <p style="font-size:14px; color:#b5a89c; margin-top:8px; font-style:italic;">
+                        <p class="invite-step-sub" style="font-size:14px; color:#8a7a6a; margin-top:2px;">
                             一天。一个惊喜。一个我们永远不会忘记的回忆。
+                        </p>
+                        <p class="invite-step-sub" style="font-size:15px; color:#8a7a6a; margin-top:2px;">
+                            <span style="font-style:italic;">(The places are a surprise. You'll have to trust me.)</span>
                         </p>
 
                         <div class="choice-area" id="choiceArea">
@@ -2533,14 +2821,16 @@
 
                 <p class="final-sub">
                     You said yes!<br />
-                    I cannot wait to celebrate <span class="accent">you</span>.<br />
-                    我等不及要和你一起庆祝了。
+                    I cannot wait to celebrate <span class="accent">you</span>.
+                </p>
+                <p class="final-sub" style="font-size:16px; color:#8a7a6a; margin-top:4px;">
+                    我等不及要和你一起庆祝了
                 </p>
 
                 <p class="final-footer">
                     The exact locations will be revealed in a special message.
                     <br />
-                    地点会在特别的信息里揭晓。
+                    地点会在特别的信息里揭晓
                 </p>
 
                 <p class="final-message">
@@ -2706,7 +2996,7 @@
             }];
 
             // =============================================================
-            // 3. PERSONALITY DATA (Enhanced with detailed info)
+            // 3. PERSONALITY DATA
             // =============================================================
 
             const personalityMap = {
@@ -2967,6 +3257,15 @@
                 DOM.inviteWrapper = document.getElementById('inviteWrapper');
                 DOM.daysCountdown = document.getElementById('daysCountdown');
                 DOM.stepDots = document.getElementById('stepDots');
+
+                // Comment section
+                DOM.commentInput = document.getElementById('commentInput');
+                DOM.commentTextInput = document.getElementById('commentTextInput');
+                DOM.commentBtn = document.getElementById('commentBtn');
+                DOM.commentList = document.getElementById('commentList');
+
+                // FAQ
+                DOM.faqItems = document.querySelectorAll('.faq-item .faq-question');
             }
 
             // =============================================================
@@ -3401,7 +3700,6 @@
 
                 DOM.analysisCognitive.textContent = data.cognitive || data.desc;
 
-                // Strengths
                 DOM.analysisStrengths.innerHTML = '';
                 (data.strengths || ['Empathetic', 'Curious', 'Adaptable', 'Authentic']).forEach(function(item) {
                     const li = document.createElement('li');
@@ -3409,7 +3707,6 @@
                     DOM.analysisStrengths.appendChild(li);
                 });
 
-                // Growth areas
                 DOM.analysisGrowth.innerHTML = '';
                 (data.growth || ['May struggle with follow-through', 'Can overlook details', 'Might prioritize others']).forEach(
                     function(item) {
@@ -3422,10 +3719,63 @@
             }
 
             // =============================================================
-            // 13. EVENT LISTENERS
+            // 13. COMMENT SECTION
+            // =============================================================
+
+            function addComment(author, text) {
+                const item = document.createElement('div');
+                item.className = 'comment-item';
+                const now = new Date();
+                const timeStr = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+                item.innerHTML = '<span class="comment-author">' + escapeHtml(author) + '</span>' +
+                    '<span class="comment-time">' + timeStr + '</span>' +
+                    '<span class="comment-text">' + escapeHtml(text) + '</span>';
+
+                DOM.commentList.appendChild(item);
+                DOM.commentList.scrollTop = DOM.commentList.scrollHeight;
+            }
+
+            function escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+
+            // =============================================================
+            // 14. EVENT LISTENERS
             // =============================================================
 
             function setupEventListeners() {
+                // FAQ toggle
+                DOM.faqItems.forEach(function(item) {
+                    item.addEventListener('click', function() {
+                        const answer = this.nextElementSibling;
+                        if (answer) {
+                            answer.classList.toggle('open');
+                        }
+                    });
+                });
+
+                // Comment button
+                DOM.commentBtn.addEventListener('click', function() {
+                    const name = DOM.commentInput.value.trim() || 'Anonymous';
+                    const text = DOM.commentTextInput.value.trim();
+
+                    if (text.length > 0) {
+                        addComment(name, text);
+                        DOM.commentTextInput.value = '';
+                        DOM.commentInput.value = '';
+                    }
+                });
+
+                // Enter key for comments
+                DOM.commentTextInput.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter') {
+                        DOM.commentBtn.click();
+                    }
+                });
+
                 DOM.infoBtn.addEventListener('click', function() {
                     showView('aboutView');
                 });
@@ -3656,7 +4006,6 @@
                     }
                 });
 
-                // Final page music toggle
                 DOM.finalMusicToggle.addEventListener('click', function() {
                     if (DOM.bgAudio) {
                         if (DOM.bgAudio.paused) {
@@ -3671,7 +4020,6 @@
                     }
                 });
 
-                // Keyboard support
                 document.addEventListener('keydown', function(event) {
                     if (event.key === 'Enter' && !DOM.nextBtn.disabled && !DOM.questionView.classList.contains(
                             'hidden')) {
@@ -3681,7 +4029,7 @@
             }
 
             // =============================================================
-            // 14. INITIALIZATION
+            // 15. INITIALIZATION
             // =============================================================
 
             function init() {
@@ -3692,7 +4040,7 @@
                 updateCountdown();
 
                 console.log('===================================================');
-                console.log('Personality Assessment Application v9.0');
+                console.log('Personality Assessment Application v10.0');
                 console.log('Built for ' + CONFIG.TARGET_NAME);
                 console.log('Total questions:', CONFIG.TOTAL_QUESTIONS);
                 console.log('Features: 15 questions, MBTI scoring, Full Analysis, multi-step invitation');
